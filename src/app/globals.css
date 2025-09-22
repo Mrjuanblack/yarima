@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/switzer/Switzer-Regular.eot');
+  src: url('/fonts/switzer/Switzer-Regular.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/switzer/Switzer-Regular.woff2') format('woff2'),
+       url('/fonts/switzer/Switzer-Regular.woff') format('woff'),
+       url('/fonts/switzer/Switzer-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/switzer/Switzer-Medium.eot');
+  src: url('/fonts/switzer/Switzer-Medium.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/switzer/Switzer-Medium.woff2') format('woff2'),
+       url('/fonts/switzer/Switzer-Medium.woff') format('woff'),
+       url('/fonts/switzer/Switzer-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/switzer/Switzer-Semibold.eot');
+  src: url('/fonts/switzer/Switzer-Semibold.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/switzer/Switzer-Semibold.woff2') format('woff2'),
+       url('/fonts/switzer/Switzer-Semibold.woff') format('woff'),
+       url('/fonts/switzer/Switzer-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/switzer/Switzer-Bold.eot');
+  src: url('/fonts/switzer/Switzer-Bold.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/switzer/Switzer-Bold.woff2') format('woff2'),
+       url('/fonts/switzer/Switzer-Bold.woff') format('woff'),
+       url('/fonts/switzer/Switzer-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Switzer', var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-text-primary: #9c2c16;
+  --color-text-primary-light: #be3410;
+
+  --color-theme-gold: #b58e4d;
+
+  --color-theme-background-50: #faf7f2;
+  --color-theme-background-100: #f2ede2;
+  --color-theme-background-200: #dfd1b7; /* Main Color */
+  --color-theme-background-300: #d3bf9e;
+  --color-theme-background-400: #c1a176;
+  --color-theme-background-500: #b4895b;
+  --color-theme-background-600: #a7774f;
+  --color-theme-background-700: #8b6043;
+  --color-theme-background-800: #714f3b;
+  --color-theme-background-900: #5c4232;
+  --color-theme-background-950: #312119;
+
+  --color-theme-background-dark-50: #f5f6f6;
+  --color-theme-background-dark-100: #e5e7e8;
+  --color-theme-background-dark-200: #cdd0d4;
+  --color-theme-background-dark-300: #aaaeb6;
+  --color-theme-background-dark-400: #808790;
+  --color-theme-background-dark-500: #656c75;
+  --color-theme-background-dark-600: #565a64;
+  --color-theme-background-dark-700: #4a4d54;
+  --color-theme-background-dark-800: #414349;
+  --color-theme-background-dark-900: #3a3c3f;
+  --color-theme-background-dark-950: #1f2023; /* Main Color */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Switzer', var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-padding-top: 6rem;
+}
+
+.slick-list {
+  height: auto !important;
+}
+
+.slick-track {
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+.slick-slide {
+  height: auto !important;
+}
+
+.slick-initialized .slick-slide {
+  display: flex !important;
+}
+
+.slick-slide > div {
+  width: 100% !important;
+}
