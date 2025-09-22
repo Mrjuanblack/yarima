@@ -1,6 +1,5 @@
 "use client";
 
-import Button from "@/components/Button";
 import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
 import ParallaxImage from "@/components/ParallaxImage";

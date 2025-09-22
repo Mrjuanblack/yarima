@@ -36,6 +36,7 @@ const NumberCounter = ({ from, to, duration = 3, prefix = "", suffix = "", ease 
   useEffect(() => {
     const controls = animate(count, to, {
       duration,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ease: ease as any
     });
     return controls.stop;

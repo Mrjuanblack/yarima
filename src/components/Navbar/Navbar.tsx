@@ -1,13 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from "next/navigation";
 import NavBarButton from "./NavBarButton";
 import { useScrollPosition } from "../../hooks/useScrollPosition";
-import { IoLogoWhatsapp } from "react-icons/io";
-import WhatsAppButton from "../WhatsAppButton";
 import { useScreenSize } from "@/hooks/useScreenSize";
 
 export default function Navbar() {
@@ -39,9 +37,6 @@ export default function Navbar() {
         hidden: {
             opacity: 0
         },
-        visible: (i: number) => ({
-            opacity: 1
-        }),
         exit: {
             opacity: 0
         }

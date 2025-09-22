@@ -1,6 +1,6 @@
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { useForm } from '@tanstack/react-form';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { z } from 'zod/v4'
 
 enum PaymentMethod {

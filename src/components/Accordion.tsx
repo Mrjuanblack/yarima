@@ -54,7 +54,7 @@ const Accordion = ({
 
   return (
     <div className={`w-full flex flex-col gap-2 ${className}`}>
-      {items.map((item, index) => {
+      {items.map((item) => {
         const isOpen = isItemOpen(item.id);
         
         return (
