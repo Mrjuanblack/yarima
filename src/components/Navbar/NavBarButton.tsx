@@ -5,20 +5,13 @@ interface NavBarButtonTestProps {
     text: string;
     url: string;
     showBorder?: boolean;
-    textWhite?: boolean;
     onClick: () => void;
 }
 
-const NavBarButton: React.FC<NavBarButtonTestProps> = ({ text, url, showBorder = true, textWhite = false, onClick }) => {
+const NavBarButton: React.FC<NavBarButtonTestProps> = ({ text, url, showBorder = true, onClick }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     const textColor = () => {
-        if (textWhite) {
-            if(isHovered) {
-                return 'text-gray-400';
-            }
-            return 'text-white';
-        }
         if(isHovered) {
             return 'text-gray-500';
         }
@@ -26,9 +19,6 @@ const NavBarButton: React.FC<NavBarButtonTestProps> = ({ text, url, showBorder =
     };
 
     const textWeight = () => {
-        if(textWhite) {
-            return 'font-bold'
-        }
         return 'font-semibold';
     };
     

@@ -4,6 +4,7 @@ import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
 import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
+import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
 
 const cardResponsiveValues_3cols = "bg-[length:250%] sm:bg-[length:150%] md:bg-[length:235%] lg:bg-[length:350%]"
@@ -35,7 +36,7 @@ export default function Topocoro() {
 
     return (
         <div>
-            <section>
+            <Section overrideClassName="w-full">
                 <ParallaxImage imageUrl={["/topocoro/1.jpg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
                     <Container>
                         <div className="text-theme-background-200 text-center">
@@ -47,8 +48,8 @@ export default function Topocoro() {
                         </div>
                     </Container>
                 </ParallaxImage>
-            </section>
-            <section className="py-20">
+            </Section>
+            <Section>
                 <Container id="embalse-de-topocoro">
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12 xl:col-span-8 flex flex-col gap-8">
@@ -80,8 +81,8 @@ export default function Topocoro() {
                         </div>
                     </div>
                 </Container>
-            </section>
-            <section className="py-20">
+            </Section>
+            <Section>
                 <Container id="que-hace-unico-a-topocoro">
                     <SectionTitle title="¿Qué hace único a Topocoro?" description="Es un destino emergente que integra naturaleza, agua, montañas y buen clima. Esto abre oportunidades para viajeros y turistas de muchos tipos, desde turistas de fin de semana, turismo de bienestar, grupos corporativos, observadores de aves, hasta amantes de los deportes náuticos." />
                     <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 md:grid-cols-4">
@@ -133,8 +134,8 @@ export default function Topocoro() {
                         </div>
                     </div>
                 </Container>
-            </section>
-            <section className="py-20">
+            </Section>
+            <Section>
                 <Container>
                     <SectionTitle title="Inversión público-privada en marcha" description="Topocoro avanza como destino lacustre prioritario en Santander. Diversas iniciativas públicas y privadas se proyectan para fortalecer accesos, infraestructura náutica, servicios y promoción turística, creando las condiciones para convertirse en un destino de gran atractivo para el turismo nacional e internacional." />
                     <p className="text-2xl text-center max-w-[600px] mx-auto">+ 1 Billón de COP en inversión público/privada proyectados para los próximos 5 años</p>
@@ -162,7 +163,7 @@ export default function Topocoro() {
                         </div>
                     </div>
                 </Container>
-            </section>
+            </Section>
             <Footer />
         </div>
     )

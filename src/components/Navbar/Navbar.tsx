@@ -110,7 +110,7 @@ export default function Navbar() {
                         <div className="hidden lg:flex w-full h-full justify-center">
                             <div className="ml-10 h-full flex space-x-8 gap-8">
                                 {menuItems.map((item, index) => (
-                                    <NavBarButton key={index} text={item.text} url={item.url} showBorder={isAtTop} textWhite={isAtTop} onClick={handleClick} />
+                                    <NavBarButton key={index} text={item.text} url={item.url} showBorder={isAtTop} onClick={handleClick} />
                                 ))}
                             </div>
                         </div>
@@ -121,7 +121,7 @@ export default function Navbar() {
                             <button
                                 type="button"
                                 onClick={toggleMobileMenu}
-                                className="bg-gray-50 inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 transition-colors duration-200"
+                                className="bg-gray-50 inline-flex items-center justify-center p-2 rounded-md text-gray-700 ring-1 ring-gray-200 hover:bg-gray-100 transition-colors duration-200"
                                 aria-controls="mobile-menu"
                                 aria-expanded={isMobileMenuOpen}
                             >

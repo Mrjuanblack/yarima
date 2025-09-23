@@ -5,6 +5,7 @@ import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
 import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
+import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
 
 const cardResponsiveValues_2cols = "bg-[length:250%] sm:bg-[length:150%] md:bg-[length:150%] lg:bg-[length:225%]"
@@ -38,7 +39,7 @@ export default function Inversion() {
         },
     ]
     return (<div>
-        <section>
+        <Section overrideClassName="w-full">
             <ParallaxImage imageUrl={["/renders/beach/1.jpeg", "/renders/beach/2.jpeg", "/renders/beach/3.jpeg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
                 <Container>
                     <div className="text-theme-background-200 text-center">
@@ -61,15 +62,15 @@ export default function Inversion() {
                     </div>
                 </Container>
             </ParallaxImage>
-        </section>
-        <section className="py-20">
+        </Section>
+        <Section>
             <Container>
                 <div className="w-full h-[800px] bg-theme-background-200 rounded-2xl">
 
                 </div>
             </Container>
-        </section>
-        <section className="py-20">
+        </Section>
+        <Section>
             <Container>
                 <div className="grid grid-cols-12 gap-6">
                     <div className="col-span-12 xl:col-span-5 flex flex-col gap-8">
@@ -98,8 +99,8 @@ export default function Inversion() {
                     <CTAButton text="Agendar visita" onClick={() => { }} />
                 </div>
             </Container>
-        </section>
-        <section className="py-20">
+        </Section>
+        <Section>
             <Container>
                 <SectionTitle title="Formas de pago" description="Empiezas con una reserva de $3.000.000 COP y eliges entre dos formas de pago: " />
                 <div className="grid grid-cols-12 xl:gap-2 gap-6">
@@ -129,8 +130,8 @@ export default function Inversion() {
                     <CTAButton text="Hablar con un asesor ahora" onClick={() => { }} />
                 </div>
             </Container>
-        </section>
-        <section className="py-20">
+        </Section>
+        <Section>
             <Container>
                 <SectionTitle title="Preguntas Frecuentes FAQ" />
                 <Accordion items={items} />
@@ -138,8 +139,8 @@ export default function Inversion() {
                     <CTAButton text="Hablar con un asesor ahora" onClick={() => { }} />
                 </div>
             </Container>
-        </section>
-        <section className="py-20">
+        </Section>
+        <Section>
             <Container>
                 <p className="text-4xl text-center font-medium">¿Listo para empezar?</p>
                 <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
@@ -147,7 +148,7 @@ export default function Inversion() {
                     <CTAButton text="Agendar visita" onClick={() => { }} />
                 </div>
             </Container>
-        </section>
+        </Section>
         <Footer />
     </div>)
 }

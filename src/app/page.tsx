@@ -12,6 +12,7 @@ import Footer from '@/components/Footer';
 import CTAButton from '@/components/CTAButton';
 import { useNavigateWithScroll } from '@/hooks/useNavigateWithScroll';
 import Calculator from '@/components/LandingPage/Calculator';
+import Section from '@/components/Section';
 
 const cardResponsiveValues_3cols = "bg-[length:250%] sm:bg-[length:150%] md:bg-[length:150%] lg:bg-[length:225%]"
 const cardResponsiveValues_1cols = "bg-[length:250%] sm:bg-[length:130%] md:bg-[length:130%] lg:bg-[length:105%]"
@@ -56,7 +57,7 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      <section className="w-full">
+      <Section overrideClassName="w-full">
         <ParallaxImage imageUrl={["/renders/beach/1.jpeg", "/renders/beach/2.jpeg", "/renders/beach/3.jpeg"]} height="h-screen" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
           <Container>
             <div className="text-theme-background-200 text-center">
@@ -81,8 +82,8 @@ export default function Home() {
             </div>
           </Container>
         </ParallaxImage>
-      </section>
-      <section className="py-20">
+      </Section>
+      <Section>
         <Container>
           <SectionTitle title="Ecosistema Yarima" description="Un destino, tres experiencias complementarias en el embalse: el Resort (hospitalidad y wellness), el Club de Playa (acceso exclusivo con playa artificial, piscinas y deportes náuticos) y el Lounge Flotante Yarima (plataforma modular sobre el agua con solárium, lounge y deck de música)." />
           <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6">
@@ -126,8 +127,8 @@ export default function Home() {
             </div>
           </div>
         </Container>
-      </section>
-      <section className="py-20">
+      </Section>
+      <Section>
         <div className="rounded-4xl bg-gradient-to-br from-theme-background-200 via-theme-background-300/95 to-theme-background-200 py-32 mx-4 sm:mx-6 px-2 md:px-6 lg:px-8 text-theme-background-200">
           {/* <SectionTitle title="Hazte socio de Yarima" /> */}
           <div>
@@ -195,9 +196,9 @@ export default function Home() {
             <CTAButton text="Hablar por WhatsApp" onClick={() => { }} />
           </div>
         </div>
-      </section >
+      </Section >
 
-      <section className="py-20">
+      <Section>
         <Container>
           <SectionTitle title="Aliados Estratégicos" />
           <AlliesSlider />
@@ -210,7 +211,7 @@ export default function Home() {
             <CTAButton text="Hablar por WhatsApp" onClick={() => { }} />
           </div>
         </Container>
-      </section>
+      </Section>
 
       <Footer />
     </div >

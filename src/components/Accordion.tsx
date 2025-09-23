@@ -64,7 +64,7 @@ const Accordion = ({
           >
             {/* Header */}
             <button
-              className={`w-full px-6 py-4 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 transition-colors duration-200 flex items-center justify-between ${headerClassName}`}
+              className={`w-full px-6 py-4 text-left hover:bg-gray-50 transition-colors duration-200 flex items-center justify-between ${headerClassName}`}
               onClick={() => toggleItem(item.id)}
               aria-expanded={isOpen}
               aria-controls={`accordion-content-${item.id}`}

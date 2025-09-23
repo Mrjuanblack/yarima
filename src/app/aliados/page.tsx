@@ -1,6 +1,7 @@
 import Container from "@/components/Container";
 import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
+import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
@@ -36,7 +37,7 @@ export default function Aliados() {
     ]
     return (<div>
 
-        <section>
+        <Section overrideClassName="w-full">
             <ParallaxImage imageUrl={["/renders/beach/1.jpeg", "/renders/beach/2.jpeg", "/renders/beach/3.jpeg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
                 <Container>
                     <div className="text-theme-background-200 text-center">
@@ -46,8 +47,8 @@ export default function Aliados() {
                     </div>
                 </Container>
             </ParallaxImage>
-        </section>
-        <section className="py-20">
+        </Section>
+        <Section>
             <Container>
                 <SectionTitle title="Aliados Estratégicos" description="Detrás de Yarima Resort & Club de Playa hay un equipo con gran trayectoria en desarrollo, arquitectura, operación hotelera y estructura fiduciaria. Cada aliado cumple un rol clave en la solidez del proyecto." />
                 <div className="grid grid-cols-12 gap-6">
@@ -76,7 +77,7 @@ export default function Aliados() {
                     </div> */}
                 </div>
             </Container>
-        </section>
+        </Section>
         <Footer />
     </div>)
 }

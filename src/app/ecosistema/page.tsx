@@ -13,6 +13,7 @@ import { FaWater } from "react-icons/fa";
 import { MdKitesurfing } from "react-icons/md";
 import { IoMusicalNotes } from "react-icons/io5";
 import Footer from "@/components/Footer";
+import Section from "@/components/Section";
 
 const iconClass = "h-8 w-auto text-theme-background-dark-950";
 export default function Ecosistema() {
@@ -133,7 +134,7 @@ export default function Ecosistema() {
 
     return (
         <div>
-            <section>
+            <Section overrideClassName="w-full">
                 <ParallaxImage imageUrl={["/renders/beach/1.jpeg", "/renders/beach/2.jpeg", "/renders/beach/3.jpeg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
                     <Container>
                         <div className="text-theme-background-200 text-center">
@@ -153,8 +154,8 @@ export default function Ecosistema() {
                         </div>
                     </Container>
                 </ParallaxImage>
-            </section>
-            <section className="py-20">
+            </Section>
+            <Section>
                 <Container>
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12 lg:col-span-4 flex flex-col justify-end gap-4">
@@ -166,8 +167,8 @@ export default function Ecosistema() {
                         </div>
                     </div>
                 </Container>
-            </section>
-            <section className="py-20">
+            </Section>
+            <Section>
                 <Container id="ecosistema-yarima">
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12 xl:col-span-8 flex flex-col gap-8">
@@ -196,8 +197,8 @@ export default function Ecosistema() {
                         </div>
                     </div>
                 </Container>
-            </section>
-            <section className="py-20">
+            </Section>
+            <Section>
                 <Container id="ecosistema-club-de-playa">
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12 xl:col-span-4 hidden xl:flex justify-center items-center bg-[url('/renders/beach/2.jpeg')] bg-cover bg-center rounded-2xl">
@@ -222,11 +223,11 @@ export default function Ecosistema() {
                         </div>
                     </div>
                 </Container>
-            </section>
-            <section className="py-20">
+            </Section>
+            <Section>
                 <Container id="ecosistema-lounge-flotante">
                     <div className="grid grid-cols-12 gap-6">
-                    <div className="col-span-12 xl:col-span-8 flex flex-col gap-8">
+                        <div className="col-span-12 xl:col-span-8 flex flex-col gap-8">
                             <SectionTitle title="Lounge Flotante" removeMargin />
                             <p className="text-base/6 text-gray-600">Nuestro lounge flotante es una plataforma de diseño modular sobre el embalse que se configura como punto de encuentro frente al agua. Al centro, una zona de baño segura; alrededor, diferentes espacios se integran, desde solárium amplio y un lounge con servicio de bebidas y snacks.</p>
                             <p className="text-base/6 text-gray-600">Contará además con un deck privado para socios y un muelle para deportes náuticos y embarcaciones livianas.</p>
@@ -248,9 +249,9 @@ export default function Ecosistema() {
                         <div className="col-span-12 hidden xl:flex xl:col-span-4 justify-center items-center bg-[url('/renders/beach/3.jpeg')] bg-cover bg-center rounded-2xl">
                         </div>
                     </div>
-                    
+
                 </Container>
-            </section>
+            </Section>
             <Footer />
         </div>
     );
