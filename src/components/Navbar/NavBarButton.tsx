@@ -6,9 +6,10 @@ interface NavBarButtonTestProps {
     url: string;
     showBorder?: boolean;
     textWhite?: boolean;
+    onClick: () => void;
 }
 
-const NavBarButton: React.FC<NavBarButtonTestProps> = ({ text, url, showBorder = true, textWhite = false }) => {
+const NavBarButton: React.FC<NavBarButtonTestProps> = ({ text, url, showBorder = true, textWhite = false, onClick }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     const textColor = () => {
@@ -30,9 +31,10 @@ const NavBarButton: React.FC<NavBarButtonTestProps> = ({ text, url, showBorder =
         }
         return 'font-semibold';
     };
+    
 
     return (
-        <Link href={url} className="flex flex-col justify-between items-center gap-2" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+        <Link onClick={onClick} href={url} className="flex flex-col justify-between items-center gap-2" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
             <div className={`${textColor()} uppercase text-center h-full pt-3 ${textWeight()} text-sm transition-all flex items-center gap-2`}>
                 {text}
             </div>

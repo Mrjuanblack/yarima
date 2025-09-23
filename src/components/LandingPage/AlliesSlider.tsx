@@ -1,8 +1,19 @@
+"use client";
 import Link from "next/link";
-import Slider from "react-slick";
+import dynamic from "next/dynamic";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { useScreenSize, type ScreenSize } from "@/hooks/useScreenSize";
+
+const Slider = dynamic(() => import("react-slick"), { ssr: false });
 
 export const AlliesSlider: React.FC = () => {
+    const screenSize = useScreenSize();
+
+    const slidesFor = (size: ScreenSize): number => {
+        if (size === 'base' || size === 'sm') return 1;
+        if (size === 'md') return 2;
+        return 3; // lg, xl, 2xl
+    };
     const allies = [
         {
             name: "Vimarsa",
@@ -38,27 +49,14 @@ export const AlliesSlider: React.FC = () => {
     ]
     return (<div>
         <Slider
+            key={screenSize}
             infinite={true}
             speed={3000}
             // autoplay={true}
             autoplaySpeed={5000}
-            slidesToShow={3}
+            slidesToShow={slidesFor(screenSize)}
             arrows={false}
             dots={false}
-            responsive={[
-                {
-                    breakpoint: 1200,
-                    settings: {
-                        slidesToShow: 2
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 1
-                    }
-                }
-            ]}
         >
             {allies.map((ally, index) => (
                 <div className="h-full px-2" key={index}>

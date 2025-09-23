@@ -34,11 +34,19 @@ export default function Navbar() {
     };
 
     const itemVariants = {
-        hidden: {
-            opacity: 0
-        },
+		hidden: {
+			opacity: 0,
+			y: -8,
+		},
+		visible: (i: number) => ({
+			opacity: 1,
+			y: 0,
+			transition: { duration: 0.2, delay: i * 0.03 },
+		}),
         exit: {
-            opacity: 0
+			opacity: 0,
+			y: -8,
+			transition: { duration: 0.15 },
         }
     };
 
@@ -73,11 +81,15 @@ export default function Navbar() {
 
     const gradientValues = getGradientValues();
 
+    const handleClick = () => {
+        setIsMobileMenuOpen(false);
+    }
+
     return (
         <>
             {/* <nav className={`sticky top-0 z-50 bg-theme-background-200 border-gray-200 ${isMobileMenuOpen ? '' : 'shadow-sm'}`}> */}
             {/* <nav className={`fixed top-0 left-0 right-0 z-50 ${isAtTop ? 'h-24' : 'h-18'} ${isAtTop ? (isMobileMenuOpen ? 'bg-white' : 'bg-transparent') : 'bg-theme-background-200 h-18'} ${isAtTop ? 'border-theme-gold/50 border-b' : 'shadow-sm'} transition-[height,background-color] ease-in-out duration-300`}> */}
-            <nav className={`fixed top-0 left-0 right-0 z-50 ${isAtTop ? 'h-24' : 'h-18'} ${isAtTop ? (isMobileMenuOpen ? 'bg-transparent' : 'bg-transparent') : 'bg-transparent h-18'} ${isAtTop ? 'border-white/50 border-b' : 'shadow-md'} transition-[height,background-color] ease-in-out duration-300`}>
+            <nav className={`fixed top-0 left-0 right-0 z-50 bg-white ${isAtTop ? 'h-24' : 'h-18'} ${isAtTop ? 'border-white/50 border-b' : 'shadow-md'} transition-[height,background-color] ease-in-out duration-300`}>
                 {/* Gradient overlay that animates */}
                 <motion.div
                     className={`absolute inset-0 pointer-events-none -z-10 ${isAtTop ? 'backdrop-blur-none' : 'backdrop-blur-md'}`}
@@ -98,7 +110,7 @@ export default function Navbar() {
                         <div className="hidden lg:flex w-full h-full justify-center">
                             <div className="ml-10 h-full flex space-x-8 gap-8">
                                 {menuItems.map((item, index) => (
-                                    <NavBarButton key={index} text={item.text} url={item.url} showBorder={isAtTop} textWhite={isAtTop} />
+                                    <NavBarButton key={index} text={item.text} url={item.url} showBorder={isAtTop} textWhite={isAtTop} onClick={handleClick} />
                                 ))}
                             </div>
                         </div>
@@ -170,7 +182,7 @@ export default function Navbar() {
                                         animate="visible"
                                         exit="exit"
                                     >
-                                        <NavBarButton key={index} text={item.text} url={item.url} />
+                                        <NavBarButton key={index} text={item.text} url={item.url} onClick={handleClick} />
                                     </motion.div>
                                 ))}
                             </div>
