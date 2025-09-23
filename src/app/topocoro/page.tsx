@@ -90,7 +90,7 @@ export default function Topocoro() {
                         <div className="lg:col-span-1 md:col-span-2 md:rounded-tl-4xl lg:rounded-tl-4xl lg:rounded-bl-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
                             <div className="relative h-80 shrink-0">
                                 <div className={`h-80 bg-[url(/renders/v2/2.jpg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
-                                <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" />
+                                {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                             </div>
                             <div className="relative p-10 flex flex-col flex-grow">
                                 <h3 className="mt-1 text-xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Náutica y recreación</h3>
@@ -102,7 +102,7 @@ export default function Topocoro() {
                         <div className="lg:col-span-1 md:col-span-2 md:rounded-tr-4xl lg:rounded-lg group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
                             <div className="relative h-80 shrink-0">
                                 <div className={`h-80 bg-[url(/renders/beach/6.jpeg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
-                                <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" />
+                                {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                             </div>
                             <div className="relative p-10 flex flex-col flex-grow">
                                 <h3 className="mt-1 text-xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Bienestar y desconexión</h3>
@@ -114,7 +114,7 @@ export default function Topocoro() {
                         <div className="lg:col-span-1 md:col-span-2 md:rounded-bl-4xl lg:rounded-lg group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
                             <div className="relative h-80 shrink-0">
                                 <div className={`h-80 bg-[url(/renders/beach/1.jpeg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
-                                <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" />
+                                {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                             </div>
                             <div className="relative p-10 flex flex-col flex-grow">
                                 <h3 className="mt-1 text-xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Social & entretenimiento</h3>
@@ -125,7 +125,7 @@ export default function Topocoro() {
                         <div className="lg:col-span-1 md:col-span-2 md:rounded-br-4xl lg:rounded-tr-4xl lg:rounded-br-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
                             <div className="relative h-80 shrink-0">
                                 <div className={`h-80 bg-[url(/renders/beach/2.jpeg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
-                                <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" />
+                                {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                             </div>
                             <div className="relative p-10 flex flex-col flex-grow">
                                 <h3 className="mt-1 text-xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Corporate & reuniones</h3>

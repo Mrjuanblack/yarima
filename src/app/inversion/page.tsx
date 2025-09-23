@@ -107,7 +107,7 @@ export default function Inversion() {
                     <div className="col-span-12 xl:col-span-6 xl:rounded-tl-4xl xl:rounded-bl-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
                         <div className="relative h-80 shrink-0">
                             <div className={`h-80 bg-[url(/renders/v2/2.jpg)] ${cardResponsiveValues_2cols} bg-center bg-no-repeat`} />
-                            <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" />
+                            {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                         </div>
                         <div className="relative p-10 flex flex-col flex-grow">
                             <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Pago durante el desarrollo</h3>
@@ -117,7 +117,7 @@ export default function Inversion() {
                     <div className="col-span-12 xl:col-span-6 xl:rounded-tr-4xl xl:rounded-br-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
                         <div className="relative h-80 shrink-0">
                             <div className={`h-80 bg-[url(/renders/v2/2.jpg)] ${cardResponsiveValues_2cols} bg-center bg-no-repeat`} />
-                            <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" />
+                            {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                         </div>
                         <div className="relative p-10 flex flex-col flex-grow">
                             <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Financiación directa</h3>
