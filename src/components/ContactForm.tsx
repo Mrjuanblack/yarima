@@ -212,15 +212,12 @@ const ContactForm = () => {
                 return;
             }
 
-            // Transform to formData
+            // Transform to formData (do NOT include reCAPTCHA token in payload)
             const formData = new FormData();
             formData.append("name", value.name);
             formData.append("countryPhoneCode", value.countryPhoneCode);
             formData.append("whatsapp", value.whatsapp);
             formData.append("interest", value.interest);
-            // Include anti-bot fields for observability/debugging (safe to expose)
-            formData.append("g-recaptcha-response", recaptchaToken);
-            formData.append("botcheck", "");
 
             //web3forms data
             formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "");
