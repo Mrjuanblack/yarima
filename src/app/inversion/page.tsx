@@ -2,7 +2,8 @@
 
 import Accordion, { AccordionItem } from "@/components/Accordion";
 import Container from "@/components/Container";
-import CTAButton from "@/components/CTAButton";
+import CTA_WhatsApp from "@/components/CTAButtons.tsx/CTA_WhatsApp";
+import CTAButtonBase from "@/components/CTAButtons.tsx/CTAButton";
 import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
 import Section from "@/components/Section";
@@ -95,8 +96,8 @@ export default function Inversion() {
                     </div>
                 </div>
                 <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-                    <CTAButton text="Contactar por WhatsApp" onClick={() => { }} />
-                    <CTAButton text="Agendar visita" onClick={() => { }} />
+                    <CTA_WhatsApp />
+                    <CTAButtonBase text="Agendar visita" onClick={() => { }} />
                 </div>
             </Container>
         </Section>
@@ -127,7 +128,7 @@ export default function Inversion() {
                 </div>
                 <p className="mt-10 text-lg text-center font-medium">Te acompañamos para escoger el plan que mejor se ajuste a tu perfil.</p>
                 <div className="mt-5 flex flex-col lg:flex-row justify-center items-center gap-4">
-                    <CTAButton text="Hablar con un asesor ahora" onClick={() => { }} />
+                    <CTAButtonBase text="Hablar con un asesor ahora" onClick={() => { }} />
                 </div>
             </Container>
         </Section>
@@ -136,7 +137,7 @@ export default function Inversion() {
                 <SectionTitle title="Preguntas Frecuentes FAQ" />
                 <Accordion items={items} />
                 <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-                    <CTAButton text="Hablar con un asesor ahora" onClick={() => { }} />
+                    <CTAButtonBase text="Hablar con un asesor ahora" onClick={() => { }} />
                 </div>
             </Container>
         </Section>
@@ -144,8 +145,8 @@ export default function Inversion() {
             <Container>
                 <p className="text-4xl text-center font-medium">¿Listo para empezar?</p>
                 <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-                    <CTAButton text="Hablar por WhatsApp" onClick={() => { }} />
-                    <CTAButton text="Agendar visita" onClick={() => { }} />
+                    <CTA_WhatsApp />
+                    <CTAButtonBase text="Agendar visita" onClick={() => { }} />
                 </div>
             </Container>
         </Section>

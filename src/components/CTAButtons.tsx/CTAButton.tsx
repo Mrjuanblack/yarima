@@ -1,10 +1,10 @@
-interface CTAButtonProps {
+interface CTAButtonBaseProps {
     text: string;
     onClick: () => void;
     darkBg?: boolean;
 }
 
-const CTAButton = ({ text, onClick, darkBg = false }: CTAButtonProps) => {
+const CTAButtonBase = ({ text, onClick, darkBg = false }: CTAButtonBaseProps) => {
     const variantClasses = darkBg
         ? "border border-white text-white bg-transparent hover:bg-white/10"
         : "border border-transparent bg-theme-background-dark-950 text-white shadow-md hover:bg-gray-800";
@@ -14,4 +14,4 @@ const CTAButton = ({ text, onClick, darkBg = false }: CTAButtonProps) => {
     );
 }
 
-export default CTAButton;
+export default CTAButtonBase;

@@ -56,7 +56,7 @@ export default function Navbar() {
         { text: "Inversión", url: "/inversion" },
         { text: "Aliados", url: "/aliados" },
         { text: "Topocoro", url: "/topocoro" },
-        { text: "Contacto", url: "/contact" }
+        { text: "Contacto", url: "/contacto" }
     ];
 
     const getGradientValues = (): {

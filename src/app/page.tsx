@@ -9,10 +9,11 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import SectionTitle from "@/components/SectionTitle";
 import AlliesSlider from '@/components/LandingPage/AlliesSlider';
 import Footer from '@/components/Footer';
-import CTAButton from '@/components/CTAButton';
+import CTAButtonBase from '@/components/CTAButtons.tsx/CTAButton';
 import { useNavigateWithScroll } from '@/hooks/useNavigateWithScroll';
 import Calculator from '@/components/LandingPage/Calculator';
 import Section from '@/components/Section';
+import CTA_WhatsApp from '@/components/CTAButtons.tsx/CTA_WhatsApp';
 
 const cardResponsiveValues_3cols = "bg-[length:250%] sm:bg-[length:150%] md:bg-[length:150%] lg:bg-[length:225%]"
 const cardResponsiveValues_2cols = "bg-[length:250%] sm:bg-[length:130%] md:bg-[length:130%] lg:bg-[length:155%]"
@@ -132,8 +133,8 @@ export default function Home() {
         <Container>
           <div>
             <div className="relative h-full flex flex-col items-center justify-center">
-              <h2 className=" font-bold mb-4 text-lg md:text-3xl lg:text-4xl text-center">
-                <span className="">Hazte socio de Yarima Resort &</span><wbr /><span className="whitespace-nowrap"> Club de Playa</span>
+              <h2 className=" font-bold mb-4 text-lg md:text-3xl lg:text-4xl text-center text-theme-gold">
+                <span>Hazte socio de Yarima Resort &</span><wbr /><span className="whitespace-nowrap"> Club de Playa</span>
               </h2>
               <div className="flex flex-col items-center justify-center">
                 <p className="text-4xl sm:text-5xl font-medium tracking-tight text-black">Reserva con</p>
@@ -182,9 +183,9 @@ export default function Home() {
           </div>
           <Calculator />
           <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-            <CTAButton text="Ver detalles de inversión" onClick={() => { }} />
-            <CTAButton text="Descargar Brochure" onClick={() => { }} />
-            <CTAButton text="Hablar por WhatsApp" onClick={() => { }} />
+            <CTAButtonBase text="Ver detalles de inversión" onClick={() => { }} />
+            <CTAButtonBase text="Descargar Brochure" onClick={() => { }} />
+            <CTA_WhatsApp />
           </div>
         </Container>
       </Section >
@@ -197,9 +198,9 @@ export default function Home() {
             <p className="text-lg font-normal">¿Quieres conocer más de Yarima Resort & Club de Playa?</p>
           </div>
           <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-            <CTAButton text="Ver detalles de inversión" onClick={() => { }} />
-            <CTAButton text="Descargar Brochure" onClick={() => { }} />
-            <CTAButton text="Hablar por WhatsApp" onClick={() => { }} />
+            <CTAButtonBase text="Ver detalles de inversión" onClick={() => { }} />
+            <CTAButtonBase text="Descargar Brochure" onClick={() => { }} />
+            <CTA_WhatsApp />
           </div>
         </Container>
       </Section>

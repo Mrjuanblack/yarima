@@ -1,7 +1,7 @@
 "use client";
 
 import Container from "@/components/Container";
-import CTAButton from "@/components/CTAButton";
+import CTAButtonBase from "@/components/CTAButtons.tsx/CTAButton";
 import ParallaxImage from "@/components/ParallaxImage";
 import SectionTitle from "@/components/SectionTitle";
 import { FaBuilding, FaCar, FaFutbol, FaHotel, FaPeace, FaSpa, FaUtensils } from "react-icons/fa";
@@ -187,9 +187,9 @@ export default function Ecosistema() {
                             </div>
                             <div className="w-full">
                                 <div className="mt-10 flex flex-col 2xl:flex-row justify-center items-center gap-4">
-                                    <CTAButton text="Descargar Brochure" onClick={() => { }} />
-                                    <CTAButton text="Ver galería del Resort" onClick={() => { }} />
-                                    <CTAButton text="Agendar visita al Centro de Experiencias" onClick={() => { }} />
+                                    <CTAButtonBase text="Descargar Brochure" onClick={() => { }} />
+                                    <CTAButtonBase text="Ver galería del Resort" onClick={() => { }} />
+                                    <CTAButtonBase text="Agendar visita al Centro de Experiencias" onClick={() => { }} />
                                 </div>
                             </div>
                         </div>
@@ -218,7 +218,7 @@ export default function Ecosistema() {
                                 ))}
                             </div>
                             <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-                                <CTAButton text="Ver galería del Club de Playa" onClick={() => { }} />
+                                <CTAButtonBase text="Ver galería del Club de Playa" onClick={() => { }} />
                             </div>
                         </div>
                     </div>
@@ -243,7 +243,7 @@ export default function Ecosistema() {
                                 ))}
                             </div>
                             <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-                                <CTAButton text="Ver galería" onClick={() => { }} />
+                                <CTAButtonBase text="Ver galería" onClick={() => { }} />
                             </div>
                         </div>
                         <div className="col-span-12 hidden xl:flex xl:col-span-4 justify-center items-center bg-[url('/renders/beach/3.jpeg')] bg-cover bg-center rounded-2xl">

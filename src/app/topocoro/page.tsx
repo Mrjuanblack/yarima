@@ -1,7 +1,7 @@
 "use client";
 
 import Container from "@/components/Container";
-import CTAButton from "@/components/CTAButton";
+import CTAButtonBase from "@/components/CTAButtons.tsx/CTAButton";
 import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
 import Section from "@/components/Section";
@@ -73,7 +73,7 @@ export default function Topocoro() {
                             </div>
                             <div className="w-full">
                                 <div className="mt-10 flex flex-col 2xl:flex-row justify-center items-center gap-4">
-                                    <CTAButton text="Ver mapa y accesos" onClick={() => { }} />
+                                    <CTAButtonBase text="Ver mapa y accesos" onClick={() => { }} />
                                 </div>
                             </div>
                         </div>
