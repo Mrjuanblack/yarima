@@ -35,7 +35,7 @@ export default function RootLayout({
         <HashScrollHandler offset={96} />
         <Navbar />
         {children}
-        <div className="fixed bottom-10 right-10 z-50">
+        <div className="fixed bottom-20 right-10 z-50">
           <WhatsAppButton />
         </div>
       </body>

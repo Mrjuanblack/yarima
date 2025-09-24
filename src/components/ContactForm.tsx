@@ -365,7 +365,7 @@ const ContactForm = () => {
                 </div>
                 <div className="col-span-1">
                     {isSubmitted ? (
-                        <p className="mt-1 text-sm text-green-600">Formulario enviado correctamente</p>
+                        <p className="mt-1 text-sm text-green-600">Datos enviados correctamente</p>
                     ) : null}
                 </div>
             </div>

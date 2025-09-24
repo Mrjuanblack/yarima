@@ -16,11 +16,6 @@ export default function Aliados() {
             link: "https://www.grupoempresarialvimarsa.com/",
         },
         {
-            title: "Oscar Mogollón",
-            subtitle: "Diseño Arquitectónico",
-            image: "/logos/slider/oscar.png",
-        },
-        {
             title: "Black Room",
             subtitle: "Consultoría estratégica de operación hotelera",
             description: "Firma colombiana, con base en Medellín, especializada en operación hotelera “marca blanca” (white label), enfocada en maximizar ingresos, reputación y ocupación para hoteles en Colombia, LATAM y el Caribe. Operan con estándares de revenue y servicio orientados a rentabilidad sostenible. En sus activos operados cuentan con ocupación promedio ~72–73%, un plan de 15 operaciones y ~650 habitaciones para 2025, además de una meta de +27 operaciones y ~1.400 llaves para 2027.",
@@ -33,6 +28,11 @@ export default function Aliados() {
             description: "Entidad vigilada por la Superintendencia Financiera de Colombia, con más de 25 años estructurando y administrando negocios fiduciarios (inmobiliarios, de inversión y patrimoniales). Ofrece portafolios de fondos, administración de patrimonios autónomos y educación financiera para sus clientes. ",
             image: "/logos/slider/accion.svg",
             link: "https://www.accion.com.co/#",
+        },
+        {
+            title: "Oscar Mogollón",
+            subtitle: "Diseño Arquitectónico",
+            image: "/logos/slider/oscar.png",
         }
     ]
     return (<div>
@@ -53,7 +53,7 @@ export default function Aliados() {
                 <SectionTitle title="Aliados Estratégicos" description="Detrás de Yarima Resort & Club de Playa hay un equipo con gran trayectoria en desarrollo, arquitectura, operación hotelera y estructura fiduciaria. Cada aliado cumple un rol clave en la solidez del proyecto." />
                 <div className="grid grid-cols-12 gap-6">
                     {allies.map((ally, index) => (
-                        <div className="col-span-12 xl:col-span-6 flex flex-col gap-4 items-start" key={index}>
+                        <div className="col-span-12 xl:col-span-6 flex flex-col gap-4 items-start bg-gray-50 p-4 rounded-lg ring-1 ring-gray-200" key={index}>
                             <img src={ally.image} alt={ally.title} className="w-auto h-20 object-contain" style={{ filter: 'brightness(0) saturate(100%) invert(35%)' }} />
                             <div>
                                 <p className="text-lg font-medium">{ally.title}</p>

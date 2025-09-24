@@ -37,8 +37,6 @@ export default function Contact() {
                     </div>
                 </Container>
             </Section>
-
-            <h1>Contacto</h1>
         </div>
     )
 }

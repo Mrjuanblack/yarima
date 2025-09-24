@@ -8,7 +8,7 @@ const WhatsAppButton = () => {
     const [isHovered, setIsHovered] = useState(false);
     
     return (
-        <div className="w-10 h-10 text-green-500 hover:text-green-600 transition-all duration-200" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+        <div className="w-10 h-10 text-green-500 hover:text-green-600 transition-all duration-200" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={() => { window.open("https://wa.me/573016656808?text=Hola, vi la web de Yarima Resort y estoy interesado en recibir más información", "_blank") }}>
             <motion.div
                 animate={{ scale: isHovered ? 1.1 : 1 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
