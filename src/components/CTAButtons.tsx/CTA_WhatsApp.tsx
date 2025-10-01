@@ -1,7 +1,10 @@
 import CTAButtonBase from "./CTAButton";
+import { useWhatsApp } from "@/hooks/useWhatsApp";
 
 export default function CTA_WhatsApp() {
+    const { openWhatsApp } = useWhatsApp();
+
     return (
-        <CTAButtonBase text="Hablar por WhatsApp" onClick={() => { window.open("https://wa.me/573016656808?text=Hola, vi la web de Yarima Resort y estoy interesado en recibir más información", "_blank") }} />
+        <CTAButtonBase text="Hablar por WhatsApp" onClick={openWhatsApp} />
     )
 }

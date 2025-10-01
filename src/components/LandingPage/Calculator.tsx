@@ -76,11 +76,11 @@ const calculateMonthlyPayment = (values: CalculatorType) => {
 const Calculator: React.FC = () => {
     const form = useForm({
         defaultValues: {
-            capital: 0,
+            capital: undefined,
             interestRate: 0.9,
             paymentMethod: PaymentMethod.DIRECT,
             paymentPeriod: PaymentPeriod.ONE_YEAR,
-        } as CalculatorType,
+        } as unknown as CalculatorType,
         validators: {
             onChange: calculatorSchema,
             onBlur: calculatorSchema,
@@ -112,22 +112,29 @@ const Calculator: React.FC = () => {
                                     </label>
                                     <div className="mt-2">
                                         <div className={`${"flex items-center rounded-md bg-gray-950/5 pl-3 outline-1 -outline-offset-1 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2"} ${(field.state.meta.errors.length > 0 && field.state.meta.isTouched) ? "outline-red-500" : "outline-black/10 has-[input:focus-within]:outline-theme-gold"}`}>
-                                            <div className="shrink-0 text-base text-gray-400 select-none sm:text-sm/6">$ COP</div>
+                                            <div className="shrink-0 text-base text-gray-400 select-none sm:text-sm/6">COP $</div>
                                             <input
                                                 id="capital-a-financiar"
                                                 name="capital-a-financiar"
                                                 type="text"
                                                 inputMode="decimal"
                                                 placeholder="0.00"
-                                                value={new Intl.NumberFormat('es-CO').format(field.state.value ?? 0)}
+                                                value={field.state.value === undefined || field.state.value === null ? "" : new Intl.NumberFormat('es-CO').format(field.state.value)}
                                                 onChange={(e) => {
                                                     const raw = e.target.value
                                                         .replace(/\./g, "")
                                                         .replace(/,/g, ".")
                                                         .replace(/[^\d.\-]/g, "");
-                                                    const parsed = raw === "" ? 0 : parseFloat(raw);
-                                                    const finalValue = Number.isNaN(parsed) ? 0 : parsed;
-                                                    field.handleChange(finalValue);
+                                                    if (raw === "") {
+                                                        field.handleChange(undefined as unknown as number);
+                                                        return;
+                                                    }
+                                                    const parsed = parseFloat(raw);
+                                                    if (Number.isNaN(parsed)) {
+                                                        field.handleChange(undefined as unknown as number);
+                                                    } else {
+                                                        field.handleChange(parsed as unknown as number);
+                                                    }
                                                 }}
                                                 onBlur={field.handleBlur}
                                                 aria-invalid={field.state.meta.errors.length > 0 && field.state.meta.isTouched}
@@ -137,7 +144,7 @@ const Calculator: React.FC = () => {
                                         {(field.state.meta.errors.length > 0 && field.state.meta.isTouched) ? (
                                             <p className="mt-1 text-sm text-red-600">{field.state.meta.errors[0]?.message}</p>
                                         ) : null}
-                                        <p className="mt-1 text-sm text-gray-600">Valor a diferir: {new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(field.state.value ? field.state.value  - 3000000 : 0)}</p>
+                                        <p className="mt-1 text-sm text-gray-600">Valor a diferir: {new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format((typeof field.state.value === 'number' && !Number.isNaN(field.state.value)) ? field.state.value - 3000000 : 0)}</p>
                                     </div>
                                 </>
                             )}

@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
+import VimeoVideo from "@/components/VimeoVideo";
 
 const cardResponsiveValues_2cols = "bg-[length:250%] sm:bg-[length:150%] md:bg-[length:150%] lg:bg-[length:225%]"
 
@@ -66,9 +67,11 @@ export default function Inversion() {
         </Section>
         <Section>
             <Container>
-                <div className="w-full h-[800px] bg-theme-background-200 rounded-2xl">
-
-                </div>
+                <VimeoVideo>
+                    <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+                        <iframe src="https://player.vimeo.com/video/1123708021?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerPolicy="strict-origin-when-cross-origin" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} title="Yarima - Formas de Pago"></iframe>
+                    </div>
+                </VimeoVideo>
             </Container>
         </Section>
         <Section>
@@ -90,9 +93,12 @@ export default function Inversion() {
                             </ul>
                         </div>
                     </div>
-                    <div className="col-span-12 xl:col-span-7 flex flex-col gap-8">
-                        <div className="w-full h-[500px] bg-theme-background-200 rounded-2xl">
-                        </div>
+                    <div className="col-span-12 xl:col-span-7 flex flex-col gap-8 justify-center items-center">
+                        <VimeoVideo>
+                            <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+                                <iframe src="https://player.vimeo.com/video/1123708021?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerPolicy="strict-origin-when-cross-origin" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} title="Yarima - Formas de Pago"></iframe>
+                            </div>
+                        </VimeoVideo>
                     </div>
                 </div>
                 <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">

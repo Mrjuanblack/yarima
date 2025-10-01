@@ -14,8 +14,11 @@ import { MdKitesurfing } from "react-icons/md";
 import { IoMusicalNotes } from "react-icons/io5";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
+import VimeoVideo from "@/components/VimeoVideo";
+import CTA_Brochure from "@/components/CTAButtons.tsx/CTA_Brochure";
 
 const iconClass = "h-8 w-auto text-theme-background-dark-950";
+
 export default function Ecosistema() {
     const features1 = [
         {
@@ -162,8 +165,19 @@ export default function Ecosistema() {
                             <p className="text-base/6 text-gray-600">Descanso, Bienestar y Entretenimiento. Ese es el ecosistema Yarima: suites con terraza, jacuzzi y vista 180° al embalse para desconectar; un Club de Playa con acceso exclusivo para disfrutar de la playa artificial, las piscinas y los deportes náuticos; y el Lounge Flotante, un deck sobre el agua con todas las comodidades.</p>
                             <p className="text-base/6 text-gray-600">Una experiencia integral de lujo, con múltiples atracciones y servicios de alto nivel, todo en un mismo destino frente al embalse de Topocoro.</p>
                         </div>
-                        <div className="col-span-12 md:col-span-8">
-                            <div className="h-[540px] w-full bg-amber-600 rounded-2xl"></div>
+                        <div className="col-span-12 lg:col-span-8">
+                            <VimeoVideo>
+                                <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+                                    <iframe 
+                                        src="https://player.vimeo.com/video/1123707296?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                                        frameBorder="0" 
+                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                                        referrerPolicy="strict-origin-when-cross-origin" 
+                                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
+                                        title="Yarima - Institucional"
+                                    />
+                                </div>
+                            </VimeoVideo>
                         </div>
                     </div>
                 </Container>
@@ -186,10 +200,9 @@ export default function Ecosistema() {
                                 ))}
                             </div>
                             <div className="w-full">
-                                <div className="mt-10 flex flex-col 2xl:flex-row justify-center items-center gap-4">
-                                    <CTAButtonBase text="Descargar Brochure" onClick={() => { }} />
+                                <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                                    <CTA_Brochure />
                                     <CTAButtonBase text="Ver galería del Resort" onClick={() => { }} />
-                                    <CTAButtonBase text="Agendar visita al Centro de Experiencias" onClick={() => { }} />
                                 </div>
                             </div>
                         </div>

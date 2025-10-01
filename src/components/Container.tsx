@@ -5,7 +5,7 @@ interface ContainerProps {
 }
 const Container: React.FC<ContainerProps> = ({ children, id }) => {
     return (
-        <div className="w-full mx-auto px-8 sm:px-16 md:px-32" id={id}>
+        <div className="w-full mx-auto px-8 max-w-[1200px]" id={id}>
             {children}
         </div>
     );

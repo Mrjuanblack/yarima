@@ -6,8 +6,9 @@ import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
+import VimeoVideo from "@/components/VimeoVideo";
 
-const cardResponsiveValues_3cols = "bg-[length:250%] sm:bg-[length:150%] md:bg-[length:235%] lg:bg-[length:350%]"
+const cardResponsiveValues_3cols = "bg-[length:110%] sm:bg-[length:100%] md:bg-[length:115%] lg:bg-[length:145%]"
 
 export default function Topocoro() {
     const features1 = [
@@ -73,7 +74,10 @@ export default function Topocoro() {
                             </div>
                             <div className="w-full">
                                 <div className="mt-10 flex flex-col 2xl:flex-row justify-center items-center gap-4">
-                                    <CTAButtonBase text="Ver mapa y accesos" onClick={() => { }} />
+                                    <CTAButtonBase
+                                        text="Ver mapa y accesos"
+                                        onClick={() => window.open('https://www.google.com/maps/place/Embalse+Topocoro/@7.0792033,-73.3772926,7549m/data=!3m1!1e3!4m7!3m6!1s0x8e6823e51debb2eb:0x566c9bbe60ed888c!8m2!3d7.0792033!4d-73.3772926!15sChNlbWJhbHNlIGRlIHRvcG9jb3JvkgEEd2VpcqoBOxABMh4QASIaqVsILYNfCHcwv7pJr9lczEEBLQaHz8Eg4jEyFxACIhNlbWJhbHNlIGRlIHRvcG9jb3Jv4AEA!16s%2Fg%2F11dynypcws?entry=tts&g_ep=EgoyMDI1MDgxMy4wIPu8ASoASAFQAw%3D%3D&skid=abe67268-b05e-4b05-883f-5fc33699793e', '_blank')}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -89,7 +93,7 @@ export default function Topocoro() {
                         {/* Card 1 - Suites */}
                         <div className="lg:col-span-1 md:col-span-2 md:rounded-tl-4xl lg:rounded-tl-4xl lg:rounded-bl-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
                             <div className="relative h-80 shrink-0">
-                                <div className={`h-80 bg-[url(/renders/v2/2.jpg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
+                                <div className={`h-80 bg-[url(/actividades/nautica.png)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
                                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                             </div>
                             <div className="relative p-10 flex flex-col flex-grow">
@@ -101,7 +105,7 @@ export default function Topocoro() {
                         {/* Card 2 - Club de Playa */}
                         <div className="lg:col-span-1 md:col-span-2 md:rounded-tr-4xl lg:rounded-lg group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
                             <div className="relative h-80 shrink-0">
-                                <div className={`h-80 bg-[url(/renders/beach/6.jpeg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
+                                <div className={`h-80 bg-[url(/actividades/relajacion.png)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
                                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                             </div>
                             <div className="relative p-10 flex flex-col flex-grow">
@@ -113,7 +117,7 @@ export default function Topocoro() {
                         {/* Card 3 - Lounge Flotante */}
                         <div className="lg:col-span-1 md:col-span-2 md:rounded-bl-4xl lg:rounded-lg group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
                             <div className="relative h-80 shrink-0">
-                                <div className={`h-80 bg-[url(/renders/beach/1.jpeg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
+                                <div className={`h-80 bg-[url(/actividades/musica.png)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
                                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                             </div>
                             <div className="relative p-10 flex flex-col flex-grow">
@@ -124,7 +128,7 @@ export default function Topocoro() {
                         {/* Card 4 - Lounge Flotante */}
                         <div className="lg:col-span-1 md:col-span-2 md:rounded-br-4xl lg:rounded-tr-4xl lg:rounded-br-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
                             <div className="relative h-80 shrink-0">
-                                <div className={`h-80 bg-[url(/renders/beach/2.jpeg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
+                                <div className={`h-80 bg-[url(/actividades/corporate.png)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
                                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                             </div>
                             <div className="relative p-10 flex flex-col flex-grow">
@@ -157,9 +161,11 @@ export default function Topocoro() {
                             </ul>
                         </div>
                         <div className="lg:col-span-4">
-                            <div className="w-full h-[500px] bg-theme-background-200 rounded-2xl">
-
-                            </div>
+                            <VimeoVideo>
+                                <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+                                    <iframe src="https://player.vimeo.com/video/1123708216?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerPolicy="strict-origin-when-cross-origin" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} title="Yarima - Destino Topocoro"></iframe>
+                                </div>
+                            </VimeoVideo>
                         </div>
                     </div>
                 </Container>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import ParallaxImage from "@/components/ParallaxImage";
@@ -14,6 +14,12 @@ import { useNavigateWithScroll } from '@/hooks/useNavigateWithScroll';
 import Calculator from '@/components/LandingPage/Calculator';
 import Section from '@/components/Section';
 import CTA_WhatsApp from '@/components/CTAButtons.tsx/CTA_WhatsApp';
+import Modal from '@/components/Modal';
+import VimeoVideo from '@/components/VimeoVideo';
+import { useDownloadBrochure } from '@/hooks/useDownloadBrochure';
+import CTA_Brochure from '@/components/CTAButtons.tsx/CTA_Brochure';
+import { useRouter } from 'next/navigation';
+import { useWhatsApp } from '@/hooks/useWhatsApp';
 
 const cardResponsiveValues_3cols = "bg-[length:250%] sm:bg-[length:150%] md:bg-[length:150%] lg:bg-[length:225%]"
 const cardResponsiveValues_2cols = "bg-[length:250%] sm:bg-[length:130%] md:bg-[length:130%] lg:bg-[length:155%]"
@@ -54,7 +60,12 @@ const NumberCounter = ({ from, to, duration = 3, prefix = "", suffix = "", ease 
 };
 
 export default function Home() {
+  const navigate = useRouter();
   const { navigateToElement } = useNavigateWithScroll();
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+  const { downloadBrochure } = useDownloadBrochure();
+  const { openWhatsApp } = useWhatsApp();
 
   return (
     <div className="w-full">
@@ -76,9 +87,9 @@ export default function Home() {
                 </div>
               </div>
               <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4 sm:px-0 px-8">
-                <Button text="Ver Vídeo" outline onClick={() => { }} />
-                <Button text="Hablar por WhatsApp" outline onClick={() => { }} />
-                <Button text="Descargar Brochure" outline onClick={() => { }} />
+                <Button text="Ver Vídeo" outline onClick={() => setIsVideoModalOpen(true)} />
+                <Button text="Hablar por WhatsApp" outline onClick={() => openWhatsApp()} />
+                <Button text="Descargar Brochure" outline onClick={downloadBrochure} />
               </div>
             </div>
           </Container>
@@ -183,8 +194,8 @@ export default function Home() {
           </div>
           <Calculator />
           <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-            <CTAButtonBase text="Ver detalles de inversión" onClick={() => { }} />
-            <CTAButtonBase text="Descargar Brochure" onClick={() => { }} />
+            <CTAButtonBase text="Ver detalles de inversión" onClick={() => navigate.push('/inversion')} />
+            <CTA_Brochure />
             <CTA_WhatsApp />
           </div>
         </Container>
@@ -198,14 +209,35 @@ export default function Home() {
             <p className="text-lg font-normal">¿Quieres conocer más de Yarima Resort & Club de Playa?</p>
           </div>
           <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-            <CTAButtonBase text="Ver detalles de inversión" onClick={() => { }} />
-            <CTAButtonBase text="Descargar Brochure" onClick={() => { }} />
+            <CTAButtonBase text="Ver detalles de inversión" onClick={() => navigate.push('/inversion')} />
+            <CTA_Brochure />
             <CTA_WhatsApp />
           </div>
         </Container>
       </Section>
 
       <Footer />
+
+      {/* Video Modal */}
+      <Modal
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        title="Yarima Resort & Club de Playa"
+        size="xl"
+      >
+        <VimeoVideo>
+          <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+            <iframe 
+              src="https://player.vimeo.com/video/1123707296?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+              frameBorder="0" 
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+              referrerPolicy="strict-origin-when-cross-origin" 
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
+              title="Yarima - Institucional"
+            />
+          </div>
+        </VimeoVideo>
+      </Modal>
     </div >
   );
 }
