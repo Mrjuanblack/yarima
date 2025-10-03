@@ -32,6 +32,7 @@ export default function Aliados() {
         {
             title: "Oscar Mogollón",
             subtitle: "Diseño Arquitectónico",
+            description: "Bajo la dirección del arquitecto especialista Óscar Mogollón. Con una sólida trayectoria en el diseño residencial, turístico y hotelero, su equipo ha desarrollado más de 50 proyectos de alto nivel en ciudades referentes como Cartagena, Barranquilla, Bogotá, Bucaramanga y Ciudad de Panamá. Una experiencia que hoy se refleja en la creación de Yarima Resort & Club de Playa, un proyecto pensado para elevar el turismo de lujo en Santander.",
             image: "/logos/slider/oscar.png",
         }
     ]

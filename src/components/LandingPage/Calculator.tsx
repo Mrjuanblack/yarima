@@ -26,6 +26,10 @@ enum PaymentPeriod {
     FIVE_YEARS = "5-years",
 }
 const paymentPeriodValues = Object.values(PaymentPeriod);
+const paymentPeriod_DevelopmentFinancing = [
+    PaymentPeriod.ONE_YEAR,
+    PaymentPeriod.TWO_YEARS
+]
 const getPaymentPeriodLabel = (period: PaymentPeriod): string => {
     switch (period) {
         case PaymentPeriod.ONE_YEAR:
@@ -43,20 +47,29 @@ const getPaymentPeriodLabel = (period: PaymentPeriod): string => {
 const paymentPeriodToMonths = (period: PaymentPeriod): number => {
     switch (period) {
         case PaymentPeriod.ONE_YEAR:
-            return 12*1;
+            return 12 * 1;
         case PaymentPeriod.TWO_YEARS:
-            return 12*2;
+            return 12 * 2;
         case PaymentPeriod.THREE_YEARS:
-            return 12*3;
+            return 12 * 3;
         case PaymentPeriod.FOUR_YEARS:
-            return 12*4;
+            return 12 * 4;
         case PaymentPeriod.FIVE_YEARS:
-            return 12*5;
+            return 12 * 5;
     }
 }
 
 const calculatorSchema = z.object({
-    capital: z.number("El capital a financiar es requerido").gt(0, "El capital a financiar debe ser mayor a 0"),
+    capital: z.number("El capital a financiar es requerido").gt(0, "El capital a financiar debe ser mayor a 0").check((ctx) => {
+        if (ctx.value < 3000000) {
+            ctx.issues.push({
+                code: "custom",
+                message: "El capital a financiar debe ser mayor a 3.000.000",
+                input: ctx.value,
+            });
+            return z.NEVER;
+        }
+    }),
     interestRate: z.number("La tasa de interés es requerida"),
     paymentMethod: z.enum(PaymentMethod),
     paymentPeriod: z.enum(PaymentPeriod),
@@ -68,9 +81,25 @@ const calculateMonthlyPayment = (values: CalculatorType) => {
     const months = paymentPeriodToMonths(values.paymentPeriod);
     const amount = values.capital;
 
-    const interest = values.interestRate/100;
-    const calculate =(amount*interest*(Math.pow((1+interest),(months))))/((Math.pow((1+interest),(months)))-1);
-    return calculate;
+    const interest = values.interestRate / 100;
+    if (values.paymentMethod === PaymentMethod.DIRECT) {
+        const calculate = (amount * interest * (Math.pow((1 + interest), (months)))) / ((Math.pow((1 + interest), (months))) - 1);
+        return calculate;
+    } else {
+        const calculate = (amount - 3000000) / months;
+        return calculate;
+    }
+
+}
+
+const getDifferenceTextColor = (value: number) => {
+    if (value !== undefined && value !== null) {
+        if (value < 3000000) {
+            return "text-red-600";
+        }
+        return "text-green-600";
+    }
+    return "text-gray-800";
 }
 
 const Calculator: React.FC = () => {
@@ -95,6 +124,10 @@ const Calculator: React.FC = () => {
 
     const [monthlyPayment, setMonthlyPayment] = useState(0);
 
+    const handlePaymentMethodChange = (value: PaymentMethod) => {
+        form.setFieldValue("paymentPeriod", PaymentPeriod.ONE_YEAR);
+    }
+
     return (
         <form onSubmit={(e) => {
             e.preventDefault();
@@ -107,9 +140,12 @@ const Calculator: React.FC = () => {
                         <form.Field name="capital">
                             {(field) => (
                                 <>
-                                    <label htmlFor="capital-a-financiar" className="block text-sm/6 font-medium text-gray-600">
-                                        Capital a financiar
-                                    </label>
+                                    <div className="flex justify-between gap-2">
+                                        <label htmlFor="capital-a-financiar" className="block text-sm/6 font-medium text-gray-600">
+                                            Valor de fracción
+                                        </label>
+                                        <p className="text-sm text-gray-600">Valor de reserva: $3.000.000</p>
+                                    </div>
                                     <div className="mt-2">
                                         <div className={`${"flex items-center rounded-md bg-gray-950/5 pl-3 outline-1 -outline-offset-1 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2"} ${(field.state.meta.errors.length > 0 && field.state.meta.isTouched) ? "outline-red-500" : "outline-black/10 has-[input:focus-within]:outline-theme-gold"}`}>
                                             <div className="shrink-0 text-base text-gray-400 select-none sm:text-sm/6">COP $</div>
@@ -144,7 +180,7 @@ const Calculator: React.FC = () => {
                                         {(field.state.meta.errors.length > 0 && field.state.meta.isTouched) ? (
                                             <p className="mt-1 text-sm text-red-600">{field.state.meta.errors[0]?.message}</p>
                                         ) : null}
-                                        <p className="mt-1 text-sm text-gray-600">Valor a diferir: {new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format((typeof field.state.value === 'number' && !Number.isNaN(field.state.value)) ? field.state.value - 3000000 : 0)}</p>
+                                        <p className={`mt-1 text ${getDifferenceTextColor(field.state.value)}`}>Valor a diferir: {new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format((typeof field.state.value === 'number' && !Number.isNaN(field.state.value)) ? field.state.value - 3000000 : 0)}</p>
                                     </div>
                                 </>
                             )}
@@ -153,7 +189,7 @@ const Calculator: React.FC = () => {
                     </div>
                     <div className="col-span-1">
                         <label htmlFor="tasa-de-interes" className="block text-sm/6 font-medium text-gray-600">
-                            Tasa de interés (efectiva mensual)
+                            Tasa de interés (E.M.)
                         </label>
                         <div className="mt-2">
                             <div className="flex items-center rounded-md bg-gray-950/5 pl-3 outline-1 -outline-offset-1 outline-black/10 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-theme-gold">
@@ -184,7 +220,10 @@ const Calculator: React.FC = () => {
                                             autoComplete="modo-de-pago"
                                             value={state.value}
                                             className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-gray-950/5 py-1.5 pr-8 pl-3 text-base text-gray-800 outline-1 -outline-offset-1 outline-black/10 *:bg-gray-950/5 focus:outline-2 focus:-outline-offset-2 focus:outline-theme-gold sm:text-sm/6"
-                                            onChange={(e) => handleChange(e.target.value as PaymentMethod)}
+                                            onChange={(e) => {
+                                                handleChange(e.target.value as PaymentMethod);
+                                                handlePaymentMethodChange(e.target.value as PaymentMethod);
+                                            }}
                                             onBlur={handleBlur}
                                             aria-invalid={state.meta.errors.length > 0 && state.meta.isTouched}
                                         >
@@ -200,6 +239,15 @@ const Calculator: React.FC = () => {
                                     {state.meta.errors.length > 0 && state.meta.isTouched ? (
                                         <p className="mt-1 text-sm text-red-600">{state.meta.errors[0]?.message}</p>
                                     ) : null}
+                                    {form.state.values.paymentMethod === PaymentMethod.DEVELOPMENT ? (
+                                        <p className="mt-1 text-sm text-gray-600">Paga máximo a 24 cuotas sin interés</p>
+                                    ) : (
+                                        <>
+                                            <p className="mt-1 text-sm text-gray-600">Paga máximo a 60 cuotas</p>
+                                            <p className="mt-1 text-sm text-gray-600">Tasa del 0,9% E.M.</p>
+                                            <p className="mt-1 text-sm text-gray-600">Has aportes a capital cuando quieras</p>
+                                        </>
+                                    )}
                                 </>
                             )}
                         </form.Field>
@@ -222,9 +270,15 @@ const Calculator: React.FC = () => {
                                             onBlur={handleBlur}
                                             aria-invalid={state.meta.errors.length > 0 && state.meta.isTouched}
                                         >
-                                            {paymentPeriodValues.map((period) => (
-                                                <option key={period} value={period}>{getPaymentPeriodLabel(period)}</option>
-                                            ))}
+                                            {form.state.values.paymentMethod === PaymentMethod.DEVELOPMENT ? (
+                                                paymentPeriod_DevelopmentFinancing.map((period) => (
+                                                    <option key={period} value={period}>{getPaymentPeriodLabel(period)}</option>
+                                                ))
+                                            ) :
+                                                paymentPeriodValues.map((period) => (
+                                                    <option key={period} value={period}>{getPaymentPeriodLabel(period)}</option>
+                                                ))
+                                            }
                                         </select>
                                         <ChevronDownIcon
                                             aria-hidden="true"
@@ -245,10 +299,10 @@ const Calculator: React.FC = () => {
                     <div className="col-span-1 sm:col-span-2">
                         <div className="flex flex-col gap-4">
                             <p className="text-lg font-bold text-black">Resumen de la inversión</p>
-                             <div className="flex justify-between gap-2">
-                                 <p className="text-sm text-gray-600">Cuota mensual</p>
-                                 <p className="font-semibold text-black">{new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(monthlyPayment)}</p>
-                             </div>
+                            <div className="flex justify-between gap-2">
+                                <p className="text-sm text-gray-600">Cuota mensual</p>
+                                <p className="font-semibold text-black">{new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(monthlyPayment)}</p>
+                            </div>
                             <div className="flex justify-between gap-2">
                                 <p className="text-sm text-gray-600">Plazo</p>
                                 <p className="font-semibold text-black uppercase">{getPaymentPeriodLabel(form.state.values.paymentPeriod)}</p>

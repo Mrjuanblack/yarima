@@ -3,12 +3,13 @@
 import Accordion, { AccordionItem } from "@/components/Accordion";
 import Container from "@/components/Container";
 import CTA_WhatsApp from "@/components/CTAButtons.tsx/CTA_WhatsApp";
+import CTA_WhatsAppAlter from "@/components/CTAButtons.tsx/CTA_WhatsAppAlter";
 import CTAButtonBase from "@/components/CTAButtons.tsx/CTAButton";
 import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
-import VimeoVideo from "@/components/VimeoVideo";
+import YoutubeVideo from "@/components/VimeoVideo";
 
 const cardResponsiveValues_2cols = "bg-[length:250%] sm:bg-[length:150%] md:bg-[length:150%] lg:bg-[length:225%]"
 
@@ -67,11 +68,14 @@ export default function Inversion() {
         </Section>
         <Section>
             <Container>
-                <VimeoVideo>
-                    <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
-                        <iframe src="https://player.vimeo.com/video/1123708021?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerPolicy="strict-origin-when-cross-origin" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} title="Yarima - Formas de Pago"></iframe>
-                    </div>
-                </VimeoVideo>
+                <YoutubeVideo videos={{
+                    desktopVideo: (
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/BSdJ4HC9Ilg?si=Pf-NeGj6CrHG0Itm&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                    ),
+                    mobileVideo: (
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/RaOurpHeu4Y?si=7hdWCcw9SmQSPzYE&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                    )
+                }} />
             </Container>
         </Section>
         <Section>
@@ -93,12 +97,7 @@ export default function Inversion() {
                             </ul>
                         </div>
                     </div>
-                    <div className="col-span-12 xl:col-span-7 flex flex-col gap-8 justify-center items-center">
-                        <VimeoVideo>
-                            <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
-                                <iframe src="https://player.vimeo.com/video/1123708021?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerPolicy="strict-origin-when-cross-origin" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} title="Yarima - Formas de Pago"></iframe>
-                            </div>
-                        </VimeoVideo>
+                    <div className="col-span-12 xl:col-span-7 flex flex-col gap-8 justify-center items-cente bg-[url('/model/1.jpg')] bg-cover bg-center rounded-2xl">
                     </div>
                 </div>
                 <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
@@ -134,7 +133,7 @@ export default function Inversion() {
                 </div>
                 <p className="mt-10 text-lg text-center font-medium">Te acompañamos para escoger el plan que mejor se ajuste a tu perfil.</p>
                 <div className="mt-5 flex flex-col lg:flex-row justify-center items-center gap-4">
-                    <CTAButtonBase text="Hablar con un asesor ahora" onClick={() => { }} />
+                    <CTA_WhatsAppAlter />
                 </div>
             </Container>
         </Section>
@@ -143,7 +142,7 @@ export default function Inversion() {
                 <SectionTitle title="Preguntas Frecuentes FAQ" />
                 <Accordion items={items} />
                 <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-                    <CTAButtonBase text="Hablar con un asesor ahora" onClick={() => { }} />
+                    <CTA_WhatsAppAlter />
                 </div>
             </Container>
         </Section>

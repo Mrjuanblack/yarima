@@ -17,7 +17,7 @@ export const useWhatsApp = (config: WhatsAppConfig = {}) => {
 
   const openWhatsApp = (customMessage?: string) => {
     const message = customMessage || defaultMessage;
-    const encodedMessage = encodeURIComponent(message);
+    const encodedMessage = message;
     
     // Use WhatsApp Web for desktop, WhatsApp app for mobile
     const whatsappUrl = isMobile 

@@ -15,7 +15,7 @@ import Calculator from '@/components/LandingPage/Calculator';
 import Section from '@/components/Section';
 import CTA_WhatsApp from '@/components/CTAButtons.tsx/CTA_WhatsApp';
 import Modal from '@/components/Modal';
-import VimeoVideo from '@/components/VimeoVideo';
+import YoutubeVideo from '@/components/VimeoVideo';
 import { useDownloadBrochure } from '@/hooks/useDownloadBrochure';
 import CTA_Brochure from '@/components/CTAButtons.tsx/CTA_Brochure';
 import { useRouter } from 'next/navigation';
@@ -94,6 +94,18 @@ export default function Home() {
             </div>
           </Container>
         </ParallaxImage>
+      </Section>
+      <Section>
+        <Container>
+          <YoutubeVideo videos={{
+            desktopVideo: (
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/HcOtHUQE0xM?si=AGF6hI1D648UN1At&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            ),
+            mobileVideo: (
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/McS4AyV-ayw?si=ldvzdfAr68uvW7K6&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            )
+          }} />
+        </Container>
       </Section>
       <Section>
         <Container>
@@ -225,18 +237,14 @@ export default function Home() {
         title="Yarima Resort & Club de Playa"
         size="xl"
       >
-        <VimeoVideo>
-          <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
-            <iframe 
-              src="https://player.vimeo.com/video/1123707296?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-              frameBorder="0" 
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-              referrerPolicy="strict-origin-when-cross-origin" 
-              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
-              title="Yarima - Institucional"
-            />
-          </div>
-        </VimeoVideo>
+        <YoutubeVideo videos={{
+          desktopVideo: (
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/HcOtHUQE0xM?si=AGF6hI1D648UN1At&controls=0&hd=1&vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+          ),
+          mobileVideo: (
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/McS4AyV-ayw?si=ldvzdfAr68uvW7K6&controls=0&hd=1&vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+          )
+        }} />
       </Modal>
     </div >
   );

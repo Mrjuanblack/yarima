@@ -9,12 +9,13 @@ import { FaSwimmingPool } from "react-icons/fa";
 import { FaUmbrellaBeach } from "react-icons/fa";
 import { GiBeachBall } from "react-icons/gi";
 import { FaSailboat } from "react-icons/fa6";
-import { FaWater } from "react-icons/fa";
+import { FaWater } from "react-icons/fa";  
 import { MdKitesurfing } from "react-icons/md";
 import { IoMusicalNotes } from "react-icons/io5";
+import { FaGlassWater, FaSun, FaUsers } from "react-icons/fa6";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import VimeoVideo from "@/components/VimeoVideo";
+import YoutubeVideo from "@/components/VimeoVideo";
 import CTA_Brochure from "@/components/CTAButtons.tsx/CTA_Brochure";
 
 const iconClass = "h-8 w-auto text-theme-background-dark-950";
@@ -85,8 +86,8 @@ export default function Ecosistema() {
             icon: <FaUmbrellaBeach className={iconClass} />
         },
         {
-            title: "Muelle privado",
-            description: "Muelle privado",
+            title: "Muelle",
+            description: "Muelle",
             icon: <FaSailboat className={iconClass} />
         },
         {
@@ -111,22 +112,22 @@ export default function Ecosistema() {
         {
             title: "Deck privado para socios",
             description: "Deck privado para socios",
-            icon: <FaSailboat className={iconClass} />
+            icon: <FaUsers className={iconClass} />
         },
         {
             title: "Solárium con sillas asoleadoras y parasoles",
             description: "Solárium con sillas asoleadoras y parasoles",
-            icon: <FaSailboat className={iconClass} />
+            icon: <FaSun className={iconClass} />
         },
         {
             title: "Lounge con servicio de bebidas y estación de snacks",
             description: "Lounge con servicio de bebidas y estación de snacks",
-            icon: <FaSailboat className={iconClass} />
+            icon: <FaGlassWater className={iconClass} />
         },
         {
             title: "Deck de música en vivo y socialización",
             description: "Deck de música en vivo y socialización",
-            icon: <FaSailboat className={iconClass} />
+            icon: <IoMusicalNotes className={iconClass} />
         },
         {
             title: "Acceso desde el muelle del Club de Playa",
@@ -166,18 +167,16 @@ export default function Ecosistema() {
                             <p className="text-base/6 text-gray-600">Una experiencia integral de lujo, con múltiples atracciones y servicios de alto nivel, todo en un mismo destino frente al embalse de Topocoro.</p>
                         </div>
                         <div className="col-span-12 lg:col-span-8">
-                            <VimeoVideo>
-                                <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
-                                    <iframe 
-                                        src="https://player.vimeo.com/video/1123707296?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
-                                        frameBorder="0" 
-                                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                                        referrerPolicy="strict-origin-when-cross-origin" 
-                                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
-                                        title="Yarima - Institucional"
-                                    />
-                                </div>
-                            </VimeoVideo>
+                            <YoutubeVideo
+                                videos={{
+                                    desktopVideo: (
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VFNxNVnpbho?si=5xyCNrk_fDc0KknW&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                                    ),
+                                    mobileVideo: (
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/McS4AyV-ayw?si=ldvzdfAr68uvW7K6&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                                    )
+                                }}
+                            />
                         </div>
                     </div>
                 </Container>
@@ -206,7 +205,7 @@ export default function Ecosistema() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-span-0 hidden xl:flex xl:col-span-4 justify-center items-center bg-[url('/renders/beach/1.jpeg')] bg-cover bg-center rounded-2xl">
+                        <div className="col-span-0 hidden xl:flex xl:col-span-4 justify-center items-center bg-[url('/renders/v2/3.jpg')] bg-cover bg-center rounded-2xl">
                         </div>
                     </div>
                 </Container>
@@ -255,11 +254,11 @@ export default function Ecosistema() {
                                     </div>
                                 ))}
                             </div>
-                            <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
+                            {/* <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
                                 <CTAButtonBase text="Ver galería" onClick={() => { }} />
-                            </div>
+                            </div> */}
                         </div>
-                        <div className="col-span-12 hidden xl:flex xl:col-span-4 justify-center items-center bg-[url('/renders/beach/3.jpeg')] bg-cover bg-center rounded-2xl">
+                        <div className="col-span-12 hidden xl:flex xl:col-span-4 justify-center items-center bg-[url('/renders/beach/4.jpeg')] bg-cover bg-center rounded-2xl">
                         </div>
                     </div>
 

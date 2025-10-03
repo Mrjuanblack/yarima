@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
-import VimeoVideo from "@/components/VimeoVideo";
+import YoutubeVideo from "@/components/VimeoVideo";
 
 const cardResponsiveValues_3cols = "bg-[length:110%] sm:bg-[length:100%] md:bg-[length:115%] lg:bg-[length:145%]"
 
@@ -51,6 +51,20 @@ export default function Topocoro() {
                 </ParallaxImage>
             </Section>
             <Section>
+                <Container>
+                    <YoutubeVideo
+                        videos={{
+                            desktopVideo: (
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/OCgpWTIzCwE?si=6eQctDHJCn3wYb5r&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                            ),
+                            mobileVideo: (
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/retE5fkzRDc?si=4DOEx4LCFkyJU4XW&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                            )
+                        }}
+                    />
+                </Container>
+            </Section>
+            <Section>
                 <Container id="embalse-de-topocoro">
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12 xl:col-span-8 flex flex-col gap-8">
@@ -81,7 +95,7 @@ export default function Topocoro() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-span-0 hidden xl:flex xl:col-span-4 justify-center items-center bg-[url('/renders/beach/1.jpeg')] bg-cover bg-center rounded-2xl">
+                        <div className="col-span-0 hidden xl:flex xl:col-span-4 justify-center items-center bg-[url('/topocoro/2.jpg')] bg-cover bg-center rounded-2xl">
                         </div>
                     </div>
                 </Container>
@@ -160,12 +174,7 @@ export default function Topocoro() {
                                 <li>Campañas públicas y privadas de promoción del destino</li>
                             </ul>
                         </div>
-                        <div className="lg:col-span-4">
-                            <VimeoVideo>
-                                <div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
-                                    <iframe src="https://player.vimeo.com/video/1123708216?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerPolicy="strict-origin-when-cross-origin" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} title="Yarima - Destino Topocoro"></iframe>
-                                </div>
-                            </VimeoVideo>
+                        <div className="col-span-0 hidden xl:flex xl:col-span-4 justify-center items-center bg-[url('/topocoro/3.jpg')] bg-cover bg-center rounded-2xl">
                         </div>
                     </div>
                 </Container>
