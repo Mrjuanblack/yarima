@@ -27,6 +27,7 @@ export default function YoutubeVideo({
 
     // Make any iframe responsive by removing width/height and setting dimensions based on device
     const makeIframeResponsive = (video: ReactNode) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const videoElement = video as any;
         
         // Check if it's an iframe

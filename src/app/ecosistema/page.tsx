@@ -21,7 +21,6 @@ import { useState } from "react";
 import Gallery from "@/components/Gallery";
 
 const iconClass = "h-8 w-auto text-theme-background-dark-950";
-const imageHeight = "h-100";
 
 export default function Ecosistema() {
     const features1 = [

@@ -24,7 +24,7 @@ interface LazyImageProps {
   onClick: () => void;
 }
 
-function LazyImage({ thumbnailSrc, fullResSrc, alt, className, onClick }: LazyImageProps) {
+function LazyImage({ thumbnailSrc, alt, onClick }: LazyImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const imgRef = useRef<HTMLDivElement>(null);

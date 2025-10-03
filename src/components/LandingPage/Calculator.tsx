@@ -124,7 +124,7 @@ const Calculator: React.FC = () => {
 
     const [monthlyPayment, setMonthlyPayment] = useState(0);
 
-    const handlePaymentMethodChange = (value: PaymentMethod) => {
+    const handlePaymentMethodChange = () => {
         form.setFieldValue("paymentPeriod", PaymentPeriod.ONE_YEAR);
     }
 
@@ -222,7 +222,7 @@ const Calculator: React.FC = () => {
                                             className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-gray-950/5 py-1.5 pr-8 pl-3 text-base text-gray-800 outline-1 -outline-offset-1 outline-black/10 *:bg-gray-950/5 focus:outline-2 focus:-outline-offset-2 focus:outline-theme-gold sm:text-sm/6"
                                             onChange={(e) => {
                                                 handleChange(e.target.value as PaymentMethod);
-                                                handlePaymentMethodChange(e.target.value as PaymentMethod);
+                                                handlePaymentMethodChange();
                                             }}
                                             onBlur={handleBlur}
                                             aria-invalid={state.meta.errors.length > 0 && state.meta.isTouched}
