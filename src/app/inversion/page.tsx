@@ -2,9 +2,9 @@
 
 import Accordion, { AccordionItem } from "@/components/Accordion";
 import Container from "@/components/Container";
+import CTA_BookMeeting from "@/components/CTAButtons.tsx/CTA_BookMeeting";
 import CTA_WhatsApp from "@/components/CTAButtons.tsx/CTA_WhatsApp";
 import CTA_WhatsAppAlter from "@/components/CTAButtons.tsx/CTA_WhatsAppAlter";
-import CTAButtonBase from "@/components/CTAButtons.tsx/CTAButton";
 import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
 import Section from "@/components/Section";
@@ -102,7 +102,7 @@ export default function Inversion() {
                 </div>
                 <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
                     <CTA_WhatsApp />
-                    <CTAButtonBase text="Agendar visita" onClick={() => { }} />
+                    <CTA_BookMeeting />
                 </div>
             </Container>
         </Section>
@@ -151,7 +151,7 @@ export default function Inversion() {
                 <p className="text-4xl text-center font-medium">¿Listo para empezar?</p>
                 <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
                     <CTA_WhatsApp />
-                    <CTAButtonBase text="Agendar visita" onClick={() => { }} />
+                    <CTA_BookMeeting />
                 </div>
             </Container>
         </Section>
