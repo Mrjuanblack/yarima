@@ -9,7 +9,7 @@ import { FaSwimmingPool } from "react-icons/fa";
 import { FaUmbrellaBeach } from "react-icons/fa";
 import { GiBeachBall } from "react-icons/gi";
 import { FaSailboat } from "react-icons/fa6";
-import { FaWater } from "react-icons/fa";  
+import { FaWater } from "react-icons/fa";
 import { MdKitesurfing } from "react-icons/md";
 import { IoMusicalNotes } from "react-icons/io5";
 import { FaGlassWater, FaSun, FaUsers } from "react-icons/fa6";
@@ -17,8 +17,11 @@ import Footer from "@/components/Footer";
 import Section from "@/components/Section";
 import YoutubeVideo from "@/components/VimeoVideo";
 import CTA_Brochure from "@/components/CTAButtons.tsx/CTA_Brochure";
+import { useState } from "react";
+import Gallery from "@/components/Gallery";
 
 const iconClass = "h-8 w-auto text-theme-background-dark-950";
+const imageHeight = "h-100";
 
 export default function Ecosistema() {
     const features1 = [
@@ -136,6 +139,26 @@ export default function Ecosistema() {
         }
     ]
 
+    const [isResortGalleryOpen, setIsResortGalleryOpen] = useState(false);
+    const [isBeachClubGalleryOpen, setIsBeachClubGalleryOpen] = useState(false);
+    
+    const resortImages = [
+        { thumbnail: "/renders/v2/thumbnails/1.jpg", fullRes: "/renders/v2/1.jpg" },
+        { thumbnail: "/renders/v2/thumbnails/2.jpg", fullRes: "/renders/v2/2.jpg" },
+        { thumbnail: "/renders/v2/thumbnails/3.jpg", fullRes: "/renders/v2/3.jpg" },
+        { thumbnail: "/renders/v2/thumbnails/4.jpg", fullRes: "/renders/v2/4.jpg" },
+        { thumbnail: "/renders/v2/thumbnails/5.jpg", fullRes: "/renders/v2/5.jpg" },
+        { thumbnail: "/renders/v2/thumbnails/6.jpg", fullRes: "/renders/v2/6.jpg" },
+        { thumbnail: "/renders/v2/thumbnails/7.jpg", fullRes: "/renders/v2/7.jpg" }
+    ];
+    const beachClubImages = [
+        { thumbnail: "/renders/beach/thumbnails/1.jpg", fullRes: "/renders/beach/1.jpeg" },
+        { thumbnail: "/renders/beach/thumbnails/2.jpg", fullRes: "/renders/beach/2.jpeg" },
+        { thumbnail: "/renders/beach/thumbnails/3.jpg", fullRes: "/renders/beach/3.jpeg" },
+        { thumbnail: "/renders/beach/thumbnails/4.jpg", fullRes: "/renders/beach/4.jpeg" },
+        { thumbnail: "/renders/beach/thumbnails/6.jpg", fullRes: "/renders/beach/6.jpeg" },
+    ];
+
     return (
         <div>
             <Section overrideClassName="w-full">
@@ -201,7 +224,7 @@ export default function Ecosistema() {
                             <div className="w-full">
                                 <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
                                     <CTA_Brochure />
-                                    <CTAButtonBase text="Ver galería del Resort" onClick={() => { }} />
+                                    <CTAButtonBase text="Ver galería del Resort" onClick={() => setIsResortGalleryOpen(true)} />
                                 </div>
                             </div>
                         </div>
@@ -230,7 +253,7 @@ export default function Ecosistema() {
                                 ))}
                             </div>
                             <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-                                <CTAButtonBase text="Ver galería del Club de Playa" onClick={() => { }} />
+                                <CTAButtonBase text="Ver galería del Club de Playa" onClick={() => setIsBeachClubGalleryOpen(true)} />
                             </div>
                         </div>
                     </div>
@@ -265,6 +288,19 @@ export default function Ecosistema() {
                 </Container>
             </Section>
             <Footer />
+            <Gallery 
+                images={resortImages}
+                isOpen={isResortGalleryOpen}
+                onClose={() => setIsResortGalleryOpen(false)}
+                title="Galería del Resort"
+            />
+            <Gallery 
+                images={beachClubImages}
+                isOpen={isBeachClubGalleryOpen}
+                onClose={() => setIsBeachClubGalleryOpen(false)}
+                title="Galería del Club de Playa"
+            />
+
         </div>
     );
 }
