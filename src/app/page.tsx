@@ -22,7 +22,7 @@ import { useRouter } from 'next/navigation';
 import { useWhatsApp } from '@/hooks/useWhatsApp';
 
 const cardResponsiveValues_3cols = "bg-[length:250%] sm:bg-[length:150%] md:bg-[length:150%] lg:bg-[length:225%]"
-const cardResponsiveValues_2cols = "bg-[length:250%] sm:bg-[length:130%] md:bg-[length:130%] lg:bg-[length:155%]"
+// const cardResponsiveValues_2cols = "bg-[length:250%] sm:bg-[length:130%] md:bg-[length:130%] lg:bg-[length:155%]"
 
 const NumberCounter = ({ from, to, duration = 3, prefix = "", suffix = "", ease = "easeOut" }: {
   from: number;
