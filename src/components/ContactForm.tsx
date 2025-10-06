@@ -173,7 +173,7 @@ const ContactForm = () => {
     const form = useForm({
         defaultValues: {
             name: "",
-            countryPhoneCode: countries[0].dialCode,
+            countryPhoneCode: '+57',
             whatsapp: "",
             interest: Interest.PROFITABILITY,
         } as ContactType,
@@ -239,6 +239,10 @@ const ContactForm = () => {
             setIsSubmitting(false);
         },
     });
+
+    useEffect(() => {
+        console.log(form.state.values);
+    }, [form.state.values]);
 
     return (
         <form onSubmit={(e) => {

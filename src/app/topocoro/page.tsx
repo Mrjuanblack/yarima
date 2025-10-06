@@ -1,12 +1,14 @@
 "use client";
 
+import Button from "@/components/Button";
 import Container from "@/components/Container";
 import CTAButtonBase from "@/components/CTAButtons.tsx/CTAButton";
 import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
-import YoutubeVideo from "@/components/VimeoVideo";
+import YoutubeVideo from "@/components/YoutubeVideo";
+import { useWhatsApp } from "@/hooks/useWhatsApp";
 
 const cardResponsiveValues_3cols = "bg-[length:110%] sm:bg-[length:100%] md:bg-[length:115%] lg:bg-[length:145%]"
 
@@ -35,10 +37,12 @@ export default function Topocoro() {
         }
     ];
 
+    const { openWhatsApp } = useWhatsApp();
+
     return (
         <div>
             <Section overrideClassName="w-full">
-                <ParallaxImage imageUrl={["/topocoro/1.jpg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
+                <ParallaxImage imageUrl={["/topocoro/3.jpg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
                     <Container>
                         <div className="text-theme-background-200 text-center">
                             <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 font-semibold">
@@ -46,6 +50,11 @@ export default function Topocoro() {
                             </h1>
                             <p className="text-base font-medium md:text-lg max-w-[1200px] mx-auto">Un embalse en la montaña, con clima cálido y acceso rápido desde Bucaramanga, paisaje espectacular y condiciones ideales para deportes náuticos, descanso y eventos.</p>
                             <p className="text-base font-medium md:text-lg mt-4">El lugar perfecto para un <span className="text-theme-gold">hotel destino</span>.</p>
+
+                            <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4 sm:px-0 px-8">
+                                <Button text="Ver mapa y accesos" outline onClick={() => window.open('https://maps.app.goo.gl/xRpGcedJoso9Jh5J7', '_blank')} />
+                                <Button text="Hablar por WhatsApp" outline onClick={() => openWhatsApp()} />
+                            </div>
                         </div>
                     </Container>
                 </ParallaxImage>
@@ -53,12 +62,13 @@ export default function Topocoro() {
             <Section>
                 <Container>
                     <YoutubeVideo
+                        openInModal
                         videos={{
                             desktopVideo: (
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/OCgpWTIzCwE?si=6eQctDHJCn3wYb5r&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/OCgpWTIzCwE?si=6eQctDHJCn3wYb5r&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                             ),
                             mobileVideo: (
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/retE5fkzRDc?si=4DOEx4LCFkyJU4XW&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/retE5fkzRDc?si=4DOEx4LCFkyJU4XW&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                             )
                         }}
                     />
@@ -90,7 +100,7 @@ export default function Topocoro() {
                                 <div className="mt-10 flex flex-col 2xl:flex-row justify-center items-center gap-4">
                                     <CTAButtonBase
                                         text="Ver mapa y accesos"
-                                        onClick={() => window.open('https://www.google.com/maps/place/Embalse+Topocoro/@7.0792033,-73.3772926,7549m/data=!3m1!1e3!4m7!3m6!1s0x8e6823e51debb2eb:0x566c9bbe60ed888c!8m2!3d7.0792033!4d-73.3772926!15sChNlbWJhbHNlIGRlIHRvcG9jb3JvkgEEd2VpcqoBOxABMh4QASIaqVsILYNfCHcwv7pJr9lczEEBLQaHz8Eg4jEyFxACIhNlbWJhbHNlIGRlIHRvcG9jb3Jv4AEA!16s%2Fg%2F11dynypcws?entry=tts&g_ep=EgoyMDI1MDgxMy4wIPu8ASoASAFQAw%3D%3D&skid=abe67268-b05e-4b05-883f-5fc33699793e', '_blank')}
+                                        onClick={() => window.open('https://maps.app.goo.gl/xRpGcedJoso9Jh5J7', '_blank')}
                                     />
                                 </div>
                             </div>
@@ -158,7 +168,7 @@ export default function Topocoro() {
                     <SectionTitle title="Inversión público-privada en marcha" description="Topocoro avanza como destino lacustre prioritario en Santander. Diversas iniciativas públicas y privadas se proyectan para fortalecer accesos, infraestructura náutica, servicios y promoción turística, creando las condiciones para convertirse en un destino de gran atractivo para el turismo nacional e internacional." />
                     <p className="text-2xl text-center max-w-[600px] mx-auto">+ 1 Billón de COP en inversión público/privada proyectados para los próximos 5 años</p>
                     <div className="grid grid-cols-1 lg:grid-cols-6 gap-6 mt-16">
-                        <div className="lg:col-span-2">
+                        <div className="lg:col-span-2 flex flex-col justify-center items-center lg:items-start lg:justify-start">
                             <p className="text-2xl font-bold">¿Qué se proyecta?</p>
                             <ul className="list-disc mt-4 text-lg">
                                 <li>Mejoras de conectividad y accesos</li>
@@ -174,7 +184,7 @@ export default function Topocoro() {
                                 <li>Campañas públicas y privadas de promoción del destino</li>
                             </ul>
                         </div>
-                        <div className="col-span-0 hidden xl:flex xl:col-span-4 justify-center items-center bg-[url('/topocoro/3.jpg')] bg-cover bg-center rounded-2xl">
+                        <div className="col-span-0 hidden lg:flex lg:col-span-4 justify-center items-center bg-[url('/topocoro/3.jpg')] bg-cover bg-center rounded-2xl">
                         </div>
                     </div>
                 </Container>

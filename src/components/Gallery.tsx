@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { ChevronLeftIcon, ChevronRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 interface ImageData {
   thumbnail: string;
@@ -94,6 +94,18 @@ export default function Gallery({ images, isOpen, onClose, title = "Galería" }:
     setSelectedIndex(null);
   };
 
+  const handlePrevious = () => {
+    if (selectedIndex !== null && selectedIndex > 0) {
+      setSelectedIndex(selectedIndex - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (selectedIndex !== null && selectedIndex < images.length - 1) {
+      setSelectedIndex(selectedIndex + 1);
+    }
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Escape") {
       if (selectedIndex !== null) {
@@ -101,6 +113,10 @@ export default function Gallery({ images, isOpen, onClose, title = "Galería" }:
       } else {
         onClose();
       }
+    } else if (e.key === "ArrowLeft") {
+      handlePrevious();
+    } else if (e.key === "ArrowRight") {
+      handleNext();
     }
   };
 
@@ -193,17 +209,44 @@ export default function Gallery({ images, isOpen, onClose, title = "Galería" }:
                     <XMarkIcon className="h-6 w-6" />
                   </button>
 
+                  {/* Previous Button */}
+                  {selectedIndex > 0 && (
+                    <button
+                      onClick={handlePrevious}
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+                      aria-label="Imagen anterior"
+                    >
+                      <ChevronLeftIcon className="h-6 w-6" />
+                    </button>
+                  )}
+
                   {/* Image */}
                   <motion.img
                     key={selectedIndex}
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.9, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.6 }}
                     src={images[selectedIndex].fullRes}
                     alt={`Imagen ampliada ${selectedIndex + 1}`}
                     className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
                   />
+
+                  {/* Next Button */}
+                  {selectedIndex < images.length - 1 && (
+                    <button
+                      onClick={handleNext}
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+                      aria-label="Imagen siguiente"
+                    >
+                      <ChevronRightIcon className="h-6 w-6" />
+                    </button>
+                  )}
+
+                  {/* Image Counter */}
+                  <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
+                    {selectedIndex + 1} de {images.length}
+                  </div>
                 </motion.div>
               </motion.div>
             )}

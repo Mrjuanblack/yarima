@@ -9,6 +9,7 @@ interface ModalProps {
   children: ReactNode
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'full'
   showCloseButton?: boolean
+  contentOnly?: boolean
 }
 
 const sizeClasses = {
@@ -25,7 +26,8 @@ export default function Modal({
   title,
   children,
   size = 'md',
-  showCloseButton = true
+  showCloseButton = true,
+  contentOnly = false
 }: ModalProps) {
   // Handle escape key
   useEffect(() => {
@@ -61,40 +63,54 @@ export default function Modal({
             onClick={onClose}
           />
 
-          {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
-            className={`relative w-full ${sizeClasses[size]} max-h-[90vh] overflow-hidden rounded-2xl bg-white shadow-xl`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="p-6">
-              {(title || showCloseButton) && (
-                <div className="flex items-center justify-between mb-4">
-                  {title && (
-                    <h3 className="text-lg font-medium leading-6 text-gray-900">
-                      {title}
-                    </h3>
-                  )}
-                  {showCloseButton && (
-                    <button
-                      type="button"
-                      className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-theme-gold focus:ring-offset-2"
-                      onClick={onClose}
-                    >
-                      <span className="sr-only">Close</span>
-                      <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                  )}
+          {contentOnly ? (
+            /* Content Only Mode */
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+              className={`relative w-full ${sizeClasses[size]} max-h-[90vh] shadow-2xl`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {children}
+            </motion.div>
+          ) : (
+            /* Regular Modal Mode */
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
+              className={`relative w-full ${sizeClasses[size]} max-h-[90vh] overflow-hidden rounded-2xl bg-white shadow-xl`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-6">
+                {(title || showCloseButton) && (
+                  <div className="flex items-center justify-between mb-4">
+                    {title && (
+                      <h3 className="text-lg font-medium leading-6 text-gray-900">
+                        {title}
+                      </h3>
+                    )}
+                    {showCloseButton && (
+                      <button
+                        type="button"
+                        className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-theme-gold focus:ring-offset-2"
+                        onClick={onClose}
+                      >
+                        <span className="sr-only">Close</span>
+                        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                      </button>
+                    )}
+                  </div>
+                )}
+                <div className="overflow-y-auto max-h-[calc(90vh-120px)]">
+                  {children}
                 </div>
-              )}
-              <div className="overflow-y-auto max-h-[calc(90vh-120px)]">
-                {children}
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
         </div>
       )}
     </AnimatePresence>

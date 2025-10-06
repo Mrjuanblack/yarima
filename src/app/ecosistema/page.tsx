@@ -15,7 +15,7 @@ import { IoMusicalNotes } from "react-icons/io5";
 import { FaGlassWater, FaSun, FaUsers } from "react-icons/fa6";
 import Footer from "@/components/Footer";
 import Section from "@/components/Section";
-import YoutubeVideo from "@/components/VimeoVideo";
+import YoutubeVideo from "@/components/YoutubeVideo";
 import CTA_Brochure from "@/components/CTAButtons.tsx/CTA_Brochure";
 import { useState } from "react";
 import Gallery from "@/components/Gallery";
@@ -190,12 +190,13 @@ export default function Ecosistema() {
                         </div>
                         <div className="col-span-12 lg:col-span-8">
                             <YoutubeVideo
+                                openInModal={true}
                                 videos={{
                                     desktopVideo: (
-                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VFNxNVnpbho?si=5xyCNrk_fDc0KknW&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VFNxNVnpbho?si=5xyCNrk_fDc0KknW&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                                     ),
                                     mobileVideo: (
-                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/McS4AyV-ayw?si=ldvzdfAr68uvW7K6&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/McS4AyV-ayw?si=ldvzdfAr68uvW7K6&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
                                     )
                                 }}
                             />
@@ -280,7 +281,7 @@ export default function Ecosistema() {
                                 <CTAButtonBase text="Ver galería" onClick={() => { }} />
                             </div> */}
                         </div>
-                        <div className="col-span-12 hidden xl:flex xl:col-span-4 justify-center items-center bg-[url('/renders/beach/4.jpeg')] bg-cover bg-center rounded-2xl">
+                        <div className="col-span-12 hidden xl:flex xl:col-span-4 justify-center items-center bg-[url('/renders/beach/lounge.jpg')] bg-cover bg-center rounded-2xl">
                         </div>
                     </div>
 

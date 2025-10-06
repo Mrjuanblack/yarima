@@ -1,6 +1,7 @@
 import { useEffect, useState, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { useIsMobile } from '@/hooks/useIsMobile';
+import Modal from './Modal';
 
 interface YoutubeVideoProps {
     /** Object containing mobile and desktop videos */
@@ -9,13 +10,17 @@ interface YoutubeVideoProps {
         desktopVideo: ReactNode;
     };
     className?: string;
+    /** When true, opens video in a modal with contentOnly */
+    openInModal?: boolean;
 }
 
 export default function YoutubeVideo({
     videos,
-    className = "aspect-video w-full"
+    className = "aspect-video w-full",
+    openInModal = false
 }: YoutubeVideoProps) {
     const [isClient, setIsClient] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const isMobile = useIsMobile();
 
     useEffect(() => {
@@ -88,31 +93,59 @@ export default function YoutubeVideo({
         return video;
     };
 
+    const videoContent = isClient ? (
+        makeIframeResponsive(selectedVideo)
+    ) : (
+        <div className="w-full h-full bg-gray-200 border border-gray-300 rounded-lg flex items-center justify-center">
+            <div className="flex gap-1">
+                {[0, 1, 2].map((index) => (
+                    <motion.div
+                        key={index}
+                        className="w-2 h-2 bg-gray-500 rounded-full"
+                        animate={{
+                            opacity: [0.3, 1, 0.3],
+                        }}
+                        transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            delay: index * 0.2,
+                            ease: "easeInOut"
+                        }}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+
+    if (openInModal) {
+        return (
+            <>
+                {/* Video with invisible overlay */}
+                <div className={`${className} relative`}>
+                    {videoContent}
+                    {/* Invisible overlay for click handling */}
+                    <div 
+                        className="absolute inset-0 cursor-pointer z-10"
+                        onClick={() => setIsModalOpen(true)}
+                    />
+                </div>
+
+                {/* Modal */}
+                <Modal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    contentOnly={true}
+                    size="xl"
+                >
+                    {videoContent}
+                </Modal>
+            </>
+        );
+    }
+
     return (
         <div className={className}>
-            {isClient ? (
-                makeIframeResponsive(selectedVideo)
-            ) : (
-                <div className="w-full h-full bg-gray-200 border border-gray-300 rounded-lg flex items-center justify-center">
-                    <div className="flex gap-1">
-                        {[0, 1, 2].map((index) => (
-                            <motion.div
-                                key={index}
-                                className="w-2 h-2 bg-gray-500 rounded-full"
-                                animate={{
-                                    opacity: [0.3, 1, 0.3],
-                                }}
-                                transition={{
-                                    duration: 1.5,
-                                    repeat: Infinity,
-                                    delay: index * 0.2,
-                                    ease: "easeInOut"
-                                }}
-                            />
-                        ))}
-                    </div>
-                </div>
-            )}
+            {videoContent}
         </div>
     );
 }

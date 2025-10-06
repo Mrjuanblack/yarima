@@ -2,6 +2,7 @@ import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { useForm } from '@tanstack/react-form';
 import { useState } from 'react';
 import { z } from 'zod/v4'
+import { motion } from 'framer-motion'
 
 enum PaymentMethod {
     DIRECT = "financiamiento-directo",
@@ -119,10 +120,14 @@ const Calculator: React.FC = () => {
             console.log('Form submitted successfully:', value);
             const calculatedPayment = calculateMonthlyPayment(value);
             setMonthlyPayment(calculatedPayment);
+            setDisplayResult(true);
+            setGrayOutResult(false);
         },
     })
 
     const [monthlyPayment, setMonthlyPayment] = useState(0);
+    const [displayResult, setDisplayResult] = useState(false);
+    const [grayOutResult, setGrayOutResult] = useState(false);
 
     const handlePaymentMethodChange = () => {
         form.setFieldValue("paymentPeriod", PaymentPeriod.ONE_YEAR);
@@ -157,6 +162,7 @@ const Calculator: React.FC = () => {
                                                 placeholder="0.00"
                                                 value={field.state.value === undefined || field.state.value === null ? "" : new Intl.NumberFormat('es-CO').format(field.state.value)}
                                                 onChange={(e) => {
+                                                    setGrayOutResult(true);
                                                     const raw = e.target.value
                                                         .replace(/\./g, "")
                                                         .replace(/,/g, ".")
@@ -221,6 +227,7 @@ const Calculator: React.FC = () => {
                                             value={state.value}
                                             className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-gray-950/5 py-1.5 pr-8 pl-3 text-base text-gray-800 outline-1 -outline-offset-1 outline-black/10 *:bg-gray-950/5 focus:outline-2 focus:-outline-offset-2 focus:outline-theme-gold sm:text-sm/6"
                                             onChange={(e) => {
+                                                setGrayOutResult(true);
                                                 handleChange(e.target.value as PaymentMethod);
                                                 handlePaymentMethodChange();
                                             }}
@@ -266,7 +273,10 @@ const Calculator: React.FC = () => {
                                             autoComplete="plazo-de-pago"
                                             value={state.value}
                                             className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-gray-950/5 py-1.5 pr-8 pl-3 text-base text-gray-800 outline-1 -outline-offset-1 outline-black/10 *:bg-gray-950/5 focus:outline-2 focus:-outline-offset-2 focus:outline-theme-gold sm:text-sm/6"
-                                            onChange={(e) => handleChange(e.target.value as PaymentPeriod)}
+                                            onChange={(e) => {
+                                                setGrayOutResult(true);
+                                                handleChange(e.target.value as PaymentPeriod);
+                                            }}
                                             onBlur={handleBlur}
                                             aria-invalid={state.meta.errors.length > 0 && state.meta.isTouched}
                                         >
@@ -296,23 +306,34 @@ const Calculator: React.FC = () => {
                         <button type="submit" className="w-full rounded-full bg-theme-gold px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-theme-gold/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-theme-gold">Calcular</button>
                     </div>
 
-                    <div className="col-span-1 sm:col-span-2">
-                        <div className="flex flex-col gap-4">
-                            <p className="text-lg font-bold text-black">Resumen de la inversión</p>
-                            <div className="flex justify-between gap-2">
-                                <p className="text-sm text-gray-600">Cuota mensual</p>
-                                <p className="font-semibold text-black">{new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(monthlyPayment)}</p>
+                    {displayResult && (
+                        <motion.div 
+                            className={`col-span-1 sm:col-span-2`}
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ 
+                                opacity: grayOutResult ? 0.25 : 1,
+                                y: 0
+                            }}
+                            exit={{ opacity: 0, y: 50 }}
+                            transition={{ duration: 0.4, ease: "easeOut" }}
+                        >
+                            <div className="flex flex-col gap-4">
+                                <p className="text-lg font-bold text-black">Resumen de la inversión</p>
+                                <div className="flex justify-between gap-2">
+                                    <p className="text-sm text-gray-600">Cuota mensual</p>
+                                    <p className="font-semibold text-black">{new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(monthlyPayment)}</p>
+                                </div>
+                                <div className="flex justify-between gap-2">
+                                    <p className="text-sm text-gray-600">Plazo</p>
+                                    <p className="font-semibold text-black uppercase">{getPaymentPeriodLabel(form.state.values.paymentPeriod)}</p>
+                                </div>
+                                <div className="flex justify-between gap-2">
+                                    <p className="text-sm text-gray-600">Tasa de interés</p>
+                                    <p className="font-semibold text-black">{form.state.values.interestRate}</p>
+                                </div>
                             </div>
-                            <div className="flex justify-between gap-2">
-                                <p className="text-sm text-gray-600">Plazo</p>
-                                <p className="font-semibold text-black uppercase">{getPaymentPeriodLabel(form.state.values.paymentPeriod)}</p>
-                            </div>
-                            <div className="flex justify-between gap-2">
-                                <p className="text-sm text-gray-600">Tasa de interés</p>
-                                <p className="font-semibold text-black">{form.state.values.interestRate}</p>
-                            </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    )}
                 </div>
             </div>
         </form>

@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
-import YoutubeVideo from "@/components/VimeoVideo";
+import YoutubeVideo from "@/components/YoutubeVideo";
 
 const cardResponsiveValues_2cols = "bg-[length:250%] sm:bg-[length:150%] md:bg-[length:150%] lg:bg-[length:225%]"
 
@@ -68,14 +68,16 @@ export default function Inversion() {
         </Section>
         <Section>
             <Container>
-                <YoutubeVideo videos={{
-                    desktopVideo: (
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/BSdJ4HC9Ilg?si=Pf-NeGj6CrHG0Itm&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                    ),
-                    mobileVideo: (
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/RaOurpHeu4Y?si=7hdWCcw9SmQSPzYE&amp;controls=0&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                    )
-                }} />
+                <YoutubeVideo
+                    openInModal
+                    videos={{
+                        desktopVideo: (
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/BSdJ4HC9Ilg?si=Pf-NeGj6CrHG0Itm&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                        ),
+                        mobileVideo: (
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/RaOurpHeu4Y?si=7hdWCcw9SmQSPzYE&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                        )
+                    }} />
             </Container>
         </Section>
         <Section>
@@ -109,25 +111,23 @@ export default function Inversion() {
         <Section>
             <Container>
                 <SectionTitle title="Formas de pago" description="Empiezas con una reserva de $3.000.000 COP y eliges entre dos formas de pago: " />
-                <div className="grid grid-cols-12 xl:gap-2 gap-6">
-                    <div className="col-span-12 xl:col-span-6 xl:rounded-tl-4xl xl:rounded-bl-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
-                        <div className="relative h-80 shrink-0">
-                            <div className={`h-80 bg-[url(/renders/v2/2.jpg)] ${cardResponsiveValues_2cols} bg-center bg-no-repeat`} />
-                            {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
-                        </div>
-                        <div className="relative p-10 flex flex-col flex-grow">
+                <div className="grid grid-cols-12 xl:gap-2 gap-4">
+                    <div className="col-span-12 xl:col-span-4 xl:rounded-tl-4xl xl:rounded-bl-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
+                        <div className="relative p-10 flex flex-col flex-grow text-center">
                             <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Pago durante el desarrollo</h3>
                             <p className="mt-2 max-w-[600px] text-lg text-gray-600 group-data-dark:text-gray-400">24 cuotas mensuales (sin intereses)</p>
                         </div>
                     </div>
-                    <div className="col-span-12 xl:col-span-6 xl:rounded-tr-4xl xl:rounded-br-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
-                        <div className="relative h-80 shrink-0">
-                            <div className={`h-80 bg-[url(/renders/v2/2.jpg)] ${cardResponsiveValues_2cols} bg-center bg-no-repeat`} />
-                            {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
-                        </div>
-                        <div className="relative p-10 flex flex-col flex-grow">
+                    <div className="col-span-12 xl:col-span-4 group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
+                        <div className="relative p-10 flex flex-col flex-grow text-center justify-between items-center">
                             <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Financiación directa</h3>
-                            <p className="mt-2 max-w-[600px] text-lg text-gray-600 group-data-dark:text-gray-400">60 cuotas mensuales <span className="whitespace-nowrap">(1% E.A.)</span></p>
+                            <p className="mt-2 max-w-[600px] text-lg text-gray-600 group-data-dark:text-gray-400">60 cuotas mensuales <span className="whitespace-nowrap">(por 0,9% E.M)</span></p>
+                        </div>
+                    </div>
+                    <div className="col-span-12 xl:col-span-4 xl:rounded-tr-4xl xl:rounded-br-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
+                        <div className="relative p-10 flex flex-col flex-grow text-center">
+                            <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Pago de Contado</h3>
+                            <p className="mt-2 max-w-[600px] text-lg text-gray-600 group-data-dark:text-gray-400">Recibe 10% de descuento sobre el valor de la fracción</p>
                         </div>
                     </div>
                 </div>

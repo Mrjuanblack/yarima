@@ -15,7 +15,7 @@ import Calculator from '@/components/LandingPage/Calculator';
 import Section from '@/components/Section';
 import CTA_WhatsApp from '@/components/CTAButtons.tsx/CTA_WhatsApp';
 import Modal from '@/components/Modal';
-import YoutubeVideo from '@/components/VimeoVideo';
+import YoutubeVideo from '@/components/YoutubeVideo';
 import { useDownloadBrochure } from '@/hooks/useDownloadBrochure';
 import CTA_Brochure from '@/components/CTAButtons.tsx/CTA_Brochure';
 import { useRouter } from 'next/navigation';
@@ -96,6 +96,52 @@ export default function Home() {
         </ParallaxImage>
       </Section>
       <Section>
+        <div className="relative w-full h-125 bg-[url(/renders/v2/4.jpg)] bg-center bg-no-repeat">
+          <div className="absolute inset-0 bg-black/60">
+            <div className="h-full flex flex-col items-center justify-center">
+              <div className="mb-8 relative">
+                <motion.div
+                  className="absolute inset-0 rounded-full bg-white/20"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.6, 0.2, 0.6],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+                <motion.div
+                  className="absolute inset-0 rounded-full bg-white/20"
+                  animate={{
+                    scale: [1, 1.4, 1],
+                    opacity: [0.4, 0.1, 0.4],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5,
+                  }}
+                />
+                <button
+                  onClick={() => setIsVideoModalOpen(true)}
+                  className="relative p-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300 group"
+                >
+                  <svg className="w-12 h-12 text-white group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </button>
+              </div>
+              <h2 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 font-semibold text-theme-background-200">
+                <span>Yarima Resort &</span><wbr /><span className="whitespace-nowrap"> Club de Playa</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </Section>
+      {/* <Section>
         <Container>
           <YoutubeVideo videos={{
             desktopVideo: (
@@ -106,7 +152,7 @@ export default function Home() {
             )
           }} />
         </Container>
-      </Section>
+      </Section> */}
       <Section>
         <Container>
           <SectionTitle title="Ecosistema Yarima" description="Un destino, tres experiencias complementarias en el embalse: el Resort (hospitalidad y wellness), el Club de Playa (acceso exclusivo con playa artificial, piscinas y deportes náuticos) y el Lounge Flotante Yarima (plataforma modular sobre el agua con solárium, lounge y deck de música)." />
@@ -140,7 +186,7 @@ export default function Home() {
             {/* Card 3 - Lounge Flotante */}
             <div className="lg:col-span-2 lg:rounded-tr-4xl lg:rounded-br-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
               <div className="relative h-80 shrink-0">
-                <div className={`h-80 bg-[url(/renders/beach/1.jpeg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
+                <div className={`h-80 bg-[url(/renders/beach/4.jpeg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
               </div>
               <div className="relative p-10 flex flex-col flex-grow">
@@ -174,7 +220,30 @@ export default function Home() {
               {/* <div className="absolute inset-0 bg-linear-to-t from-theme-background-200 to-25% group-data-dark:from-theme-gold" /> */}
             </div>
             <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6">
-              <div className="lg:col-span-3 lg:rounded-bl-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-theme-background-200 data-dark:ring-black/5">
+              <div className="lg:col-span-3 lg:rounded-bl-4xl lg:rounded-tl-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-theme-background-200 data-dark:ring-black/5">
+                <div className="relative p-10 flex flex-col flex-grow">
+                  <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950">Beneficios</h3>
+                  <ul className="list-disc list-inside">
+                    <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Rentabilidad mensual derivada de la operación del resort.</li>
+                    <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">5 noches anuales gratis y uso ilimitado de las zonas sociales.</li>
+                    <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Membresía vitalicia al Club de Playa (puedes llevar invitados).</li>
+                    <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Acceso preferente a experiencias y futuros proyectos.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="lg:col-span-3 lg:rounded-br-4xl lg:rounded-tr-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-theme-background-200 data-dark:ring-black/5">
+                <div className="relative p-10 flex flex-col flex-grow">
+                  <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-text-primary">Formas de pago (3)</h3>
+                  <ul className="list-disc list-inside">
+                    <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Reserva: $3.000.000</li>
+                    <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Paga en 24 cuotas (sin intereses)</li>
+                    <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Fináncialo a 60 cuotas(1% E.M.)</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* <div className="lg:col-span-3 lg:rounded-bl-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-theme-background-200 data-dark:ring-black/5">
                 <div className="relative h-80 shrink-0">
                   <div className={`h-80 bg-[url(/renders/v2/2.jpg)] ${cardResponsiveValues_2cols} bg-center bg-no-repeat`} />
                 </div>
@@ -201,7 +270,7 @@ export default function Home() {
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Fináncialo a 60 cuotas(1% E.M.)</li>
                   </ul>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <Calculator />
@@ -236,13 +305,14 @@ export default function Home() {
         onClose={() => setIsVideoModalOpen(false)}
         title="Yarima Resort & Club de Playa"
         size="xl"
+        contentOnly
       >
         <YoutubeVideo videos={{
           desktopVideo: (
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/HcOtHUQE0xM?si=AGF6hI1D648UN1At&controls=0&hd=1&vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/HcOtHUQE0xM?si=AGF6hI1D648UN1At&hd=1&vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
           ),
           mobileVideo: (
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/McS4AyV-ayw?si=ldvzdfAr68uvW7K6&controls=0&hd=1&vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/McS4AyV-ayw?si=ldvzdfAr68uvW7K6&hd=1&vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
           )
         }} />
       </Modal>
