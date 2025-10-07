@@ -6,12 +6,13 @@ import CTA_BookMeeting from "@/components/CTAButtons.tsx/CTA_BookMeeting";
 import CTA_WhatsApp from "@/components/CTAButtons.tsx/CTA_WhatsApp";
 import CTA_WhatsAppAlter from "@/components/CTAButtons.tsx/CTA_WhatsAppAlter";
 import Footer from "@/components/Footer";
+import Modal from "@/components/Modal";
 import ParallaxImage from "@/components/ParallaxImage";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
+import VideoSection from "@/components/VideoSection";
 import YoutubeVideo from "@/components/YoutubeVideo";
-
-const cardResponsiveValues_2cols = "bg-[length:250%] sm:bg-[length:150%] md:bg-[length:150%] lg:bg-[length:225%]"
+import { useState } from "react";
 
 export default function Inversion() {
     const items: AccordionItem[] = [
@@ -41,6 +42,10 @@ export default function Inversion() {
             id: "que-pasa-si-quiero-ceder-mi-participacion"
         },
     ]
+
+
+    const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
     return (<div>
         <Section overrideClassName="w-full">
             <ParallaxImage imageUrl={["/renders/beach/1.jpeg", "/renders/beach/2.jpeg", "/renders/beach/3.jpeg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
@@ -66,21 +71,16 @@ export default function Inversion() {
                 </Container>
             </ParallaxImage>
         </Section>
-        <Section>
+        <Section fadeIn>
             <Container>
-                <YoutubeVideo
-                    openInModal
-                    videos={{
-                        desktopVideo: (
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/BSdJ4HC9Ilg?si=Pf-NeGj6CrHG0Itm&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                        ),
-                        mobileVideo: (
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/RaOurpHeu4Y?si=7hdWCcw9SmQSPzYE&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                        )
-                    }} />
+                <VideoSection
+                    backgroundImage="/renders/v2/2.jpg"
+                    title="Formas de pago"
+                    onPlayClick={() => setIsVideoModalOpen(true)}
+                />
             </Container>
         </Section>
-        <Section>
+        <Section fadeIn>
             <Container>
                 <div className="grid grid-cols-12 gap-6">
                     <div className="col-span-12 xl:col-span-5 flex flex-col gap-8">
@@ -88,7 +88,7 @@ export default function Inversion() {
                         <p className="text-base/6 text-gray-600">Inviertes a través de derechos fiduciarios administrados por Acción Fiduciaria, una entidad vigilada por la Superintendencia Financiera de Colombia. Tu participación te hace socio del proyecto y te da derecho a recibir rentabilidad mensual proveniente de la operación hotelera. Además, disfrutas el proyecto: uso ilimitado de las zonas sociales del Resort y membresía vitalicia al Club de Playa (con invitados), más prioridad en experiencias y futuros proyectos.</p>
                         <div className="flex flex-col gap-2">
                             <p className="text-base/6 text-gray-600">Beneficios:</p>
-                            <ul className="list-disc list-inside">
+                            <ul className="list-disc list-outside pl-6">
                                 <li className="text-base/6 text-gray-600">Estructura mediante fiducia (seguridad jurídica)</li>
                                 <li className="text-base/6 text-gray-600">Rentabilidad mensual por la operación del hotel  (hospedaje y servicios)</li>
                                 <li className="text-base/6 text-gray-600">Uso ilimitado de las zonas sociales del resort.</li>
@@ -108,7 +108,7 @@ export default function Inversion() {
                 </div>
             </Container>
         </Section>
-        <Section>
+        <Section fadeIn>
             <Container>
                 <SectionTitle title="Formas de pago" description="Empiezas con una reserva de $3.000.000 COP y eliges entre dos formas de pago: " />
                 <div className="grid grid-cols-12 xl:gap-2 gap-4">
@@ -137,7 +137,7 @@ export default function Inversion() {
                 </div>
             </Container>
         </Section>
-        <Section>
+        <Section fadeIn>
             <Container>
                 <SectionTitle title="Preguntas Frecuentes FAQ" />
                 <Accordion items={items} />
@@ -146,15 +146,37 @@ export default function Inversion() {
                 </div>
             </Container>
         </Section>
-        <Section>
+        <Section fadeIn>
             <Container>
-                <p className="text-4xl text-center font-medium">¿Listo para empezar?</p>
-                <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-                    <CTA_WhatsApp />
-                    <CTA_BookMeeting />
+                <div className="py-10 flex flex-col justify-center items-center overflow-hidden rounded-lg bg-gradient-to-r from-white via-theme-background-100 to-white shadow-xs ring-1 ring-black/5 data-dark:from-gray-800 data-dark:via-gray-800 data-dark:to-gray-800 data-dark:ring-white/15">
+                    <p className="text-4xl text-center font-medium">¿Listo para empezar?</p>
+                    <p className="mt-4 text-center">Haz parte del proyecto Yarima Resort & Club de Playa y disfruta de beneficios exclusivos.</p>
+                    <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
+                        <CTA_WhatsApp />
+                        <CTA_BookMeeting />
+                    </div>
                 </div>
+
             </Container>
         </Section>
         <Footer />
+        <Modal
+            isOpen={isVideoModalOpen}
+            onClose={() => setIsVideoModalOpen(false)}
+            contentOnly={true}
+            size="xl"
+        >
+            <YoutubeVideo
+                openInModal
+                videos={{
+                    desktopVideo: (
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/BSdJ4HC9Ilg?si=Pf-NeGj6CrHG0Itm&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                    ),
+                    mobileVideo: (
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/RaOurpHeu4Y?si=7hdWCcw9SmQSPzYE&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                    )
+                }}
+            />
+        </Modal>
     </div>)
 }

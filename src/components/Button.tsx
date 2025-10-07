@@ -35,7 +35,7 @@ const Button = ({ text, onClick, shadow = true, outline = false }: ButtonProps) 
 
     const baseClasses = "text-base font-normal px-4 py-2 rounded-full transition-all duration-200 cursor-pointer";
     const filledClasses = "bg-theme-gold text-theme-background-200 hover:bg-theme-background-600";
-    const outlinedClasses = "border-2 border-theme-gold text-theme-gold hover:bg-theme-gold hover:text-theme-background-200";
+    const outlinedClasses = "border-2 border-theme-gold text-theme-gold hover:bg-theme-gold hover:text-white";
     const shadowClass = shadow ? 'shadow-lg' : '';
     
     const spotlightBackground = useMotionTemplate`radial-gradient(circle at ${mouseXSpring}% ${mouseYSpring}%, rgba(255,255,255,0.1), transparent 70%)`;

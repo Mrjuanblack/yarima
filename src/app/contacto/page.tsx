@@ -10,7 +10,7 @@ export default function Contact() {
     return (
         <div>
             <Section overrideClassName="w-full">
-                <ParallaxImage imageUrl={["/renders/beach/1.jpeg", "/renders/beach/2.jpeg", "/renders/beach/3.jpeg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
+                <ParallaxImage imageUrl={["/renders/beach/1.jpeg", "/renders/beach/2.jpeg", "/renders/beach/3.jpeg"]} height="h-130" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
                     <Container>
                         <div className="text-theme-background-200 text-center">
                             <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 font-semibold">
@@ -32,7 +32,7 @@ export default function Contact() {
             </Section>
             <Section>
                 <Container>
-                    <div className="max-w-[1000px] mx-auto">
+                    <div className="max-w-[800px] mx-auto rounded-lg bg-white shadow-md ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15 p-10">
                         <ContactForm />
                     </div>
                 </Container>

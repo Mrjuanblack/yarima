@@ -4,9 +4,9 @@
   font-family: 'Switzer';
   src: url('/fonts/switzer/Switzer-Regular.eot');
   src: url('/fonts/switzer/Switzer-Regular.eot?#iefix') format('embedded-opentype'),
-       url('/fonts/switzer/Switzer-Regular.woff2') format('woff2'),
-       url('/fonts/switzer/Switzer-Regular.woff') format('woff'),
-       url('/fonts/switzer/Switzer-Regular.ttf') format('truetype');
+    url('/fonts/switzer/Switzer-Regular.woff2') format('woff2'),
+    url('/fonts/switzer/Switzer-Regular.woff') format('woff'),
+    url('/fonts/switzer/Switzer-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -16,9 +16,9 @@
   font-family: 'Switzer';
   src: url('/fonts/switzer/Switzer-Medium.eot');
   src: url('/fonts/switzer/Switzer-Medium.eot?#iefix') format('embedded-opentype'),
-       url('/fonts/switzer/Switzer-Medium.woff2') format('woff2'),
-       url('/fonts/switzer/Switzer-Medium.woff') format('woff'),
-       url('/fonts/switzer/Switzer-Medium.ttf') format('truetype');
+    url('/fonts/switzer/Switzer-Medium.woff2') format('woff2'),
+    url('/fonts/switzer/Switzer-Medium.woff') format('woff'),
+    url('/fonts/switzer/Switzer-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -28,9 +28,9 @@
   font-family: 'Switzer';
   src: url('/fonts/switzer/Switzer-Semibold.eot');
   src: url('/fonts/switzer/Switzer-Semibold.eot?#iefix') format('embedded-opentype'),
-       url('/fonts/switzer/Switzer-Semibold.woff2') format('woff2'),
-       url('/fonts/switzer/Switzer-Semibold.woff') format('woff'),
-       url('/fonts/switzer/Switzer-Semibold.ttf') format('truetype');
+    url('/fonts/switzer/Switzer-Semibold.woff2') format('woff2'),
+    url('/fonts/switzer/Switzer-Semibold.woff') format('woff'),
+    url('/fonts/switzer/Switzer-Semibold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -40,9 +40,9 @@
   font-family: 'Switzer';
   src: url('/fonts/switzer/Switzer-Bold.eot');
   src: url('/fonts/switzer/Switzer-Bold.eot?#iefix') format('embedded-opentype'),
-       url('/fonts/switzer/Switzer-Bold.woff2') format('woff2'),
-       url('/fonts/switzer/Switzer-Bold.woff') format('woff'),
-       url('/fonts/switzer/Switzer-Bold.ttf') format('truetype');
+    url('/fonts/switzer/Switzer-Bold.woff2') format('woff2'),
+    url('/fonts/switzer/Switzer-Bold.woff') format('woff'),
+    url('/fonts/switzer/Switzer-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -66,7 +66,8 @@
 
   --color-theme-background-50: #faf7f2;
   --color-theme-background-100: #f2ede2;
-  --color-theme-background-200: #dfd1b7; /* Main Color */
+  --color-theme-background-200: #dfd1b7;
+  /* Main Color */
   --color-theme-background-300: #d3bf9e;
   --color-theme-background-400: #c1a176;
   --color-theme-background-500: #b4895b;
@@ -86,7 +87,8 @@
   --color-theme-background-dark-700: #4a4d54;
   --color-theme-background-dark-800: #414349;
   --color-theme-background-dark-900: #3a3c3f;
-  --color-theme-background-dark-950: #1f2023; /* Main Color */
+  --color-theme-background-dark-950: #1f2023;
+  /* Main Color */
 }
 
 body {
@@ -116,6 +118,26 @@ html {
   display: flex !important;
 }
 
-.slick-slide > div {
+.slick-slide>div {
   width: 100% !important;
+}
+
+.slick-prev {
+  left: -37px !important;
+}
+
+.slick-next {
+  right: -37px !important;
+}
+
+.slick-prev,
+.slick-next {
+  width: auto !important;
+  height: auto !important;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  display: none !important;
+
 }

@@ -16,6 +16,7 @@ import Section from '@/components/Section';
 import CTA_WhatsApp from '@/components/CTAButtons.tsx/CTA_WhatsApp';
 import Modal from '@/components/Modal';
 import YoutubeVideo from '@/components/YoutubeVideo';
+import VideoSection from '@/components/VideoSection';
 import { useDownloadBrochure } from '@/hooks/useDownloadBrochure';
 import CTA_Brochure from '@/components/CTAButtons.tsx/CTA_Brochure';
 import { useRouter } from 'next/navigation';
@@ -95,51 +96,14 @@ export default function Home() {
           </Container>
         </ParallaxImage>
       </Section>
-      <Section>
-        <div className="relative w-full h-125 bg-[url(/renders/v2/4.jpg)] bg-center bg-no-repeat">
-          <div className="absolute inset-0 bg-black/60">
-            <div className="h-full flex flex-col items-center justify-center">
-              <div className="mb-8 relative">
-                <motion.div
-                  className="absolute inset-0 rounded-full bg-white/20"
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.6, 0.2, 0.6],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-                <motion.div
-                  className="absolute inset-0 rounded-full bg-white/20"
-                  animate={{
-                    scale: [1, 1.4, 1],
-                    opacity: [0.4, 0.1, 0.4],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5,
-                  }}
-                />
-                <button
-                  onClick={() => setIsVideoModalOpen(true)}
-                  className="relative p-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300 group"
-                >
-                  <svg className="w-12 h-12 text-white group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </button>
-              </div>
-              <h2 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 font-semibold text-theme-background-200">
-                <span>Yarima Resort &</span><wbr /><span className="whitespace-nowrap"> Club de Playa</span>
-              </h2>
-            </div>
-          </div>
-        </div>
+      <Section fadeIn>
+        <Container>
+          <VideoSection
+            backgroundImage="/renders/v2/4.jpg"
+            onPlayClick={() => setIsVideoModalOpen(true)}
+            title="Conoce Yarima Resort"
+          />
+        </Container>
       </Section>
       {/* <Section>
         <Container>
@@ -153,7 +117,7 @@ export default function Home() {
           }} />
         </Container>
       </Section> */}
-      <Section>
+      <Section overrideClassName="bg-theme-background-50 py-10" fadeIn>
         <Container>
           <SectionTitle title="Ecosistema Yarima" description="Un destino, tres experiencias complementarias en el embalse: el Resort (hospitalidad y wellness), el Club de Playa (acceso exclusivo con playa artificial, piscinas y deportes náuticos) y el Lounge Flotante Yarima (plataforma modular sobre el agua con solárium, lounge y deck de música)." />
           <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6">
@@ -198,7 +162,7 @@ export default function Home() {
           </div>
         </Container>
       </Section>
-      <Section>
+      <Section fadeIn>
         <Container>
           <div>
             <div className="relative h-full flex flex-col items-center justify-center">
@@ -223,7 +187,7 @@ export default function Home() {
               <div className="lg:col-span-3 lg:rounded-bl-4xl lg:rounded-tl-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-theme-background-200 data-dark:ring-black/5">
                 <div className="relative p-10 flex flex-col flex-grow">
                   <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950">Beneficios</h3>
-                  <ul className="list-disc list-inside">
+                  <ul className="list-disc list-outside pl-6">
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Rentabilidad mensual derivada de la operación del resort.</li>
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">5 noches anuales gratis y uso ilimitado de las zonas sociales.</li>
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Membresía vitalicia al Club de Playa (puedes llevar invitados).</li>
@@ -235,7 +199,7 @@ export default function Home() {
               <div className="lg:col-span-3 lg:rounded-br-4xl lg:rounded-tr-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-theme-background-200 data-dark:ring-black/5">
                 <div className="relative p-10 flex flex-col flex-grow">
                   <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-text-primary">Formas de pago (3)</h3>
-                  <ul className="list-disc list-inside">
+                  <ul className="list-disc list-outside pl-6">
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Reserva: $3.000.000</li>
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Paga en 24 cuotas (sin intereses)</li>
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Fináncialo a 60 cuotas(1% E.M.)</li>
@@ -249,7 +213,7 @@ export default function Home() {
                 </div>
                 <div className="relative p-10 flex flex-col flex-grow">
                   <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950">Beneficios</h3>
-                  <ul className="list-disc list-inside">
+                  <ul className="list-disc list-outside pl-6">
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Rentabilidad mensual derivada de la operación del resort.</li>
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">5 noches anuales gratis y uso ilimitado de las zonas sociales.</li>
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Membresía vitalicia al Club de Playa (puedes llevar invitados).</li>
@@ -264,7 +228,7 @@ export default function Home() {
                 </div>
                 <div className="relative p-10 flex flex-col flex-grow">
                   <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-text-primary">Formas de pago (3)</h3>
-                  <ul className="list-disc list-inside">
+                  <ul className="list-disc list-outside pl-6">
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Reserva: $3.000.000</li>
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Paga en 24 cuotas (sin intereses)</li>
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Fináncialo a 60 cuotas(1% E.M.)</li>
@@ -273,6 +237,7 @@ export default function Home() {
               </div> */}
             </div>
           </div>
+          <p className="mt-10 text-4xl sm:text-5xl font-medium tracking-tight text-black text-center">Simula tu inversión</p>
           <Calculator />
           <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
             <CTAButtonBase text="Ver detalles de inversión" onClick={() => navigate.push('/inversion')} />
@@ -282,7 +247,7 @@ export default function Home() {
         </Container>
       </Section >
 
-      <Section>
+      <Section fadeIn>
         <Container>
           <SectionTitle title="Aliados Estratégicos" />
           <AlliesSlider />

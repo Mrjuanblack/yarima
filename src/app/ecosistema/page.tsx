@@ -19,6 +19,8 @@ import YoutubeVideo from "@/components/YoutubeVideo";
 import CTA_Brochure from "@/components/CTAButtons.tsx/CTA_Brochure";
 import { useState } from "react";
 import Gallery from "@/components/Gallery";
+import VideoSection from "@/components/VideoSection";
+import Modal from "@/components/Modal";
 
 const iconClass = "h-8 w-auto text-theme-background-dark-950";
 
@@ -140,7 +142,8 @@ export default function Ecosistema() {
 
     const [isResortGalleryOpen, setIsResortGalleryOpen] = useState(false);
     const [isBeachClubGalleryOpen, setIsBeachClubGalleryOpen] = useState(false);
-    
+    const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
     const resortImages = [
         { thumbnail: "/renders/v2/thumbnails/1.jpg", fullRes: "/renders/v2/1.jpg" },
         { thumbnail: "/renders/v2/thumbnails/2.jpg", fullRes: "/renders/v2/2.jpg" },
@@ -181,30 +184,26 @@ export default function Ecosistema() {
                     </Container>
                 </ParallaxImage>
             </Section>
-            <Section>
+            <Section fadeIn>
                 <Container>
                     <div className="grid grid-cols-12 gap-6">
-                        <div className="col-span-12 lg:col-span-4 flex flex-col justify-end gap-4">
+                        <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
+                            <SectionTitle title="Ecosistema Yarima" removeMargin />
                             <p className="text-base/6 text-gray-600">Descanso, Bienestar y Entretenimiento. Ese es el ecosistema Yarima: suites con terraza, jacuzzi y vista 180° al embalse para desconectar; un Club de Playa con acceso exclusivo para disfrutar de la playa artificial, las piscinas y los deportes náuticos; y el Lounge Flotante, un deck sobre el agua con todas las comodidades.</p>
                             <p className="text-base/6 text-gray-600">Una experiencia integral de lujo, con múltiples atracciones y servicios de alto nivel, todo en un mismo destino frente al embalse de Topocoro.</p>
                         </div>
                         <div className="col-span-12 lg:col-span-8">
-                            <YoutubeVideo
-                                openInModal={true}
-                                videos={{
-                                    desktopVideo: (
-                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/VFNxNVnpbho?si=5xyCNrk_fDc0KknW&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                                    ),
-                                    mobileVideo: (
-                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/McS4AyV-ayw?si=ldvzdfAr68uvW7K6&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                                    )
-                                }}
+                            <VideoSection
+                                backgroundImage="/renders/v2/2.jpg"
+                                title="Ecosistema Yarima"
+                                onPlayClick={() => setIsVideoModalOpen(true)}
+                                titleSize="3xl"
                             />
                         </div>
                     </div>
                 </Container>
             </Section>
-            <Section>
+            <Section fadeIn>
                 <Container id="ecosistema-yarima">
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12 xl:col-span-8 flex flex-col gap-8">
@@ -233,7 +232,7 @@ export default function Ecosistema() {
                     </div>
                 </Container>
             </Section>
-            <Section>
+            <Section fadeIn>
                 <Container id="ecosistema-club-de-playa">
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12 xl:col-span-4 hidden xl:flex justify-center items-center bg-[url('/renders/beach/2.jpeg')] bg-cover bg-center rounded-2xl">
@@ -259,7 +258,7 @@ export default function Ecosistema() {
                     </div>
                 </Container>
             </Section>
-            <Section>
+            <Section fadeIn>
                 <Container id="ecosistema-lounge-flotante">
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12 xl:col-span-8 flex flex-col gap-8">
@@ -288,18 +287,36 @@ export default function Ecosistema() {
                 </Container>
             </Section>
             <Footer />
-            <Gallery 
+            <Gallery
                 images={resortImages}
                 isOpen={isResortGalleryOpen}
                 onClose={() => setIsResortGalleryOpen(false)}
                 title="Galería del Resort"
             />
-            <Gallery 
+            <Gallery
                 images={beachClubImages}
                 isOpen={isBeachClubGalleryOpen}
                 onClose={() => setIsBeachClubGalleryOpen(false)}
                 title="Galería del Club de Playa"
             />
+            <Modal
+                isOpen={isVideoModalOpen}
+                onClose={() => setIsVideoModalOpen(false)}
+                contentOnly={true}
+                size="xl"
+            >
+                <YoutubeVideo
+                    openInModal={true}
+                    videos={{
+                        desktopVideo: (
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/VFNxNVnpbho?si=5xyCNrk_fDc0KknW&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                        ),
+                        mobileVideo: (
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/McS4AyV-ayw?si=ldvzdfAr68uvW7K6&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                        )
+                    }}
+                />
+            </Modal>
 
         </div>
     );

@@ -85,6 +85,7 @@ function LazyImage({ thumbnailSrc, alt, onClick }: LazyImageProps) {
 
 export default function Gallery({ images, isOpen, onClose, title = "Galería" }: GalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const handleImageClick = (index: number) => {
     setSelectedIndex(index);
@@ -120,10 +121,18 @@ export default function Gallery({ images, isOpen, onClose, title = "Galería" }:
     }
   };
 
+  // Focus the modal when it opens to enable keyboard events
+  useEffect(() => {
+    if (isOpen && modalRef.current) {
+      modalRef.current.focus();
+    }
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
         <div 
+          ref={modalRef}
           className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
           onKeyDown={handleKeyDown}
           tabIndex={-1}

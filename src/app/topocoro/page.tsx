@@ -4,13 +4,17 @@ import Button from "@/components/Button";
 import Container from "@/components/Container";
 import CTAButtonBase from "@/components/CTAButtons.tsx/CTAButton";
 import Footer from "@/components/Footer";
+import Modal from "@/components/Modal";
 import ParallaxImage from "@/components/ParallaxImage";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
+import VideoSection from "@/components/VideoSection";
 import YoutubeVideo from "@/components/YoutubeVideo";
 import { useWhatsApp } from "@/hooks/useWhatsApp";
+import { useState } from "react";
 
 const cardResponsiveValues_3cols = "bg-[length:110%] sm:bg-[length:100%] md:bg-[length:115%] lg:bg-[length:145%]"
+const cardResponsiveValues_4cols = "bg-[length:490%] sm:bg-[length:295%] md:bg-[length:250%] lg:bg-[length:355%]"
 
 export default function Topocoro() {
     const features1 = [
@@ -37,6 +41,7 @@ export default function Topocoro() {
         }
     ];
 
+    const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
     const { openWhatsApp } = useWhatsApp();
 
     return (
@@ -59,22 +64,16 @@ export default function Topocoro() {
                     </Container>
                 </ParallaxImage>
             </Section>
-            <Section>
+            <Section fadeIn>
                 <Container>
-                    <YoutubeVideo
-                        openInModal
-                        videos={{
-                            desktopVideo: (
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/OCgpWTIzCwE?si=6eQctDHJCn3wYb5r&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                            ),
-                            mobileVideo: (
-                                <iframe width="560" height="315" src="https://www.youtube.com/embed/retE5fkzRDc?si=4DOEx4LCFkyJU4XW&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-                            )
-                        }}
+                    <VideoSection
+                        backgroundImage="/topocoro/1.JPG"
+                        title="Destino Topocoro"
+                        onPlayClick={() => setIsVideoModalOpen(true)}
                     />
                 </Container>
             </Section>
-            <Section>
+            <Section fadeIn>
                 <Container id="embalse-de-topocoro">
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12 xl:col-span-8 flex flex-col gap-8">
@@ -83,10 +82,10 @@ export default function Topocoro() {
                             <div className="grid grid-cols-12 gap-6">
                                 {features1.map((feature, index) => (
                                     <div className="col-span-12 md:col-span-6 flex gap-4" key={index}>
-                                        <ul className="list-disc max-w-[500px]">
+                                        <ul className="list-disc list-outside max-w-[500px] pl-6">
                                             <li className="text-base font-medium">{feature.title}</li>
                                             {feature.sublist && (
-                                                <ul className="list-disc list-inside">
+                                                <ul className="list-disc list-outside pl-6">
                                                     {feature.sublist?.map((subitem, index) => (
                                                         <li key={index}>{subitem}</li>
                                                     ))}
@@ -110,7 +109,7 @@ export default function Topocoro() {
                     </div>
                 </Container>
             </Section>
-            <Section>
+            <Section fadeIn>
                 <Container id="que-hace-unico-a-topocoro">
                     <SectionTitle title="¿Qué hace único a Topocoro?" description="Es un destino emergente que integra naturaleza, agua, montañas y buen clima. Esto abre oportunidades para viajeros y turistas de muchos tipos, desde turistas de fin de semana, turismo de bienestar, grupos corporativos, observadores de aves, hasta amantes de los deportes náuticos." />
                     <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 md:grid-cols-4">
@@ -163,33 +162,65 @@ export default function Topocoro() {
                     </div>
                 </Container>
             </Section>
-            <Section>
+            <Section fadeIn>
                 <Container>
-                    <SectionTitle title="Inversión público-privada en marcha" description="Topocoro avanza como destino lacustre prioritario en Santander. Diversas iniciativas públicas y privadas se proyectan para fortalecer accesos, infraestructura náutica, servicios y promoción turística, creando las condiciones para convertirse en un destino de gran atractivo para el turismo nacional e internacional." />
-                    <p className="text-2xl text-center max-w-[600px] mx-auto">+ 1 Billón de COP en inversión público/privada proyectados para los próximos 5 años</p>
-                    <div className="grid grid-cols-1 lg:grid-cols-6 gap-6 mt-16">
-                        <div className="lg:col-span-2 flex flex-col justify-center items-center lg:items-start lg:justify-start">
-                            <p className="text-2xl font-bold">¿Qué se proyecta?</p>
-                            <ul className="list-disc mt-4 text-lg">
-                                <li>Mejoras de conectividad y accesos</li>
-                                <li>Infraestructura náutica y ribereña</li>
-                                <li>Creación de infraestructura de servicios:</li>
-                                <ul className="list-disc list-inside">
-                                    <li>Parque Acuáticos</li>
-                                    <li>Parques Naturales</li>
-                                    <li>Centros de convenciones</li>
-                                    <li>Hoteles</li>
-                                    <li>Restaurantes</li>
-                                </ul>
-                                <li>Campañas públicas y privadas de promoción del destino</li>
-                            </ul>
+                    <p className="text-2xl text-center font-medium max-w-[600px] mx-auto mb-16">+ 1 Billón de COP en inversión público/privada proyectados para los próximos 5 años</p>
+                    <div className="my-10 grid grid-cols-4 gap-4 ">
+                        {/* Card 1 - Suites */}
+                        <div className="col-span-4 lg:col-span-2 relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
+                            <div className="relative h-80 shrink-0">
+                                <div className={`h-80 bg-[url('/topocoro/3.jpg')] ${cardResponsiveValues_4cols} bg-center bg-no-repeat`} />
+                                {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
+                            </div>
+                            <div className="relative p-10 flex flex-col flex-grow">
+                                <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Inversión público-privada en marcha</h3>
+                                <p className="mt-2 max-w-[600px] text-base/6 text-gray-600 group-data-dark:text-gray-400">Topocoro avanza como destino lacustre prioritario en Santander. Diversas iniciativas públicas y privadas se proyectan para fortalecer accesos, infraestructura náutica, servicios y promoción turística, creando las condiciones para convertirse en un destino de gran atractivo para el turismo nacional e internacional.</p>
+                            </div>
                         </div>
-                        <div className="col-span-0 hidden lg:flex lg:col-span-4 justify-center items-center bg-[url('/topocoro/3.jpg')] bg-cover bg-center rounded-2xl">
+                        <div className="col-span-4 lg:col-span-2">
+                            <div className="flex flex-col justify-center items-center h-full">
+                                <div className="flex flex-col justify-center items-center lg:items-start lg:justify-start">
+                                    <p className="text-2xl font-bold">¿Qué se proyecta?</p>
+                                    <ul className="list-disc list-outside mt-4 text-lg pl-6">
+                                        <li>Mejoras de conectividad y accesos</li>
+                                        <li>Infraestructura náutica y ribereña</li>
+                                        <li>Creación de infraestructura de servicios:</li>
+                                        <ul className="list-disc list-outside pl-6">
+                                            <li>Parque Acuáticos</li>
+                                            <li>Parques Naturales</li>
+                                            <li>Centros de convenciones</li>
+                                            <li>Hoteles</li>
+                                            <li>Restaurantes</li>
+                                        </ul>
+                                        <li>Campañas públicas y privadas de promoción del destino</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    {/* <SectionTitle title="Inversión público-privada en marcha" description="Topocoro avanza como destino lacustre prioritario en Santander. Diversas iniciativas públicas y privadas se proyectan para fortalecer accesos, infraestructura náutica, servicios y promoción turística, creando las condiciones para convertirse en un destino de gran atractivo para el turismo nacional e internacional." /> */}
+
                 </Container>
             </Section>
             <Footer />
+            <Modal
+                isOpen={isVideoModalOpen}
+                onClose={() => setIsVideoModalOpen(false)}
+                contentOnly={true}
+                size="xl"
+            >
+                <YoutubeVideo
+                    openInModal
+                    videos={{
+                        desktopVideo: (
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/OCgpWTIzCwE?si=6eQctDHJCn3wYb5r&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                        ),
+                        mobileVideo: (
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/retE5fkzRDc?si=4DOEx4LCFkyJU4XW&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                        )
+                    }}
+                />
+            </Modal>
         </div>
     )
 }

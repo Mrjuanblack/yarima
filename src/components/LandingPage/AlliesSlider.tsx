@@ -1,10 +1,29 @@
 "use client";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { ArrowRightCircleIcon, ArrowLeftCircleIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { useScreenSize, type ScreenSize } from "@/hooks/useScreenSize";
 
 const Slider = dynamic(() => import("react-slick"), { ssr: false });
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function NextArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+        <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
+            <ArrowRightCircleIcon className="size-8 text-gray-700" />
+        </div>
+    );
+}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function PrevArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+        <div className={className} style={{ ...style, display: "block" }} onClick={onClick}>
+            <ArrowLeftCircleIcon className="size-8 text-gray-700" />
+        </div>
+    );
+}
 
 export const AlliesSlider: React.FC = () => {
     const screenSize = useScreenSize();
@@ -52,11 +71,11 @@ export const AlliesSlider: React.FC = () => {
             key={screenSize}
             infinite={true}
             speed={3000}
-            // autoplay={true}
-            autoplaySpeed={5000}
             slidesToShow={slidesFor(screenSize)}
-            arrows={false}
-            dots={false}
+            nextArrow={<NextArrow />}
+            prevArrow={<PrevArrow />}
+            dots
+            cssEase="ease-in-out"
         >
             {allies.map((ally, index) => (
                 <div className="h-full px-2" key={index}>
