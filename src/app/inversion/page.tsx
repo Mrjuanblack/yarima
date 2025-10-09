@@ -48,7 +48,7 @@ export default function Inversion() {
 
     return (<div>
         <Section overrideClassName="w-full">
-            <ParallaxImage imageUrl={["/renders/beach/1.jpeg", "/renders/beach/2.jpeg", "/renders/beach/3.jpeg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
+            <ParallaxImage imageUrl={["/renders/beach/1.jpg", "/renders/beach/2.jpg", "/renders/beach/4.jpg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
                 <Container>
                     <div className="text-theme-background-200 text-center">
                         <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 font-semibold">
@@ -85,7 +85,7 @@ export default function Inversion() {
                 <div className="grid grid-cols-12 gap-6">
                     <div className="col-span-12 xl:col-span-5 flex flex-col gap-8">
                         <SectionTitle title="Modelo de Inversión" removeMargin />
-                        <p className="text-base/6 text-gray-600">Inviertes a través de derechos fiduciarios administrados por Acción Fiduciaria, una entidad vigilada por la Superintendencia Financiera de Colombia. Tu participación te hace socio del proyecto y te da derecho a recibir rentabilidad mensual proveniente de la operación hotelera. Además, disfrutas el proyecto: uso ilimitado de las zonas sociales del Resort y membresía vitalicia al Club de Playa (con invitados), más prioridad en experiencias y futuros proyectos.</p>
+                        <p className="text-base/6 text-gray-600 text-justify">Inviertes a través de derechos fiduciarios administrados por Acción Fiduciaria, una entidad vigilada por la Superintendencia Financiera de Colombia. Tu participación te hace socio del proyecto y te da derecho a recibir rentabilidad mensual proveniente de la operación hotelera. Además, disfrutas el proyecto: uso ilimitado de las zonas sociales del Resort y membresía vitalicia al Club de Playa (con invitados), más prioridad en experiencias y futuros proyectos.</p>
                         <div className="flex flex-col gap-2">
                             <p className="text-base/6 text-gray-600">Beneficios:</p>
                             <ul className="list-disc list-outside pl-6">

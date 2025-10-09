@@ -84,7 +84,7 @@ const calculateMonthlyPayment = (values: CalculatorType) => {
 
     const interest = values.interestRate / 100;
     if (values.paymentMethod === PaymentMethod.DIRECT) {
-        const calculate = (amount * interest * (Math.pow((1 + interest), (months)))) / ((Math.pow((1 + interest), (months))) - 1);
+        const calculate = ((amount - 3000000) * interest * (Math.pow((1 + interest), (months)))) / ((Math.pow((1 + interest), (months))) - 1);
         return calculate;
     } else {
         const calculate = (amount - 3000000) / months;

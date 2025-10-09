@@ -85,9 +85,11 @@ function LazyImage({ thumbnailSrc, alt, onClick }: LazyImageProps) {
 
 export default function Gallery({ images, isOpen, onClose, title = "Galería" }: GalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [isImageLoading, setIsImageLoading] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
   const handleImageClick = (index: number) => {
+    setIsImageLoading(true);
     setSelectedIndex(index);
   };
 
@@ -97,12 +99,14 @@ export default function Gallery({ images, isOpen, onClose, title = "Galería" }:
 
   const handlePrevious = () => {
     if (selectedIndex !== null && selectedIndex > 0) {
+      setIsImageLoading(true);
       setSelectedIndex(selectedIndex - 1);
     }
   };
 
   const handleNext = () => {
     if (selectedIndex !== null && selectedIndex < images.length - 1) {
+      setIsImageLoading(true);
       setSelectedIndex(selectedIndex + 1);
     }
   };
@@ -115,8 +119,10 @@ export default function Gallery({ images, isOpen, onClose, title = "Galería" }:
         onClose();
       }
     } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
       handlePrevious();
     } else if (e.key === "ArrowRight") {
+      e.preventDefault();
       handleNext();
     }
   };
@@ -201,32 +207,71 @@ export default function Gallery({ images, isOpen, onClose, title = "Galería" }:
                 className="absolute inset-0 bg-black/80 flex items-center justify-center p-4"
                 onClick={handleCloseEnlarged}
               >
+                {/* Fixed Navigation Elements - positioned relative to overlay */}
+                {/* Close Button */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleCloseEnlarged();
+                  }}
+                  className="fixed top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors z-20"
+                  aria-label="Cerrar imagen"
+                >
+                  <XMarkIcon className="h-6 w-6" />
+                </button>
+
+                {/* Previous Button */}
+                {selectedIndex > 0 && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePrevious();
+                    }}
+                    className="fixed left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+                    aria-label="Imagen anterior"
+                  >
+                    <ChevronLeftIcon className="h-6 w-6" />
+                  </button>
+                )}
+
+                {/* Next Button */}
+                {selectedIndex < images.length - 1 && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNext();
+                    }}
+                    className="fixed right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
+                    aria-label="Imagen siguiente"
+                  >
+                    <ChevronRightIcon className="h-6 w-6" />
+                  </button>
+                )}
+
+                {/* Image Counter */}
+                <div 
+                  className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm z-20"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {selectedIndex + 1} de {images.length}
+                </div>
+
+                {/* Image Container */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 0.8, opacity: 0 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="relative max-w-[90vw] max-h-[90vh]"
+                  className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {/* Close Button */}
-                  <button
-                    onClick={handleCloseEnlarged}
-                    className="absolute -top-12 right-0 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors z-10"
-                    aria-label="Cerrar imagen"
-                  >
-                    <XMarkIcon className="h-6 w-6" />
-                  </button>
-
-                  {/* Previous Button */}
-                  {selectedIndex > 0 && (
-                    <button
-                      onClick={handlePrevious}
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
-                      aria-label="Imagen anterior"
-                    >
-                      <ChevronLeftIcon className="h-6 w-6" />
-                    </button>
+                  {/* Loading State */}
+                  {isImageLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-lg">
+                      <div className="bg-black/50 text-white px-4 py-2 rounded-full text-sm">
+                        Cargando...
+                      </div>
+                    </div>
                   )}
 
                   {/* Image */}
@@ -235,27 +280,13 @@ export default function Gallery({ images, isOpen, onClose, title = "Galería" }:
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.4 }}
                     src={images[selectedIndex].fullRes}
                     alt={`Imagen ampliada ${selectedIndex + 1}`}
                     className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+                    onLoad={() => setIsImageLoading(false)}
+                    onError={() => setIsImageLoading(false)}
                   />
-
-                  {/* Next Button */}
-                  {selectedIndex < images.length - 1 && (
-                    <button
-                      onClick={handleNext}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-colors"
-                      aria-label="Imagen siguiente"
-                    >
-                      <ChevronRightIcon className="h-6 w-6" />
-                    </button>
-                  )}
-
-                  {/* Image Counter */}
-                  <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm">
-                    {selectedIndex + 1} de {images.length}
-                  </div>
                 </motion.div>
               </motion.div>
             )}

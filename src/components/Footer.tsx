@@ -1,3 +1,5 @@
+"use client";
+
 import Container from "./Container"
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
@@ -8,7 +10,7 @@ import { FaYoutube } from "react-icons/fa";
 const Footer: React.FC = () => {
     const socialMediaSize = "w-5 h-auto";
     return (
-        <footer className="bg-gradient-to-br from-theme-background-dark-950 via-theme-background-dark-950/95 to-theme-background-dark-950 pt-16 pb-8 px-6 lg:px-8 text-theme-background-200">
+        <footer className="bg-gradient-to-br from-theme-background-dark-950 via-theme-background-dark-950/95 to-theme-background-dark-950 pt-12 pb-8 px-6 lg:px-8 text-theme-background-200">
             <Container>
                 <div className="flex flex-col gap-4">
                     <div className="flex justify-center items-center">

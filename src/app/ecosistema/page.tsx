@@ -154,17 +154,22 @@ export default function Ecosistema() {
         { thumbnail: "/renders/v2/thumbnails/7.jpg", fullRes: "/renders/v2/7.jpg" }
     ];
     const beachClubImages = [
-        { thumbnail: "/renders/beach/thumbnails/1.jpg", fullRes: "/renders/beach/1.jpeg" },
-        { thumbnail: "/renders/beach/thumbnails/2.jpg", fullRes: "/renders/beach/2.jpeg" },
-        { thumbnail: "/renders/beach/thumbnails/3.jpg", fullRes: "/renders/beach/3.jpeg" },
-        { thumbnail: "/renders/beach/thumbnails/4.jpg", fullRes: "/renders/beach/4.jpeg" },
-        { thumbnail: "/renders/beach/thumbnails/6.jpg", fullRes: "/renders/beach/6.jpeg" },
+        { thumbnail: "/renders/beach/thumbnails/1.jpg", fullRes: "/renders/beach/1.jpg" },
+        { thumbnail: "/renders/beach/thumbnails/2.jpg", fullRes: "/renders/beach/2.jpg" },
+        { thumbnail: "/renders/beach/thumbnails/3.jpg", fullRes: "/renders/beach/3.jpg" },
+        { thumbnail: "/renders/beach/thumbnails/4.jpg", fullRes: "/renders/beach/4.jpg" },
+        { thumbnail: "/renders/beach/thumbnails/5.jpg", fullRes: "/renders/beach/5.jpg" },
+        { thumbnail: "/renders/beach/thumbnails/6.jpg", fullRes: "/renders/beach/6.jpg" },
+        { thumbnail: "/renders/beach/thumbnails/7.jpg", fullRes: "/renders/beach/7.jpg" },
+        { thumbnail: "/renders/beach/thumbnails/8.jpg", fullRes: "/renders/beach/8.jpg" },
+        { thumbnail: "/renders/beach/thumbnails/9.jpg", fullRes: "/renders/beach/9.jpg" },
+        { thumbnail: "/renders/beach/thumbnails/10.jpg", fullRes: "/renders/beach/10.jpg" },
     ];
 
     return (
         <div>
             <Section overrideClassName="w-full">
-                <ParallaxImage imageUrl={["/renders/beach/1.jpeg", "/renders/beach/2.jpeg", "/renders/beach/3.jpeg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
+                <ParallaxImage imageUrl={["/renders/beach/1.jpg", "/renders/beach/2.jpg", "/renders/beach/4.jpg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
                     <Container>
                         <div className="text-theme-background-200 text-center">
                             <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 font-semibold">
@@ -189,8 +194,8 @@ export default function Ecosistema() {
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
                             <SectionTitle title="Ecosistema Yarima" removeMargin />
-                            <p className="text-base/6 text-gray-600">Descanso, Bienestar y Entretenimiento. Ese es el ecosistema Yarima: suites con terraza, jacuzzi y vista 180° al embalse para desconectar; un Club de Playa con acceso exclusivo para disfrutar de la playa artificial, las piscinas y los deportes náuticos; y el Lounge Flotante, un deck sobre el agua con todas las comodidades.</p>
-                            <p className="text-base/6 text-gray-600">Una experiencia integral de lujo, con múltiples atracciones y servicios de alto nivel, todo en un mismo destino frente al embalse de Topocoro.</p>
+                            <p className="text-base/6 text-gray-600 text-justify">Descanso, Bienestar y Entretenimiento. Ese es el ecosistema Yarima: suites con terraza, jacuzzi y vista 180° al embalse para desconectar; un Club de Playa con acceso exclusivo para disfrutar de la playa artificial, las piscinas y los deportes náuticos; y el Lounge Flotante, un deck sobre el agua con todas las comodidades.</p>
+                            <p className="text-base/6 text-gray-600 text-justify">Una experiencia integral de lujo, con múltiples atracciones y servicios de alto nivel, todo en un mismo destino frente al embalse de Topocoro.</p>
                         </div>
                         <div className="col-span-12 lg:col-span-8">
                             <VideoSection
@@ -208,7 +213,7 @@ export default function Ecosistema() {
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12 xl:col-span-8 flex flex-col gap-8">
                             <SectionTitle title="Yarima Resort" removeMargin />
-                            <p className="text-base/6 text-gray-600">Un resort destino frente al embalse de Topocoro, concebido para integrar descanso y bienestar en un mismo espacio. La propuesta combina hospitalidad de alto nivel, una oferta de experiencias cuidadosamente diseñadas y una relación respetuosa con el entorno. Aquí, el huésped encuentra equilibrio: energía durante el día y serenidad en su descanso.</p>
+                            <p className="text-base/6 text-gray-600 text-justify">Un resort destino frente al embalse de Topocoro, concebido para integrar descanso y bienestar en un mismo espacio. La propuesta combina hospitalidad de alto nivel, una oferta de experiencias cuidadosamente diseñadas y una relación respetuosa con el entorno. Aquí, el huésped encuentra equilibrio: energía durante el día y serenidad en su descanso.</p>
                             <div className="grid grid-cols-12 gap-6">
                                 {features1.map((feature, index) => (
                                     <div className="col-span-12 md:col-span-6 flex gap-4" key={index}>
@@ -235,11 +240,11 @@ export default function Ecosistema() {
             <Section fadeIn>
                 <Container id="ecosistema-club-de-playa">
                     <div className="grid grid-cols-12 gap-6">
-                        <div className="col-span-12 xl:col-span-4 hidden xl:flex justify-center items-center bg-[url('/renders/beach/2.jpeg')] bg-cover bg-center rounded-2xl">
+                        <div className="col-span-12 xl:col-span-4 hidden xl:flex justify-center items-center bg-[url('/renders/beach/2.jpg')] bg-cover bg-center rounded-2xl">
                         </div>
                         <div className="col-span-12 xl:col-span-8 flex flex-col gap-8">
                             <SectionTitle title="Club de Playa" removeMargin />
-                            <p className="text-base/6 text-gray-600">Nuestro Club de Playa será el epicentro de entretenimiento: un espacio de acceso exclusivo para socios, huéspedes e invitados, inspirado en los mejores beach clubs del Caribe. Un lugar donde deporte, música y entretenimiento convergen en decenas de actividades náuticas, sesiones musicales y experiencias frente al embalse.</p>
+                            <p className="text-base/6 text-gray-600 text-justify">Nuestro Club de Playa será el epicentro de entretenimiento: un espacio de acceso exclusivo para socios, huéspedes e invitados, inspirado en los mejores beach clubs del Caribe. Un lugar donde deporte, música y entretenimiento convergen en decenas de actividades náuticas, sesiones musicales y experiencias frente al embalse.</p>
                             <div className="grid grid-cols-12 gap-6">
                                 {features2.map((feature, index) => (
                                     <div className="col-span-12 md:col-span-6 flex gap-4" key={index}>
@@ -263,8 +268,8 @@ export default function Ecosistema() {
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12 xl:col-span-8 flex flex-col gap-8">
                             <SectionTitle title="Lounge Flotante" removeMargin />
-                            <p className="text-base/6 text-gray-600">Nuestro lounge flotante es una plataforma de diseño modular sobre el embalse que se configura como punto de encuentro frente al agua. Al centro, una zona de baño segura; alrededor, diferentes espacios se integran, desde solárium amplio y un lounge con servicio de bebidas y snacks.</p>
-                            <p className="text-base/6 text-gray-600">Contará además con un deck privado para socios y un muelle para deportes náuticos y embarcaciones livianas.</p>
+                            <p className="text-base/6 text-gray-600 text-justify">Nuestro lounge flotante es una plataforma de diseño modular sobre el embalse que se configura como punto de encuentro frente al agua. Al centro, una zona de baño segura; alrededor, diferentes espacios se integran, desde solárium amplio y un lounge con servicio de bebidas y snacks.</p>
+                            <p className="text-base/6 text-gray-600 text-justify">Contará además con un deck privado para socios y un muelle para deportes náuticos y embarcaciones livianas.</p>
                             <div className="grid grid-cols-12 gap-6">
                                 {features3.map((feature, index) => (
                                     <div className="col-span-12 md:col-span-6 flex gap-4" key={index}>

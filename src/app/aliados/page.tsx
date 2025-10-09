@@ -39,7 +39,7 @@ export default function Aliados() {
     return (<div>
 
         <Section overrideClassName="w-full">
-            <ParallaxImage imageUrl={["/renders/beach/1.jpeg", "/renders/beach/2.jpeg", "/renders/beach/3.jpeg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
+            <ParallaxImage imageUrl={["/renders/beach/1.jpg", "/renders/beach/2.jpg", "/renders/beach/4.jpg"]} height="h-160" speed={0.5} overlay={true} overlayColor="black" overlayOpacity={0.75} >
                 <Container>
                     <div className="text-theme-background-200 text-center">
                         <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 font-semibold">

@@ -78,7 +78,7 @@ export default function Topocoro() {
                     <div className="grid grid-cols-12 gap-6">
                         <div className="col-span-12 xl:col-span-8 flex flex-col gap-8">
                             <SectionTitle title="Embalse de Topocoro" removeMargin />
-                            <p className="text-base/6 text-gray-600">Topocoro combina 7.000 hectáreas de espejo de agua rodeado de imponentes montañas. A solo 45 minutos del área metropolitana de Bucaramanga, y 30 minutos del Aeropuerto Internacional de Palonegro, Topocoro combina clima cálido, acceso ágil desde Bucaramanga y un paisaje excepcional, creando el lugar perfecto para deportes náuticos, entretenimiento y eventos. El sitio ideal para un hotel destino.</p>
+                            <p className="text-base/6 text-gray-600 text-justify">Topocoro combina 7.000 hectáreas de espejo de agua rodeado de imponentes montañas. A solo 45 minutos del área metropolitana de Bucaramanga, y 30 minutos del Aeropuerto Internacional de Palonegro, Topocoro combina clima cálido, acceso ágil desde Bucaramanga y un paisaje excepcional, creando el lugar perfecto para deportes náuticos, entretenimiento y eventos. El sitio ideal para un hotel destino.</p>
                             <div className="grid grid-cols-12 gap-6">
                                 {features1.map((feature, index) => (
                                     <div className="col-span-12 md:col-span-6 flex gap-4" key={index}>
@@ -178,7 +178,7 @@ export default function Topocoro() {
                             </div>
                         </div>
                         <div className="col-span-4 lg:col-span-2">
-                            <div className="flex flex-col justify-center items-center h-full">
+                            <div className="flex flex-col items-center h-full">
                                 <div className="flex flex-col justify-center items-center lg:items-start lg:justify-start">
                                     <p className="text-2xl font-bold">¿Qué se proyecta?</p>
                                     <ul className="list-disc list-outside mt-4 text-lg pl-6">
