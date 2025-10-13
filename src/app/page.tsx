@@ -137,7 +137,7 @@ export default function Home() {
             {/* Card 2 - Club de Playa */}
             <div className="lg:col-span-2 group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
               <div className="relative h-80 shrink-0">
-                <div className={`h-80 bg-[url(/renders/beach/6.jpeg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
+                <div className={`h-80 bg-[url(/renders/beach/7.jpg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
               </div>
               <div className="relative p-10 flex flex-col flex-grow">
@@ -150,7 +150,7 @@ export default function Home() {
             {/* Card 3 - Lounge Flotante */}
             <div className="lg:col-span-2 lg:rounded-tr-4xl lg:rounded-br-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
               <div className="relative h-80 shrink-0">
-                <div className={`h-80 bg-[url(/renders/beach/4.jpeg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
+                <div className={`h-80 bg-[url(/renders/beach/4.jpg)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
               </div>
               <div className="relative p-10 flex flex-col flex-grow">
