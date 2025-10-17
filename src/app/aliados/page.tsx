@@ -22,13 +22,13 @@ export default function Aliados() {
             image: "/logos/slider/blackroom.png",
             link: "https://blackroom.com.co/",
         },
-        {
-            title: "Acción Fiduciaria",
-            subtitle: "Estructura Fiduciaria vigilada por SFC",
-            description: "Entidad vigilada por la Superintendencia Financiera de Colombia, con más de 25 años estructurando y administrando negocios fiduciarios (inmobiliarios, de inversión y patrimoniales). Ofrece portafolios de fondos, administración de patrimonios autónomos y educación financiera para sus clientes. ",
-            image: "/logos/slider/accion.svg",
-            link: "https://www.accion.com.co/#",
-        },
+        // {
+        //     title: "Acción Fiduciaria",
+        //     subtitle: "Estructura Fiduciaria vigilada por SFC",
+        //     description: "Entidad vigilada por la Superintendencia Financiera de Colombia, con más de 25 años estructurando y administrando negocios fiduciarios (inmobiliarios, de inversión y patrimoniales). Ofrece portafolios de fondos, administración de patrimonios autónomos y educación financiera para sus clientes. ",
+        //     image: "/logos/slider/accion.svg",
+        //     link: "https://www.accion.com.co/#",
+        // },
         {
             title: "Oscar Mogollón",
             subtitle: "Diseño Arquitectónico",

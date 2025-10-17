@@ -57,20 +57,20 @@ export const AlliesSlider: React.FC = () => {
             link: "/lounge-flotante",
             invert: false
         },
-        {
-            name: "Acción Fiduciaria",
-            title: "Acción Fiduciaria",
-            description: "Estructura Fiduciaria vigilada por SFC",
-            image: "/logos/slider/accion.svg",
-            link: "/lounge-flotante",
-            invert: true
-        }
+        // {
+        //     name: "Acción Fiduciaria",
+        //     title: "Acción Fiduciaria",
+        //     description: "Estructura Fiduciaria vigilada por SFC",
+        //     image: "/logos/slider/accion.svg",
+        //     link: "/lounge-flotante",
+        //     invert: true
+        // }
     ]
     return (<div>
         <Slider
             key={screenSize}
             infinite={true}
-            speed={3000}
+            speed={1500}
             slidesToShow={slidesFor(screenSize)}
             nextArrow={<NextArrow />}
             prevArrow={<PrevArrow />}
