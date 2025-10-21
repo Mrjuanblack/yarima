@@ -189,22 +189,23 @@ export default function Ecosistema() {
                     </Container>
                 </ParallaxImage>
             </Section>
+            <Section fadeIn videoPadding>
+                <Container>
+                    <VideoSection
+                        backgroundImage="/renders/v2/2.jpg"
+                        title="Ecosistema Yarima"
+                        onPlayClick={() => setIsVideoModalOpen(true)}
+                        titleSize="3xl"
+                    />
+                </Container>
+            </Section>
             <Section fadeIn>
                 <Container>
-                    <div className="grid grid-cols-12 gap-6">
-                        <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
-                            <SectionTitle title="Ecosistema Yarima" removeMargin />
-                            <p className="text-base/6 text-gray-600 text-justify">Descanso, Bienestar y Entretenimiento. Ese es el ecosistema Yarima: suites con terraza, jacuzzi y vista 180° al embalse para desconectar; un Club de Playa con acceso exclusivo para disfrutar de la playa artificial, las piscinas y los deportes náuticos; y el Lounge Flotante, un deck sobre el agua con todas las comodidades.</p>
-                            <p className="text-base/6 text-gray-600 text-justify">Una experiencia integral de lujo, con múltiples atracciones y servicios de alto nivel, todo en un mismo destino frente al embalse de Topocoro.</p>
-                        </div>
-                        <div className="col-span-12 lg:col-span-8">
-                            <VideoSection
-                                backgroundImage="/renders/v2/2.jpg"
-                                title="Ecosistema Yarima"
-                                onPlayClick={() => setIsVideoModalOpen(true)}
-                                titleSize="3xl"
-                            />
-                        </div>
+                    <SectionTitle title="Ecosistema Yarima" removeMargin />
+                    <p className="text-base/6 text-gray-600 text-justify">Descanso, Bienestar y Entretenimiento. Ese es el ecosistema Yarima: suites con terraza, jacuzzi y vista 180° al embalse para desconectar; un Club de Playa con acceso exclusivo para disfrutar de la playa artificial, las piscinas y los deportes náuticos; y el Lounge Flotante, un deck sobre el agua con todas las comodidades.</p>
+                    <p className="text-base/6 text-gray-600 text-justify">Una experiencia integral de lujo, con múltiples atracciones y servicios de alto nivel, todo en un mismo destino frente al embalse de Topocoro.</p>
+                    <div className="mt-10 flex justify-center items-center">
+                        <CTA_Brochure />
                     </div>
                 </Container>
             </Section>
@@ -227,8 +228,7 @@ export default function Ecosistema() {
                             </div>
                             <div className="w-full">
                                 <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
-                                    <CTA_Brochure />
-                                    <CTAButtonBase text="Ver galería del Resort" onClick={() => setIsResortGalleryOpen(true)} />
+                                    <CTAButtonBase onClick={() => setIsResortGalleryOpen(true)}>Ver galería del Resort</CTAButtonBase>
                                 </div>
                             </div>
                         </div>
@@ -257,7 +257,7 @@ export default function Ecosistema() {
                                 ))}
                             </div>
                             <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-                                <CTAButtonBase text="Ver galería del Club de Playa" onClick={() => setIsBeachClubGalleryOpen(true)} />
+                                <CTAButtonBase onClick={() => setIsBeachClubGalleryOpen(true)}>Ver galería del Club de Playa</CTAButtonBase>
                             </div>
                         </div>
                     </div>
@@ -307,11 +307,10 @@ export default function Ecosistema() {
             <Modal
                 isOpen={isVideoModalOpen}
                 onClose={() => setIsVideoModalOpen(false)}
-                contentOnly={true}
+                contentOnly
                 size="xl"
             >
                 <YoutubeVideo
-                    openInModal={true}
                     videos={{
                         desktopVideo: (
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/VFNxNVnpbho?si=5xyCNrk_fDc0KknW&amp;hd=1&amp;vq=highres" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>

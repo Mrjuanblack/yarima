@@ -8,17 +8,20 @@ interface SectionProps {
     children: React.ReactNode;
     overrideClassName?: string;
     fadeIn?: boolean;
+    videoPadding?: boolean;
 }
 
-const Section = ({ children, overrideClassName, fadeIn = false }: SectionProps) => {
+const Section = ({ children, overrideClassName, fadeIn = false, videoPadding = false }: SectionProps) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+    const paddingClasses = videoPadding ? "pt-8 pb-8 md:pt-20 md:pb-4" : "py-8 md:py-20";
 
     if (fadeIn) {
         return (
             <motion.section
                 ref={ref}
-                className={overrideClassName || "py-8 md:py-20"}
+                className={overrideClassName || paddingClasses}
                 initial={{ opacity: 0, y: 50 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}

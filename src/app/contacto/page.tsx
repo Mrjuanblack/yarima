@@ -33,7 +33,7 @@ export default function Contact() {
             </Section>
             <Section>
                 <Container>
-                    <div className="max-w-[800px] mx-auto rounded-lg bg-white shadow-md ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15 p-10">
+                    <div className="max-w-[600px] mx-auto rounded-lg bg-white shadow-md ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15 p-10">
                         <ContactForm />
                     </div>
                 </Container>

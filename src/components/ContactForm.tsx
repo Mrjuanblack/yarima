@@ -40,6 +40,7 @@ const contactSchema = z.object({
 })
 
 type ContactType = z.infer<typeof contactSchema>;
+const flagClassNames = "w-5 h-5";
 
 // Custom Country Select Component
 const CountrySelect = ({ value, onChange, onBlur, isInvalid }: {
@@ -54,7 +55,7 @@ const CountrySelect = ({ value, onChange, onBlur, isInvalid }: {
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const selectedCountry = countries.find(country => country.dialCode === value) || countries[0];
-    const filteredCountries = countries.filter(country => 
+    const filteredCountries = countries.filter(country =>
         country.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         country.dialCode.includes(searchTerm)
     );
@@ -66,7 +67,7 @@ const CountrySelect = ({ value, onChange, onBlur, isInvalid }: {
             const spaceBelow = viewportHeight - rect.bottom;
             const spaceAbove = rect.top;
             const dropdownHeight = 240; // Approximate height of dropdown
-            
+
             // Open upward if there's not enough space below but enough space above
             setOpenUpward(spaceBelow < dropdownHeight && spaceAbove > dropdownHeight);
         }
@@ -93,20 +94,25 @@ const CountrySelect = ({ value, onChange, onBlur, isInvalid }: {
                 onBlur={onBlur}
                 className={`w-full appearance-none rounded-md py-1.5 pr-7 pl-3 text-base text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-theme-gold sm:text-sm/6 ${isInvalid ? 'outline-red-500' : 'outline-black/10'}`}
             >
-                <div className="flex items-center justify-between">
+                <div className="flex gap-2">
+                    <span>
+                        <img
+                            alt={selectedCountry.name}
+                            className={flagClassNames}
+                            src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${selectedCountry.code}.svg`} />
+                    </span>
                     <span className="text-gray-800">{selectedCountry.dialCode}</span>
-                    <span>{selectedCountry.flag}</span>
+
                 </div>
             </button>
             <ChevronDownIcon
                 aria-hidden="true"
                 className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 size-4 text-gray-400"
             />
-            
+
             {isOpen && (
-                <div className={`absolute left-0 right-0 z-50 rounded-md bg-white border border-gray-200 shadow-lg ${
-                    openUpward ? 'bottom-full mb-1' : 'top-full mt-1'
-                }`}>
+                <div className={`absolute left-0 right-0 z-50 rounded-md bg-white border border-gray-200 shadow-lg ${openUpward ? 'bottom-full mb-1' : 'top-full mt-1'
+                    }`}>
                     <div className="p-2 border-b border-gray-100">
                         <input
                             type="text"
@@ -127,12 +133,17 @@ const CountrySelect = ({ value, onChange, onBlur, isInvalid }: {
                                     setIsOpen(false);
                                     setSearchTerm("");
                                 }}
-                                className={`w-full px-3 py-2 text-left text-sm hover:bg-gray-100 flex items-center justify-between ${
-                                    country.dialCode === value ? 'bg-blue-50 text-blue-600' : 'text-gray-900'
-                                }`}
+                                className={`w-full px-3 py-2 text-left text-sm hover:bg-gray-100 flex ${country.dialCode === value ? 'bg-blue-50 text-blue-600' : 'text-gray-900'
+                                    }`}
                             >
+
+                                <span>
+                                    <img
+                                        alt={country.name}
+                                        className={flagClassNames}
+                                        src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${country.code}.svg`} />
+                                </span>
                                 <span className="text-gray-800">{country.dialCode}</span>
-                                <span>{country.flag}</span>
                             </button>
                         ))}
                     </div>
@@ -291,7 +302,7 @@ const ContactForm = () => {
                     </label>
                     <div className="mt-2">
                         <div className="flex items-center rounded-md bg-gray-950/5 pl-3 outline-1 -outline-offset-1 outline-black/10 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-theme-gold">
-                            <div className="shrink-0 w-32">
+                            <div className="shrink-0 w-28">
                                 <form.Field name="countryPhoneCode">
                                     {(field) => (
                                         <CountrySelect

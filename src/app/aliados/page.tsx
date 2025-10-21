@@ -2,7 +2,6 @@ import Container from "@/components/Container";
 import Footer from "@/components/Footer";
 import ParallaxImage from "@/components/ParallaxImage";
 import Section from "@/components/Section";
-import SectionTitle from "@/components/SectionTitle";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
@@ -45,13 +44,17 @@ export default function Aliados() {
                         <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 font-semibold">
                             <span>Aliados Estratégicos</span>
                         </h1>
+                        <div className="mt-6 font-medium">
+                            <div className="flex flex-col items-center justify-center gap-2 sm:gap-4 mt-6 border-t border-theme-gold pt-4 max-w-[1200px] mx-auto">
+                                <p>Detrás de Yarima Resort & Club de Playa hay un equipo con gran trayectoria en desarrollo, arquitectura, operación hotelera y estructura fiduciaria. Cada aliado cumple un rol clave en la solidez del proyecto.</p>
+                            </div>
+                        </div>
                     </div>
                 </Container>
             </ParallaxImage>
         </Section>
         <Section>
             <Container>
-                <SectionTitle title="Aliados Estratégicos" description="Detrás de Yarima Resort & Club de Playa hay un equipo con gran trayectoria en desarrollo, arquitectura, operación hotelera y estructura fiduciaria. Cada aliado cumple un rol clave en la solidez del proyecto." />
                 <div className="grid grid-cols-12 gap-6">
                     {allies.map((ally, index) => (
                         <div className="col-span-12 xl:col-span-6 flex flex-col gap-4 items-start bg-gray-50 p-4 rounded-lg ring-1 ring-gray-200" key={index}>
@@ -63,9 +66,11 @@ export default function Aliados() {
                             {ally.description && (
                                 <p className="text-base text-gray-600 max-w-[600px]">{ally.description}</p>
                             )}
-                            {ally.link && (
-                                <Link href={ally.link} className="inline-flex items-center gap-2 text-base/6 font-semibold text-theme-gold hover:text-theme-background-600">Ver detalles <ArrowRightIcon className="size-4" /></Link>
-                            )}
+                            <div className="mt-auto ml-auto">
+                                {ally.link && (
+                                    <Link href={ally.link} className="mt-2 inline-flex items-center gap-2 text-base/6 font-semibold text-theme-gold hover:text-theme-background-600">Ver detalles <ArrowRightIcon className="size-4" /></Link>
+                                )}
+                            </div>
                         </div>
                     ))}
                     {/* <div className="col-span-12 xl:col-span-6 flex flex-col gap-4 items-start">

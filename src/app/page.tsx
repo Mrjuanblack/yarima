@@ -102,6 +102,7 @@ export default function Home() {
             backgroundImage="/renders/v2/4.jpg"
             onPlayClick={() => setIsVideoModalOpen(true)}
             title="Conoce Yarima Resort"
+            titleSize="3xl"
           />
         </Container>
       </Section>
@@ -128,9 +129,11 @@ export default function Home() {
                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
               </div>
               <div className="relative p-10 flex flex-col flex-grow">
-                <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Resort</h3>
+                <h3 className="mt-1 text-2xl/8 md:text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Resort</h3>
                 <p className="mt-2 max-w-[600px] text-base/6 text-gray-600 group-data-dark:text-gray-400">52 suites con vista panorámica al embalse y jacuzzi privado en terraza, piscina infinita, spa & circuito wellness, restaurante de autor y salones de eventos.</p>
-                <div onClick={() => navigateToElement('/ecosistema', 'ecosistema-yarima')} className="cursor-pointer inline-flex items-center gap-2 text-base/6 font-semibold text-theme-gold hover:text-theme-background-600 mt-auto">Ver detalles <ArrowRightIcon className="size-4" /></div>
+                <div className="mt-auto flex justify-end">
+                  <div onClick={() => navigateToElement('/ecosistema', 'ecosistema-yarima')} className="cursor-pointer inline-flex items-center gap-2 text-base/6 font-semibold text-theme-gold hover:text-theme-background-600 mt-4">Ver detalles <ArrowRightIcon className="size-4" /></div>
+                </div>
               </div>
             </div>
 
@@ -141,9 +144,11 @@ export default function Home() {
                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
               </div>
               <div className="relative p-10 flex flex-col flex-grow">
-                <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Club de Playa</h3>
+                <h3 className="mt-1 text-2xl/8 md:text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Club de Playa</h3>
                 <p className="mt-2 max-w-[600px] text-base/6 text-gray-600 group-data-dark:text-gray-400">Playa artificial, piscinas, restaurantes, bar, muelle, marina y deportes náuticos.</p>
-                <div onClick={() => navigateToElement('/ecosistema', 'ecosistema-club-de-playa')} className="cursor-pointer inline-flex items-center gap-2 text-base/6 font-semibold text-theme-gold hover:text-theme-background-600 mt-auto">Ver detalles <ArrowRightIcon className="size-4" /></div>
+                <div className="mt-auto flex justify-end">
+                  <div onClick={() => navigateToElement('/ecosistema', 'ecosistema-club-de-playa')} className="cursor-pointer inline-flex items-center gap-2 text-base/6 font-semibold text-theme-gold hover:text-theme-background-600 mt-4">Ver detalles <ArrowRightIcon className="size-4" /></div>
+                </div>
               </div>
             </div>
 
@@ -154,9 +159,11 @@ export default function Home() {
                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
               </div>
               <div className="relative p-10 flex flex-col flex-grow">
-                <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Lounge Flotante</h3>
+                <h3 className="mt-1 text-2xl/8 md:text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Lounge Flotante</h3>
                 <p className="mt-2 max-w-[600px] text-base/6 text-gray-600 group-data-dark:text-gray-400">Deck flotante en el embalse, solárium, lounge con servicio de bebidas y snacks, parque acuático, deck de música y zona central segura para bañistas.</p>
-                <div onClick={() => navigateToElement('/ecosistema', 'ecosistema-lounge-flotante')} className="cursor-pointer inline-flex items-center gap-2 text-base/6 font-semibold text-theme-gold hover:text-theme-background-600 mt-auto">Ver detalles <ArrowRightIcon className="size-4" /></div>
+                <div className="mt-auto flex justify-end">
+                  <div onClick={() => navigateToElement('/ecosistema', 'ecosistema-lounge-flotante')} className="cursor-pointer inline-flex items-center gap-2 text-base/6 font-semibold text-theme-gold hover:text-theme-background-600 mt-4">Ver detalles <ArrowRightIcon className="size-4" /></div>
+                </div>
               </div>
             </div>
           </div>
@@ -186,7 +193,7 @@ export default function Home() {
             <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6">
               <div className="lg:col-span-3 lg:rounded-bl-4xl lg:rounded-tl-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-theme-background-200 data-dark:ring-black/5">
                 <div className="relative p-10 flex flex-col flex-grow">
-                  <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950">Beneficios</h3>
+                  <h3 className="mt-1 text-2xl/8 md:text-3xl/8 font-medium tracking-tight text-gray-950">Beneficios</h3>
                   <ul className="list-disc list-outside pl-6">
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Rentabilidad mensual derivada de la operación del resort.</li>
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">5 noches anuales gratis y uso ilimitado de las zonas sociales.</li>
@@ -198,7 +205,7 @@ export default function Home() {
 
               <div className="lg:col-span-3 lg:rounded-br-4xl lg:rounded-tr-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-theme-background-200 data-dark:ring-black/5">
                 <div className="relative p-10 flex flex-col flex-grow">
-                  <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-text-primary">Formas de pago (3)</h3>
+                  <h3 className="mt-1 text-2xl/8 md:text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-text-primary">Formas de pago (3)</h3>
                   <ul className="list-disc list-outside pl-6">
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Reserva: $3.000.000</li>
                     <li className="text-base/6 font-normal text-gray-600 group-data-dark:text-black">Paga en 24 cuotas (sin intereses)</li>
@@ -237,15 +244,20 @@ export default function Home() {
               </div> */}
             </div>
           </div>
-          <p className="mt-10 text-4xl sm:text-5xl font-medium tracking-tight text-black text-center">Simula tu inversión</p>
+
+        </Container>
+      </Section >
+      <Section overrideClassName="bg-theme-background-50 py-10" fadeIn>
+        <Container>
+          <p className="text-4xl sm:text-5xl font-medium tracking-tight text-black text-center">Simula tu inversión</p>
           <Calculator />
           <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-            <CTAButtonBase text="Ver detalles de inversión" onClick={() => navigate.push('/inversion')} />
+            <CTAButtonBase onClick={() => navigate.push('/inversion')}>Ver detalles de inversión</CTAButtonBase>
             <CTA_Brochure />
             <CTA_WhatsApp />
           </div>
         </Container>
-      </Section >
+      </Section>
 
       <Section fadeIn>
         <Container>
@@ -255,7 +267,7 @@ export default function Home() {
             <p className="text-lg font-normal">¿Quieres conocer más de Yarima Resort & Club de Playa?</p>
           </div>
           <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
-            <CTAButtonBase text="Ver detalles de inversión" onClick={() => navigate.push('/inversion')} />
+            <CTAButtonBase onClick={() => navigate.push('/inversion')}>Ver detalles de inversión</CTAButtonBase>
             <CTA_Brochure />
             <CTA_WhatsApp />
           </div>

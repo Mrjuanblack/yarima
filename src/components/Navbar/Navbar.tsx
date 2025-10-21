@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import NavBarButton from "./NavBarButton";
 import { useScrollPosition } from "../../hooks/useScrollPosition";
 import { useScreenSize } from "@/hooks/useScreenSize";
@@ -11,6 +11,7 @@ import { useScreenSize } from "@/hooks/useScreenSize";
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const router = useRouter();
+    const pathname = usePathname();
     const { isAtTop } = useScrollPosition();
     const screenSize = useScreenSize();
 
@@ -110,7 +111,7 @@ export default function Navbar() {
                         <div className="hidden lg:flex w-full h-full justify-center">
                             <div className="ml-10 h-full flex space-x-8 gap-8">
                                 {menuItems.map((item, index) => (
-                                    <NavBarButton key={index} text={item.text} url={item.url} showBorder={isAtTop} onClick={handleClick} />
+                                    <NavBarButton key={index} text={item.text} url={item.url} showBorder={isAtTop} onClick={handleClick} currentPath={pathname} />
                                 ))}
                             </div>
                         </div>
@@ -182,7 +183,7 @@ export default function Navbar() {
                                         animate="visible"
                                         exit="exit"
                                     >
-                                        <NavBarButton key={index} text={item.text} url={item.url} onClick={handleClick} />
+                                        <NavBarButton key={index} text={item.text} url={item.url} onClick={handleClick} currentPath={pathname} />
                                     </motion.div>
                                 ))}
                             </div>

@@ -6,13 +6,15 @@ interface NavBarButtonTestProps {
     url: string;
     showBorder?: boolean;
     onClick: () => void;
+    currentPath?: string;
 }
 
-const NavBarButton: React.FC<NavBarButtonTestProps> = ({ text, url, showBorder = true, onClick }) => {
+const NavBarButton: React.FC<NavBarButtonTestProps> = ({ text, url, showBorder = true, onClick, currentPath }) => {
     const [isHovered, setIsHovered] = useState(false);
+    const isActive = currentPath === url;
 
     const textColor = () => {
-        if(isHovered) {
+        if(isHovered || isActive) {
             return 'text-gray-500';
         }
         return 'text-black';
@@ -25,7 +27,7 @@ const NavBarButton: React.FC<NavBarButtonTestProps> = ({ text, url, showBorder =
 
     return (
         <Link onClick={onClick} href={url} className="flex flex-col justify-between items-center gap-2" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-            <div className={`${textColor()} uppercase text-center h-full pt-3 ${textWeight()} text-sm transition-all flex items-center gap-2`}>
+            <div className={`${textColor()} text-center h-full pt-3 ${textWeight()} text-sm transition-all flex items-center gap-2`}>
                 {text}
             </div>
             <div className={`h-1 ${isHovered ? 'w-full' : 'w-[15px]'} ${isHovered ? 'border-white' : 'border-gray-200'} ${showBorder ? 'border-b relative -bottom-[1px]' : ''} transition-[width,color] duration-200`} />

@@ -247,10 +247,10 @@ const Calculator: React.FC = () => {
                                         <p className="mt-1 text-sm text-red-600">{state.meta.errors[0]?.message}</p>
                                     ) : null}
                                     {form.state.values.paymentMethod === PaymentMethod.DEVELOPMENT ? (
-                                        <p className="mt-1 text-sm text-gray-600">Paga máximo a 24 cuotas sin interés</p>
+                                        <p className="mt-5 text-sm text-gray-600">Paga máximo a 24 cuotas sin interés</p>
                                     ) : (
                                         <>
-                                            <p className="mt-1 text-sm text-gray-600">Paga máximo a 60 cuotas</p>
+                                            <p className="mt-5 text-sm text-gray-600">Paga máximo a 60 cuotas</p>
                                             <p className="mt-1 text-sm text-gray-600">Tasa del 0,9% E.M.</p>
                                             <p className="mt-1 text-sm text-gray-600">Has aportes a capital cuando quieras</p>
                                         </>
@@ -317,7 +317,7 @@ const Calculator: React.FC = () => {
                             exit={{ opacity: 0, y: 50 }}
                             transition={{ duration: 0.4, ease: "easeOut" }}
                         >
-                            <div className="flex flex-col gap-4">
+                            <div className="flex flex-col gap-4 max-w-[450px] mx-auto border-l-1 border-r-1 border-gray-200 p-4">
                                 <p className="text-lg font-bold text-black">Resumen de la inversión</p>
                                 <div className="flex justify-between gap-2">
                                     <p className="text-sm text-gray-600">Cuota mensual</p>
@@ -325,7 +325,7 @@ const Calculator: React.FC = () => {
                                 </div>
                                 <div className="flex justify-between gap-2">
                                     <p className="text-sm text-gray-600">Plazo</p>
-                                    <p className="font-semibold text-black uppercase">{getPaymentPeriodLabel(form.state.values.paymentPeriod)}</p>
+                                    <p className="font-semibold text-black">{getPaymentPeriodLabel(form.state.values.paymentPeriod)}</p>
                                 </div>
                                 <div className="flex justify-between gap-2">
                                     <p className="text-sm text-gray-600">Tasa de interés</p>

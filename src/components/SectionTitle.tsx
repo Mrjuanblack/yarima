@@ -10,7 +10,7 @@ const SectionTitle = ({ title, description, removeMargin = false }: SectionTitle
     return (
         <div className={`text-left ${removeMargin ? "" : "mb-16"}`}>
             {title && (
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <h2 className="text-2xl md:text-4xl font-bold mb-4">
                     {title}
                 </h2>
             )}

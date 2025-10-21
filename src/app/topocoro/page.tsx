@@ -64,7 +64,7 @@ export default function Topocoro() {
                     </Container>
                 </ParallaxImage>
             </Section>
-            <Section fadeIn>
+            <Section fadeIn videoPadding>
                 <Container>
                     <VideoSection
                         backgroundImage="/topocoro/1.JPG"
@@ -97,10 +97,7 @@ export default function Topocoro() {
                             </div>
                             <div className="w-full">
                                 <div className="mt-10 flex flex-col 2xl:flex-row justify-center items-center gap-4">
-                                    <CTAButtonBase
-                                        text="Ver mapa y accesos"
-                                        onClick={() => window.open('https://maps.app.goo.gl/xRpGcedJoso9Jh5J7', '_blank')}
-                                    />
+                                    <CTAButtonBase onClick={() => window.open('https://maps.app.goo.gl/xRpGcedJoso9Jh5J7', '_blank')}>Ver mapa y accesos</CTAButtonBase>
                                 </div>
                             </div>
                         </div>
@@ -119,7 +116,7 @@ export default function Topocoro() {
                                 <div className={`h-80 bg-[url(/actividades/nautica.png)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
                                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                             </div>
-                            <div className="relative p-10 flex flex-col flex-grow">
+                            <div className="relative p-6 md:p-10 flex flex-col flex-grow">
                                 <h3 className="mt-1 text-xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Náutica y recreación</h3>
                                 <p className="mt-2 max-w-[600px] text-base/6 text-gray-600 group-data-dark:text-gray-400">Wakeboard, kitesurf, jet ski, paddle board y kayak.</p>
                             </div>
@@ -131,7 +128,7 @@ export default function Topocoro() {
                                 <div className={`h-80 bg-[url(/actividades/relajacion.png)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
                                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                             </div>
-                            <div className="relative p-10 flex flex-col flex-grow">
+                            <div className="relative p-6 md:p-10 flex flex-col flex-grow">
                                 <h3 className="mt-1 text-xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Bienestar y desconexión</h3>
                                 <p className="mt-2 max-w-[600px] text-base/6 text-gray-600 group-data-dark:text-gray-400">Spa, yoga al aire libre, observación de aves, senderismo.</p>
                             </div>
@@ -143,7 +140,7 @@ export default function Topocoro() {
                                 <div className={`h-80 bg-[url(/actividades/musica.png)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
                                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                             </div>
-                            <div className="relative p-10 flex flex-col flex-grow">
+                            <div className="relative p-6 md:p-10 flex flex-col flex-grow">
                                 <h3 className="mt-1 text-xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Social & entretenimiento</h3>
                                 <p className="mt-2 max-w-[600px] text-base/6 text-gray-600 group-data-dark:text-gray-400">Festivales musicales, eventos y experiencias frente al embalse.</p>
                             </div>
@@ -154,7 +151,7 @@ export default function Topocoro() {
                                 <div className={`h-80 bg-[url(/actividades/corporate.png)] ${cardResponsiveValues_3cols} bg-center bg-no-repeat`} />
                                 {/* <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" /> */}
                             </div>
-                            <div className="relative p-10 flex flex-col flex-grow">
+                            <div className="relative p-6 md:p-10 flex flex-col flex-grow">
                                 <h3 className="mt-1 text-xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Corporate & reuniones</h3>
                                 <p className="mt-2 max-w-[600px] text-base/6 text-gray-600 group-data-dark:text-gray-400">Eventos corporativos y vacaciones grupales.</p>
                             </div>

@@ -5,6 +5,6 @@ export default function CTA_Brochure() {
     const { downloadBrochure } = useDownloadBrochure();
 
     return (
-        <CTAButtonBase text="Descargar Brochure" onClick={downloadBrochure} />
+        <CTAButtonBase onClick={downloadBrochure}>Descargar Brochure</CTAButtonBase>
     )
 }

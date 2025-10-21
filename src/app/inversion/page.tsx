@@ -13,6 +13,7 @@ import SectionTitle from "@/components/SectionTitle";
 import VideoSection from "@/components/VideoSection";
 import YoutubeVideo from "@/components/YoutubeVideo";
 import { useState } from "react";
+import { BuildingOffice2Icon, BanknotesIcon, PercentBadgeIcon } from "@heroicons/react/24/outline";
 
 export default function Inversion() {
     const items: AccordionItem[] = [
@@ -71,13 +72,51 @@ export default function Inversion() {
                 </Container>
             </ParallaxImage>
         </Section>
-        <Section fadeIn>
+        <Section fadeIn videoPadding>
             <Container>
                 <VideoSection
                     backgroundImage="/renders/v2/2.jpg"
                     title="Formas de pago"
                     onPlayClick={() => setIsVideoModalOpen(true)}
                 />
+            </Container>
+        </Section>
+        <Section fadeIn>
+            <Container>
+                <SectionTitle title="Formas de pago" description="Empiezas con una reserva de $3.000.000 COP y eliges entre dos formas de pago: " />
+                <div className="grid grid-cols-12 xl:gap-2 gap-4">
+                    <div className="col-span-12 xl:col-span-4 xl:rounded-tl-4xl xl:rounded-bl-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
+                        <div className="relative p-10 flex flex-col flex-grow text-center justify-between items-center">
+                            <BuildingOffice2Icon className="size-10 md:size-16 text-theme-gold mx-auto mb-2" />
+                            <div>
+                                <h3 className="mt-1 text-2xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Pago durante el desarrollo</h3>
+                                <p className="mt-2 max-w-[600px] text-lg text-gray-600 group-data-dark:text-gray-400">24 cuotas mensuales (sin intereses)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-span-12 xl:col-span-4 group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
+                        <div className="relative p-10 flex flex-col flex-grow text-center justify-between items-center">
+                            <BanknotesIcon className="size-10 md:size-16 text-theme-gold mx-auto mb-2" />
+                            <div>
+                                <h3 className="mt-1 text-2xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Financiación directa</h3>
+                                <p className="mt-2 max-w-[600px] text-lg text-gray-600 group-data-dark:text-gray-400">60 cuotas mensuales <span className="whitespace-nowrap">(por 0,9% E.M)</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-span-12 xl:col-span-4 xl:rounded-tr-4xl xl:rounded-br-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
+                        <div className="relative p-10 flex flex-col flex-grow text-center justify-between items-center">
+                            <PercentBadgeIcon className="size-10 md:size-16 text-theme-gold mx-auto mb-2" />
+                            <div>
+                                <h3 className="mt-1 text-2xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Pago de Contado</h3>
+                                <p className="mt-2 max-w-[600px] text-lg text-gray-600 group-data-dark:text-gray-400">Recibe 10% de descuento sobre el valor de la fracción</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p className="mt-10 text-lg text-center font-medium">Te acompañamos para escoger el plan que mejor se ajuste a tu perfil.</p>
+                <div className="mt-5 flex flex-col lg:flex-row justify-center items-center gap-4">
+                    <CTA_WhatsAppAlter />
+                </div>
             </Container>
         </Section>
         <Section fadeIn>
@@ -108,36 +147,7 @@ export default function Inversion() {
                 </div>
             </Container>
         </Section>
-        <Section fadeIn>
-            <Container>
-                <SectionTitle title="Formas de pago" description="Empiezas con una reserva de $3.000.000 COP y eliges entre dos formas de pago: " />
-                <div className="grid grid-cols-12 xl:gap-2 gap-4">
-                    <div className="col-span-12 xl:col-span-4 xl:rounded-tl-4xl xl:rounded-bl-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
-                        <div className="relative p-10 flex flex-col flex-grow text-center">
-                            <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Pago durante el desarrollo</h3>
-                            <p className="mt-2 max-w-[600px] text-lg text-gray-600 group-data-dark:text-gray-400">24 cuotas mensuales (sin intereses)</p>
-                        </div>
-                    </div>
-                    <div className="col-span-12 xl:col-span-4 group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
-                        <div className="relative p-10 flex flex-col flex-grow text-center justify-between items-center">
-                            <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Financiación directa</h3>
-                            <p className="mt-2 max-w-[600px] text-lg text-gray-600 group-data-dark:text-gray-400">60 cuotas mensuales <span className="whitespace-nowrap">(por 0,9% E.M)</span></p>
-                        </div>
-                    </div>
-                    <div className="col-span-12 xl:col-span-4 xl:rounded-tr-4xl xl:rounded-br-4xl group relative flex flex-col overflow-hidden rounded-lg bg-white shadow-xs ring-1 ring-black/5 data-dark:bg-gray-800 data-dark:ring-white/15">
-                        <div className="relative p-10 flex flex-col flex-grow text-center">
-                            <h3 className="mt-1 text-3xl/8 font-medium tracking-tight text-gray-950 group-data-dark:text-white">Pago de Contado</h3>
-                            <p className="mt-2 max-w-[600px] text-lg text-gray-600 group-data-dark:text-gray-400">Recibe 10% de descuento sobre el valor de la fracción</p>
-                        </div>
-                    </div>
-                </div>
-                <p className="mt-10 text-lg text-center font-medium">Te acompañamos para escoger el plan que mejor se ajuste a tu perfil.</p>
-                <div className="mt-5 flex flex-col lg:flex-row justify-center items-center gap-4">
-                    <CTA_WhatsAppAlter />
-                </div>
-            </Container>
-        </Section>
-        <Section fadeIn>
+        <Section overrideClassName="bg-theme-background-50 py-10" fadeIn>
             <Container>
                 <SectionTitle title="Preguntas Frecuentes FAQ" />
                 <Accordion items={items} />
@@ -148,7 +158,7 @@ export default function Inversion() {
         </Section>
         <Section fadeIn>
             <Container>
-                <div className="py-10 flex flex-col justify-center items-center overflow-hidden rounded-lg bg-gradient-to-r from-white via-theme-background-100 to-white shadow-xs ring-1 ring-black/5 data-dark:from-gray-800 data-dark:via-gray-800 data-dark:to-gray-800 data-dark:ring-white/15">
+                <div className="py-10 flex flex-col justify-center items-center overflow-hidden rounded-lg shadow-xs ring-1 ring-black/5 data-dark:from-gray-800 data-dark:via-gray-800 data-dark:to-gray-800 data-dark:ring-white/15">
                     <p className="text-4xl text-center font-medium">¿Listo para empezar?</p>
                     <p className="mt-4 text-center">Haz parte del proyecto Yarima Resort & Club de Playa y disfruta de beneficios exclusivos.</p>
                     <div className="mt-10 flex flex-col lg:flex-row justify-center items-center gap-4">
