@@ -205,7 +205,7 @@ const Calculator: React.FC = () => {
                                     name="tasa-de-interes"
                                     type="text"
                                     placeholder="0.9"
-                                    value="0.9"
+                                    value={form.state.values.paymentMethod === PaymentMethod.DIRECT ? "0.9" : "0"}
                                     disabled
                                     className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-800 placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
                                 />
@@ -329,7 +329,7 @@ const Calculator: React.FC = () => {
                                 </div>
                                 <div className="flex justify-between gap-2">
                                     <p className="text-sm text-gray-600">Tasa de interés</p>
-                                    <p className="font-semibold text-black">{form.state.values.interestRate}</p>
+                                    <p className="font-semibold text-black">{form.state.values.paymentMethod === PaymentMethod.DIRECT ? "0,9%" : "0%"}</p>
                                 </div>
                             </div>
                         </motion.div>

@@ -28,22 +28,22 @@ export default function Ecosistema() {
     const features1 = [
         {
             title: "52 Suites de 40 m² con terraza, jacuzzi y vista 180° al embalse",
-            description: "52 Suites de 40 m² con terraza, jacuzzi y vista 180° al embalse",
+            description: "Hospedaje de lujo con vistas panorámicas al embalse",
             icon: <FaHotel className={iconClass} />
         },
         {
             title: "Piscina infinita y solárium",
-            description: "Piscina infinita y solárium",
+            description: "Relajación con vista al embalse",
             icon: <FaSwimmingPool className={iconClass} />
         },
         {
             title: "Spa & circuito wellness (sauna, turco e hidromasajes)",
-            description: "Spa & circuito wellness (sauna, turco e hidromasajes)",
+            description: "Bienestar integral y relajación",
             icon: <FaSpa className={iconClass} />
         },
         {
             title: "Restaurante de autor",
-            description: "Restaurante de autor",
+            description: "Gastronomía de alta calidad",
             icon: <FaUtensils className={iconClass} />
         },
         {
@@ -58,12 +58,12 @@ export default function Ecosistema() {
         },
         {
             title: "Zonas de silencio obligatorio (decks de yoga, lectura y senderos)",
-            description: "Zonas de silencio obligatorio (decks de yoga, lectura y senderos)",
+            description: "Espacios para meditación y tranquilidad",
             icon: <FaPeace className={iconClass} />
         },
         {
             title: "Car lobby con valet parking",
-            description: "Car lobby con valet parking",
+            description: "Servicio de estacionamiento premium",
             icon: <FaCar className={iconClass} />
         }
     ];
@@ -71,32 +71,32 @@ export default function Ecosistema() {
     const features2 = [
         {
             title: "Playa artificial y zonas lounge con sombra.",
-            description: "Playa artificial y zonas lounge con sombra.",
+            description: "Relajación frente al agua",
             icon: <GiBeachBall className={iconClass} />
         },
         {
             title: "Piscinas y zonas de jacuzzis",
-            description: "Piscinas y zonas de jacuzzis",
+            description: "Refrescamiento y relajación",
             icon: <FaSwimmingPool className={iconClass} />
         },
         {
             title: "Restaurantes",
-            description: "Restaurantes",
+            description: "Gastronomía variada",
             icon: <FaUtensils className={iconClass} />
         },
         {
             title: "Bar de playa",
-            description: "Bar de playa",
+            description: "Cócteles y bebidas refrescantes",
             icon: <FaUmbrellaBeach className={iconClass} />
         },
         {
             title: "Muelle",
-            description: "Muelle",
+            description: "Acceso directo al agua",
             icon: <FaSailboat className={iconClass} />
         },
         {
             title: "Marina mixta (en agua y seca ligera)",
-            description: "Marina mixta (en agua y seca ligera)",
+            description: "Amarre para embarcaciones",
             icon: <FaWater className={iconClass} />
         },
         {
@@ -106,7 +106,7 @@ export default function Ecosistema() {
         },
         {
             title: "Espacios para conciertos y festivales musicales",
-            description: "Espacios para conciertos y festivales musicales",
+            description: "Entretenimiento y eventos especiales",
             icon: <IoMusicalNotes className={iconClass} />
         }
 
@@ -115,27 +115,27 @@ export default function Ecosistema() {
     const features3 = [
         {
             title: "Deck privado para socios",
-            description: "Deck privado para socios",
+            description: "Área exclusiva con acceso privilegiado",
             icon: <FaUsers className={iconClass} />
         },
         {
             title: "Solárium con sillas asoleadoras y parasoles",
-            description: "Solárium con sillas asoleadoras y parasoles",
+            description: "Bronceado y descanso al sol",
             icon: <FaSun className={iconClass} />
         },
         {
             title: "Lounge con servicio de bebidas y estación de snacks",
-            description: "Lounge con servicio de bebidas y estación de snacks",
+            description: "Comodidad y servicio premium",
             icon: <FaGlassWater className={iconClass} />
         },
         {
             title: "Deck de música en vivo y socialización",
-            description: "Deck de música en vivo y socialización",
+            description: "Entretenimiento y ambiente social",
             icon: <IoMusicalNotes className={iconClass} />
         },
         {
             title: "Acceso desde el muelle del Club de Playa",
-            description: "Acceso desde el muelle del Club de Playa",
+            description: "Conectividad directa con el club",
             icon: <FaSailboat className={iconClass} />
         }
     ]
