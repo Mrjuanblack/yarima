@@ -1,6 +1,6 @@
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { useForm } from '@tanstack/react-form';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { z } from 'zod/v4'
 import { motion } from 'framer-motion'
 
@@ -106,7 +106,7 @@ const getDifferenceTextColor = (value: number) => {
 const Calculator: React.FC = () => {
     const form = useForm({
         defaultValues: {
-            capital: undefined,
+            capital: 3000000,
             interestRate: 0.9,
             paymentMethod: PaymentMethod.DIRECT,
             paymentPeriod: PaymentPeriod.ONE_YEAR,
@@ -121,16 +121,31 @@ const Calculator: React.FC = () => {
             const calculatedPayment = calculateMonthlyPayment(value);
             setMonthlyPayment(calculatedPayment);
             setDisplayResult(true);
-            setGrayOutResult(false);
+            // setGrayOutResult(false);
         },
     })
 
     const [monthlyPayment, setMonthlyPayment] = useState(0);
     const [displayResult, setDisplayResult] = useState(false);
-    const [grayOutResult, setGrayOutResult] = useState(false);
+    // const [grayOutResult, setGrayOutResult] = useState(false);
+
+    // Auto-submit form when displayResult is true and any field changes
+    useEffect(() => {
+        if (displayResult && form.state.isValid) {
+            const calculatedPayment = calculateMonthlyPayment(form.state.values);
+            setMonthlyPayment(calculatedPayment);
+        }
+    }, [form.state.values, displayResult]);
 
     const handlePaymentMethodChange = () => {
         form.setFieldValue("paymentPeriod", PaymentPeriod.ONE_YEAR);
+    }
+
+    const handleFieldChange = () => {
+        if (displayResult && form.state.isValid) {
+            const calculatedPayment = calculateMonthlyPayment(form.state.values);
+            setMonthlyPayment(calculatedPayment);
+        }
     }
 
     return (
@@ -162,7 +177,7 @@ const Calculator: React.FC = () => {
                                                 placeholder="0.00"
                                                 value={field.state.value === undefined || field.state.value === null ? "" : new Intl.NumberFormat('es-CO').format(field.state.value)}
                                                 onChange={(e) => {
-                                                    setGrayOutResult(true);
+                                                    // setGrayOutResult(true);
                                                     const raw = e.target.value
                                                         .replace(/\./g, "")
                                                         .replace(/,/g, ".")
@@ -177,6 +192,8 @@ const Calculator: React.FC = () => {
                                                     } else {
                                                         field.handleChange(parsed as unknown as number);
                                                     }
+                                                    // Trigger auto-calculation if results are displayed
+                                                    setTimeout(() => handleFieldChange(), 0);
                                                 }}
                                                 onBlur={field.handleBlur}
                                                 aria-invalid={field.state.meta.errors.length > 0 && field.state.meta.isTouched}
@@ -186,14 +203,14 @@ const Calculator: React.FC = () => {
                                         {(field.state.meta.errors.length > 0 && field.state.meta.isTouched) ? (
                                             <p className="mt-1 text-sm text-red-600">{field.state.meta.errors[0]?.message}</p>
                                         ) : null}
-                                        <p className={`mt-1 text ${getDifferenceTextColor(field.state.value)}`}>Valor a diferir: {new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format((typeof field.state.value === 'number' && !Number.isNaN(field.state.value)) ? field.state.value - 3000000 : 0)}</p>
+                                        {/* <p className={`mt-1 text ${getDifferenceTextColor(field.state.value)}`}>Valor a diferir: {new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format((typeof field.state.value === 'number' && !Number.isNaN(field.state.value)) ? field.state.value - 3000000 : 0)}</p> */}
                                     </div>
                                 </>
                             )}
                         </form.Field>
 
                     </div>
-                    <div className="col-span-1">
+                    {/* <div className="col-span-1">
                         <label htmlFor="tasa-de-interes" className="block text-sm/6 font-medium text-gray-600">
                             Tasa de interés (E.M.)
                         </label>
@@ -211,6 +228,52 @@ const Calculator: React.FC = () => {
                                 />
                             </div>
                         </div>
+                    </div> */}
+
+                    <div className="col-span-1">
+                        <form.Field name="paymentPeriod">
+                            {({ state, handleChange, handleBlur }) => (
+                                <>
+                                    <label htmlFor="plazo-de-pago" className="block text-sm/6 font-medium text-gray-600">
+                                        Plazo de Pago
+                                    </label>
+                                    <div className="mt-2 grid grid-cols-1">
+                                        <select
+                                            id="plazo-de-pago"
+                                            name="plazo-de-pago"
+                                            autoComplete="plazo-de-pago"
+                                            value={state.value}
+                                            className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-gray-950/5 py-1.5 pr-8 pl-3 text-base text-gray-800 outline-1 -outline-offset-1 outline-black/10 *:bg-gray-950/5 focus:outline-2 focus:-outline-offset-2 focus:outline-theme-gold sm:text-sm/6"
+                                            onChange={(e) => {
+                                                // setGrayOutResult(true);
+                                                handleChange(e.target.value as PaymentPeriod);
+                                                // Trigger auto-calculation if results are displayed
+                                                setTimeout(() => handleFieldChange(), 0);
+                                            }}
+                                            onBlur={handleBlur}
+                                            aria-invalid={state.meta.errors.length > 0 && state.meta.isTouched}
+                                        >
+                                            {form.state.values.paymentMethod === PaymentMethod.DEVELOPMENT ? (
+                                                paymentPeriod_DevelopmentFinancing.map((period) => (
+                                                    <option key={period} value={period}>{getPaymentPeriodLabel(period)}</option>
+                                                ))
+                                            ) :
+                                                paymentPeriodValues.map((period) => (
+                                                    <option key={period} value={period}>{getPaymentPeriodLabel(period)}</option>
+                                                ))
+                                            }
+                                        </select>
+                                        <ChevronDownIcon
+                                            aria-hidden="true"
+                                            className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-400 sm:size-4"
+                                        />
+                                    </div>
+                                    {state.meta.errors.length > 0 && state.meta.isTouched ? (
+                                        <p className="mt-1 text-sm text-red-600">{state.meta.errors[0]?.message}</p>
+                                    ) : null}
+                                </>
+                            )}
+                        </form.Field>
                     </div>
                     <div className="col-span-1">
                         <form.Field name="paymentMethod">
@@ -227,9 +290,11 @@ const Calculator: React.FC = () => {
                                             value={state.value}
                                             className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-gray-950/5 py-1.5 pr-8 pl-3 text-base text-gray-800 outline-1 -outline-offset-1 outline-black/10 *:bg-gray-950/5 focus:outline-2 focus:-outline-offset-2 focus:outline-theme-gold sm:text-sm/6"
                                             onChange={(e) => {
-                                                setGrayOutResult(true);
+                                                // setGrayOutResult(true);
                                                 handleChange(e.target.value as PaymentMethod);
                                                 handlePaymentMethodChange();
+                                                // Trigger auto-calculation if results are displayed
+                                                setTimeout(() => handleFieldChange(), 0);
                                             }}
                                             onBlur={handleBlur}
                                             aria-invalid={state.meta.errors.length > 0 && state.meta.isTouched}
@@ -259,66 +324,31 @@ const Calculator: React.FC = () => {
                             )}
                         </form.Field>
                     </div>
-                    <div className="col-span-1">
-                        <form.Field name="paymentPeriod">
-                            {({ state, handleChange, handleBlur }) => (
-                                <>
-                                    <label htmlFor="plazo-de-pago" className="block text-sm/6 font-medium text-gray-600">
-                                        Plazo de Pago
-                                    </label>
-                                    <div className="mt-2 grid grid-cols-1">
-                                        <select
-                                            id="plazo-de-pago"
-                                            name="plazo-de-pago"
-                                            autoComplete="plazo-de-pago"
-                                            value={state.value}
-                                            className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-gray-950/5 py-1.5 pr-8 pl-3 text-base text-gray-800 outline-1 -outline-offset-1 outline-black/10 *:bg-gray-950/5 focus:outline-2 focus:-outline-offset-2 focus:outline-theme-gold sm:text-sm/6"
-                                            onChange={(e) => {
-                                                setGrayOutResult(true);
-                                                handleChange(e.target.value as PaymentPeriod);
-                                            }}
-                                            onBlur={handleBlur}
-                                            aria-invalid={state.meta.errors.length > 0 && state.meta.isTouched}
-                                        >
-                                            {form.state.values.paymentMethod === PaymentMethod.DEVELOPMENT ? (
-                                                paymentPeriod_DevelopmentFinancing.map((period) => (
-                                                    <option key={period} value={period}>{getPaymentPeriodLabel(period)}</option>
-                                                ))
-                                            ) :
-                                                paymentPeriodValues.map((period) => (
-                                                    <option key={period} value={period}>{getPaymentPeriodLabel(period)}</option>
-                                                ))
-                                            }
-                                        </select>
-                                        <ChevronDownIcon
-                                            aria-hidden="true"
-                                            className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-400 sm:size-4"
-                                        />
-                                    </div>
-                                    {state.meta.errors.length > 0 && state.meta.isTouched ? (
-                                        <p className="mt-1 text-sm text-red-600">{state.meta.errors[0]?.message}</p>
-                                    ) : null}
-                                </>
-                            )}
-                        </form.Field>
-                    </div>
                     <div className="col-span-1 sm:col-span-2">
                         <button type="submit" className="w-full rounded-full bg-theme-gold px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-theme-gold/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-theme-gold">Calcular</button>
                     </div>
 
                     {displayResult && (
-                        <motion.div 
+                        <motion.div
                             className={`col-span-1 sm:col-span-2`}
                             initial={{ opacity: 0, y: 50 }}
-                            animate={{ 
-                                opacity: grayOutResult ? 0.25 : 1,
+                            animate={{
+                                opacity: 1,
                                 y: 0
                             }}
                             exit={{ opacity: 0, y: 50 }}
                             transition={{ duration: 0.4, ease: "easeOut" }}
                         >
-                            <div className="flex flex-col gap-4 max-w-[450px] mx-auto border-l-1 border-r-1 border-gray-200 p-4">
+                            <div className="flex flex-col gap-4 max-w-[450px] mx-auto border-1 rounded-lg border-gray-200 p-4">
                                 <p className="text-lg font-bold text-black">Resumen de la inversión</p>
+                                <div className="flex justify-between gap-2">
+                                    <p className="text-sm text-gray-600">Valor de reserva</p>
+                                    <p className="font-semibold text-black">{new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(3000000)}</p>
+                                </div>
+                                <div className="flex justify-between gap-2">
+                                    <p className="text-sm text-gray-600">Valor a diferir</p>
+                                    <p className={`font-semibold ${getDifferenceTextColor(form.state.values.capital)}`}>{new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(form.state.values.capital - 3000000)}</p>
+                                </div>
                                 <div className="flex justify-between gap-2">
                                     <p className="text-sm text-gray-600">Cuota mensual</p>
                                     <p className="font-semibold text-black">{new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(monthlyPayment)}</p>
