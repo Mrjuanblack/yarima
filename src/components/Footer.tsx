@@ -13,11 +13,13 @@ const Footer: React.FC = () => {
         <footer className="bg-gradient-to-br from-theme-background-dark-950 via-theme-background-dark-950/95 to-theme-background-dark-950 pt-12 pb-8 px-6 lg:px-8 text-theme-background-200">
             <Container>
                 <div className="flex flex-col gap-4">
-                    <div className="flex justify-center items-center gap-4">
-                        <img src="logo-full-blanco.png" alt="Yarima" className="w-auto h-30" />
-                        <div className="flex flex-col gap-2">
-                            <p className="text-white text-base md:text-base/2"><span className="font-medium mr-1">Sala de Experiencias: </span>Km 1.4, vía Ruitoque Bajo - Acapulco.</p>
-                            <p className="text-white">Floridablanca, Santander</p>
+                    <div className="w-full grid grid-cols-8 gap-4">
+                        <div className="col-span-3 sm:col-span-4 flex justify-center items-center">
+                            <img src="logo-full-blanco.png" alt="Yarima" className="w-full md:w-40 h-auto" />
+                        </div>
+                        <div className="flex flex-col gap-2 col-span-5 sm:col-span-4 justify-center items-start">
+                            <p className="text-white text-sm sm:text-base md:text-base"><span className="font-medium mr-1">Sala de Experiencias: </span>Km 1.4, vía Ruitoque Bajo - Acapulco.</p>
+                            <p className="text-white text-sm sm:text-base md:text-base">Floridablanca, Santander</p>
                             <div className="flex justify-start items-center gap-4">
                                 <FaInstagram className={`${socialMediaSize} cursor-pointer`} onClick={() => window.open("https://www.instagram.com/yarima.topocoro", "_blank")} />
                                 <FaFacebookSquare className={`${socialMediaSize} cursor-pointer`} onClick={() => window.open("https://www.facebook.com/share/17NMsPpvfX/?mibextid=wwXIfr", "_blank")} />
