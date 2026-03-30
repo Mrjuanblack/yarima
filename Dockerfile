@@ -12,7 +12,7 @@ ENV NEXT_PUBLIC_RECAPTCHA_SITE_KEY=$NEXT_PUBLIC_RECAPTCHA_SITE_KEY
 
 # Instalamos dependencias
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install
 
 # Copiamos el codigo
 COPY . .
