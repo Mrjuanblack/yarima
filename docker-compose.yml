@@ -1,0 +1,59 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY: ${NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY}
+        NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+    container_name: yarima-nextjs
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    restart: always
+    labels:
+      - "traefik.enable=true"
+
+      # --- HTTP ROUTER → REDIRECT TO HTTPS ---
+      - "traefik.http.routers.yarima-web.entrypoints=web"
+      - "traefik.http.routers.yarima-web.rule=Host(`yarimaresort.com`)"
+      - "traefik.http.routers.yarima-web.middlewares=yarima-redirect-to-https"
+
+      # --- HTTPS ROUTER ---
+      - "traefik.http.routers.yarima-web-secure.entrypoints=websecure"
+      - "traefik.http.routers.yarima-web-secure.rule=Host(`yarimaresort.com`)"
+      - "traefik.http.routers.yarima-web-secure.tls=true"
+      - "traefik.http.routers.yarima-web-secure.tls.certresolver=letsencrypt"
+
+      # ---- BOTH ROUTERS USE SAME SERVICE ----
+      - "traefik.http.routers.yarima-web.service=yarima-web"
+      - "traefik.http.routers.yarima-web-secure.service=yarima-web"
+
+      # ---- SERVICE: FORWARD TO NEXT.JS PORT 3000 ----
+      - "traefik.http.services.yarima-web.loadbalancer.server.port=3000"
+
+      # ---- REDIRECT MIDDLEWARE ----
+      - "traefik.http.middlewares.yarima-redirect-to-https.redirectscheme.scheme=https"
+
+      # --- WWW → APEX REDIRECT (HTTP & HTTPS) ---
+      - "traefik.http.routers.yarima-web-www.entrypoints=web"
+      - "traefik.http.routers.yarima-web-www.rule=Host(`www.yarimaresort.com`)"
+      - "traefik.http.routers.yarima-web-www.middlewares=yarima-redirect-to-apex"
+
+      - "traefik.http.routers.yarima-web-www-secure.entrypoints=websecure"
+      - "traefik.http.routers.yarima-web-www-secure.rule=Host(`www.yarimaresort.com`)"
+      - "traefik.http.routers.yarima-web-www-secure.tls=true"
+      - "traefik.http.routers.yarima-web-www-secure.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.yarima-web-www-secure.middlewares=yarima-redirect-to-apex"
+
+      # Middleware — Permanently redirect www → non-www
+      - "traefik.http.middlewares.yarima-redirect-to-apex.redirectregex.regex=^https?://www\\.(.*)"
+      - "traefik.http.middlewares.yarima-redirect-to-apex.redirectregex.replacement=https://$${1}"
+      - "traefik.http.middlewares.yarima-redirect-to-apex.redirectregex.permanent=true"
+
+    networks:
+      - traefik-network
+
+networks:
+  traefik-network:
+    external: true
